@@ -1,0 +1,33 @@
+<div class="console-wrapper">
+    <div class="sidebar">
+        <div class="sidebar-btn" (click)="selectItem(0)">
+            <label>Necker cube</label>
+        </div>
+        <div class="sidebar-btn" (click)="selectItem(1)">
+            <label>Penrose Tribar</label>
+        </div>
+        <div class="sidebar-btn" (click)="selectItem(2)">
+            <label>Triangle Spidron</label>
+        </div>
+    </div>
+    <div class="console">
+        <div class="placeholder" *ngIf="selectedItem === -1">
+            <h1>Select shape</h1>
+        </div>
+        <div class="info" *ngIf="selectedItem !== -1">
+            <h2>{{ selectedModel }}</h2>
+            <h3 *ngIf="selectedItem === 2">(Depth: 5)</h3>
+            <h3>Vertices ({{ model.getVerticesCount() }})</h3>
+            <div *ngFor="let row of model.vertices.cells">
+                <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>
+            </div>
+            <h3>Edges ({{ model.getEdgesCount() }})</h3>
+            <div *ngFor="let row of model.edges.cells">
+                <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>
+            </div>
+            <div style="color: grey; text-align: center">
+                <h1>Switch to the Display tab</h1>
+            </div>
+        </div>
+    </div>
+</div>
