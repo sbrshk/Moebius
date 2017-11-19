@@ -38,4 +38,8 @@ export class DisplayComponent implements OnInit {
 
         return _model;
     }
+
+    public onKeyPressed(code: number | any): void {
+        console.log(code);
+    }
 }
