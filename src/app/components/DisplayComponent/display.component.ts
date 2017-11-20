@@ -56,6 +56,10 @@ export class DisplayComponent implements OnInit {
             case 32: _transformMatrix = AffineTransform.reflectionCenter(); break;
             case 81: _transformMatrix = AffineTransform.scaling(0.9, 0.9); break;
             case 69: _transformMatrix = AffineTransform.scaling(1.1, 1.1); break;
+            case 90: _transformMatrix = AffineTransform.scaling(1.1, 1); break;
+            case 88: _transformMatrix = AffineTransform.scaling(1, 1.1); break;
+            case 67: _transformMatrix = AffineTransform.scaling(0.9, 1); break;
+            case 86: _transformMatrix = AffineTransform.scaling(1, 0.9); break;
             default: _transformMatrix = AffineTransform.identity(); break;
         }
         let _currentModel: Model = this.currentModel;
@@ -69,5 +73,12 @@ export class DisplayComponent implements OnInit {
     }
     public onMouseWheel(delta: number | any): void {
         console.log(delta);
+    }
+
+    public reset(): void {
+        let _index = parseInt(document.cookie[document.cookie.length - 1], 10);
+        this.currentModel = this.shapes.getShape(_index);
+        this.plotter.drawAxis();
+        this.plotter.drawModel(this.currentModel);
     }
 }
