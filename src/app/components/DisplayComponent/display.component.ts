@@ -16,9 +16,12 @@ export class DisplayComponent implements OnInit {
     private shapes: Shapes;
     private canvas: HTMLCanvasElement;
     private currentModel: Model;
+    private pivotSet: boolean;
+    private pivotMatrix: Matrix;
 
     constructor() {
         this.shapes = new Shapes();
+        this.pivotSet = false;
     }
 
     ngOnInit() {
@@ -34,6 +37,9 @@ export class DisplayComponent implements OnInit {
     public applyTransform(transformMatrix: Matrix, model: Model): Model | any {
         let _model = new Model(model.getVerticesCount(), model.getEdgesCount());
         let _matrix = new Matrix(3, model.getVerticesCount());
+        // if (this.pivotSet) {
+        //     transformMatrix = Matrix.MatrixMatrixMultiply(transformMatrix, this.pivotMatrix);
+        // }
         _matrix = Matrix.MatrixMatrixMultiply(transformMatrix, model.getVertices());
         _model.setVertices(_matrix);
         _model.setEdges(model.getEdges());
@@ -69,10 +75,27 @@ export class DisplayComponent implements OnInit {
         // console.log(_transformedModel.getVertices().cells);
         this.plotter.drawAxis();
         this.plotter.drawModel(_transformedModel);
+        // if (this.pivotSet) {
+        //     let _xW = (this.pivotMatrix.cells[0][0] - this.plotter.xCenter) / this.plotter.scale;
+        //     let _yW = (this.plotter.yCenter - this.pivotMatrix.cells[1][1]) / this.plotter.scale;
+        //     this.plotter.drawPivot(_xW, _yW);
+        // }
         this.currentModel = _transformedModel;
     }
     public onMouseWheel(delta: number | any): void {
         console.log(delta);
+    }
+
+    public onClick(event: Event | any): void {
+        let _rect = this.canvas.getBoundingClientRect();
+        let _scaleX = this.canvas.width / _rect.width;
+        let _scaleY = this.canvas.height / _rect.height;
+        let _xCoord = Math.round((event.clientX - _rect.left) * _scaleX);
+        let _yCoord = Math.round((event.clientY - _rect.top) * _scaleY);
+        this.pivotSet = true;
+        this.plotter.drawAxis();
+        this.plotter.drawModel(this.currentModel);
+        this.pivotMatrix = this.plotter.setPivot(_xCoord, _yCoord);
     }
 
     public reset(): void {
@@ -80,5 +103,7 @@ export class DisplayComponent implements OnInit {
         this.currentModel = this.shapes.getShape(_index);
         this.plotter.drawAxis();
         this.plotter.drawModel(this.currentModel);
+        this.pivotSet = false;
+        this.pivotMatrix = new Matrix(3, 3);
     }
 }

@@ -1,10 +1,11 @@
 import { Vertex, Model } from '../Model/Model';
 import { AffineTransform } from '../AffineTransform/AffineTransform';
+import { Matrix } from '../Matrix/Matrix';
 
 export class Plotter {
     private canvas: HTMLCanvasElement;
-    private xCenter: number;
-    private yCenter: number;
+    public xCenter: number;
+    public yCenter: number;
     public scale: number;
     private W: number;
     private H: number;
@@ -55,5 +56,31 @@ export class Plotter {
             ctx.lineTo(this.translateXCoord(_vertexEnd.xCoord), this.translateYCoord(_vertexEnd.yCoord));
         }
         ctx.stroke();
+    }
+
+    public drawPivot(xCoord: number, yCoord: number): void {
+        console.log(xCoord + ' ' + yCoord);
+        let ctx = this.canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.strokeStyle = 'red';
+        ctx.moveTo(xCoord - 3, yCoord);
+        ctx.lineTo(xCoord + 3, yCoord);
+        ctx.moveTo(xCoord, yCoord - 3);
+        ctx.lineTo(xCoord, yCoord + 3);
+        ctx.stroke();
+    }
+
+    public setPivot(xCoord: number, yCoord: number): Matrix {
+        let pivotMatrix = new Matrix(3, 3);
+        let _xW = (xCoord - this.xCenter) / this.scale;
+        let _yW = (this.yCenter - yCoord) / this.scale;
+        pivotMatrix.cells = [
+            [_xW, 0, 0],
+            [0, _yW, 0],
+            [0, 0, 1]
+        ];
+        console.log(pivotMatrix.cells);
+        this.drawPivot(xCoord, yCoord);
+        return pivotMatrix;
     }
 }
