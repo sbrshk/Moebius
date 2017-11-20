@@ -1,6 +1,16 @@
 import { Matrix } from '../Matrix/Matrix';
 
 export class AffineTransform {
+    public static identity(): Matrix {
+        let Identity = new Matrix(3, 3);
+        Identity.cells = [
+            [1, 0, 0],
+            [0, 1, 0],
+            [0, 0, 1]
+        ];
+        return Identity;
+    }
+
     public static translation(x: number, y: number): Matrix {
         let Translation = new Matrix(3, 3);
         Translation.cells = [

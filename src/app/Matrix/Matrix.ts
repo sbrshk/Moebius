@@ -52,18 +52,22 @@ export class Matrix {
 
     public static MatrixMatrixMultiply(A: Matrix, B: Matrix): Matrix | any {
         if (A.cols !== B.rows) return;
+        // console.log(A.rows + ' x ' + A.cols);
+        // console.log(B.rows + ' x ' + B.cols);
         let _rows = A.rows;
         let _cols = B.cols;
-        let _r = A.cols;
+        // console.log(_rows + ' ' + _cols);
         let C = new Matrix(_rows, _cols);
         for (let i = 0; i < _rows; i++) {
             C.cells[i] = [];
             for (let j = 0; j < _cols; j++) {
-                for (let k = 0; k < _r; k++) {
-                    C.cells[i][j] = A.cells[i][k] * B.cells[k][j];
+                C.cells[i][j] = 0;
+                for (let k = 0; k < _rows; k++) {
+                    C.cells[i][j] += A.cells[i][k] * B.cells[k][j];
                 }
             }
         }
+        // console.log(C.cells);
         return C;
     }
 }

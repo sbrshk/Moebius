@@ -32,7 +32,7 @@ export class DisplayComponent implements OnInit {
     public applyTransform(transformMatrix: Matrix, model: Model): Model | any {
         let _model = new Model(model.getVerticesCount(), model.getEdgesCount());
         let _matrix = new Matrix(3, model.getVerticesCount());
-        _matrix = Matrix.MatrixMatrixMultiply(model.getVertices(), transformMatrix);
+        _matrix = Matrix.MatrixMatrixMultiply(transformMatrix, model.getVertices());
         _model.setVertices(_matrix);
         _model.setEdges(model.getEdges());
 
@@ -41,5 +41,22 @@ export class DisplayComponent implements OnInit {
 
     public onKeyPressed(code: number | any): void {
         console.log(code);
+        let _transformMatrix: Matrix;
+        switch (code) {
+            case 37: _transformMatrix = AffineTransform.translation(-1, 0); break;
+            case 38: _transformMatrix = AffineTransform.translation(0, 1); break;
+            case 39: _transformMatrix = AffineTransform.translation(1, 0); break;
+            case 40: _transformMatrix = AffineTransform.translation(0, -1); break;
+            default: _transformMatrix = AffineTransform.identity(); break;
+        }
+        let _index = parseInt(document.cookie[document.cookie.length - 1], 10);
+        let _currentModel: Model = this.shapes.getShape(_index);
+        let _transformedModel = new Model(_currentModel.getVerticesCount(), _currentModel.getEdgesCount());
+        _transformedModel.setEdges(_currentModel.getEdges());
+        _transformedModel.setVertices(this.applyTransform(_transformMatrix, _currentModel).getVertices());
+        // console.log(_transformedModel.getVertices().cells);
+        this.plotter.drawAxis();
+        this.plotter.drawModel(_transformedModel);
+        
     }
 }

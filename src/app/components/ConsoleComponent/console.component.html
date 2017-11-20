@@ -15,8 +15,7 @@
             <h1>Select shape</h1>
         </div>
         <div class="info" *ngIf="selectedItem !== -1">
-            <h2>{{ selectedModel }}</h2>
-            <h3 *ngIf="selectedItem === 2">(Depth: 5)</h3>
+            <h2>{{ selectedModel }} <label *ngIf="selectedItem === 2">(Depth: 5)</label></h2>
             <h3>Vertices ({{ model.getVerticesCount() }})</h3>
             <div *ngFor="let row of model.vertices.cells">
                 <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>

@@ -12,7 +12,7 @@ import { Shapes } from '../../Shapes/Shapes';
 
 export class ConsoleComponent implements OnInit {
     public model: Model;
-    public selectedItem: number = -1;
+    public selectedItem: number = 1;
     public selectedModel: string = '';
 
     private shapes: Shapes;
