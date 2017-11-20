@@ -44,6 +44,7 @@ export class ConsoleComponent implements OnInit {
             case 0: this.selectedModel = 'Necker Cube'; break;
             case 1: this.selectedModel = 'Penrose Tribar'; break;
             case 2: this.selectedModel = 'Triangle Spidron'; break;
+            case 3: this.selectedModel = 'Unicursal Hexagram'; break;
         }
     }
 }

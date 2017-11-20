@@ -5,6 +5,7 @@ export class Shapes {
     private NeckerCube: Model;
     private PenroseTribar: Model;
     private TriangleSpidron: Model;
+    private UnicursalHexagram: Model;
 
     constructor() {
         // Necker Cube
@@ -85,6 +86,26 @@ export class Shapes {
         ];
         this.TriangleSpidron.setVertices(spidronVertices);
         this.TriangleSpidron.setEdges(spidronEdges);
+
+        //Unicursal hexagram
+        this.UnicursalHexagram = new Model(6, 6);
+        let hexVertices = new Matrix(3, 6);
+        hexVertices.cells = [
+            [0, 3, 3, 0, -3, -3],
+            [4, 2, -2, -4, -2, 2],
+            [1, 1, 1, 1, 1, 1]
+        ];
+        let hexEdges = new Matrix(6, 2);
+        hexEdges.cells = [
+            [1, 3],
+            [3, 6],
+            [6, 4],
+            [4, 2],
+            [2, 5],
+            [5, 1]
+        ];
+        this.UnicursalHexagram.setVertices(hexVertices);
+        this.UnicursalHexagram.setEdges(hexEdges);
     }
 
     public getShape(index: Number): Model | any {
@@ -92,6 +113,7 @@ export class Shapes {
             case 0: return this.NeckerCube;
             case 1: return this.PenroseTribar;
             case 2: return this.TriangleSpidron;
+            case 3: return this.UnicursalHexagram;
             default: return 0;
         }
     }
