@@ -1,2 +1,3 @@
 <canvas id="canvas" (window:keydown)="onKeyPressed($event.keyCode)" (click)="onClick($event)"></canvas>
 <div class="reset-btn" (click)="reset()">Reset</div>
+<div class="canvas-placeholder" *ngIf="!modelSelected"><h1>Select shape</h1></div>

@@ -16,22 +16,29 @@ export class DisplayComponent implements OnInit {
     private shapes: Shapes;
     private canvas: HTMLCanvasElement;
     private currentModel: Model;
+    private modelSelected: boolean;
     private pivotSet: boolean;
     private pivotMatrix: Matrix;
 
     constructor() {
         this.shapes = new Shapes();
+        this.modelSelected = false;
         this.pivotSet = false;
     }
 
     ngOnInit() {
         let _index = parseInt(document.cookie[document.cookie.length - 1], 10);
-
-        this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
-        this.plotter = new Plotter(this.canvas);
-        this.currentModel = this.shapes.getShape(_index);
-        this.plotter.drawAxis();
-        this.plotter.drawModel(this.currentModel);
+        if (!isNaN(_index)) {
+            this.modelSelected = true;
+            console.log(_index);
+        }
+        if (this.modelSelected) {
+            this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
+            this.plotter = new Plotter(this.canvas);
+            this.currentModel = this.shapes.getShape(_index);
+            this.plotter.drawAxis();
+            this.plotter.drawModel(this.currentModel);
+        }
     }
 
     public applyTransform(transformMatrix: Matrix, model: Model): Model | any {

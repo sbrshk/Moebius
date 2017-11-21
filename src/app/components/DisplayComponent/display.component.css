@@ -1,9 +1,16 @@
-#canvas {
+#canvas, .canvas-placeholder {
     width: 100vw;
     height: 93vh;
     position: fixed;
     top: 7vh;
     left: 0;
+}
+
+.canvas-placeholder {
+    text-align: center;
+    padding-top: 30vh;
+    color: #888;
+    z-index: 3;
 }
 
 .reset-btn {

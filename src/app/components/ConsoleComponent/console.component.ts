@@ -12,8 +12,8 @@ import { Shapes } from '../../Shapes/Shapes';
 
 export class ConsoleComponent implements OnInit {
     public model: Model;
-    public selectedItem: number = 1;
-    public selectedModel: string = 'Necker Cube';
+    public selectedItem = -1;
+    public selectedModel = 'Necker Cube';
 
     private shapes: Shapes;
 
@@ -23,7 +23,9 @@ export class ConsoleComponent implements OnInit {
 
     ngOnInit () {
         let _index = parseInt(document.cookie[document.cookie.length - 1], 10);
-        this.selectItem(_index);
+        if (!isNaN(_index)) {
+            this.selectItem(_index);
+        }
     }
 
     public initModel(_model: Model): void {
