@@ -18,7 +18,7 @@ export class DisplayComponent implements OnInit {
     private currentModel: Model;
     private modelSelected: boolean;
     private pivotSet: boolean;
-    private pivotMatrix: Matrix;
+    private pivot: number[];
 
     constructor() {
         this.shapes = new Shapes();
@@ -45,10 +45,34 @@ export class DisplayComponent implements OnInit {
         let _model = new Model(model.getVerticesCount(), model.getEdgesCount());
         let _matrix = new Matrix(3, model.getVerticesCount());
         let _currentMatrix: Matrix = model.getVertices();
-        // if (this.pivotSet) {
-        //     _currentMatrix = Matrix.MatrixMatrixMultiply(this.pivotMatrix, model.getVertices());
-        // }
-        _matrix = Matrix.MatrixMatrixMultiply(transformMatrix, _currentMatrix);
+        let _pivotMatrix: Matrix;
+
+        if (this.pivotSet) {
+            _pivotMatrix = new Matrix(3, 3);
+            _pivotMatrix.cells = [
+                [1, 0, -this.pivot[0]],
+                [0, 1, -this.pivot[1]],
+                [0, 0, 1]
+            ];
+            console.log(_pivotMatrix.cells);
+
+            _currentMatrix = Matrix.MatrixMatrixMultiply(_pivotMatrix, _currentMatrix);
+        }
+
+        _currentMatrix = Matrix.MatrixMatrixMultiply(transformMatrix, _currentMatrix);
+
+        if (this.pivotSet) {
+            _pivotMatrix.cells = [
+                [1, 0, this.pivot[0]],
+                [0, 1, this.pivot[1]],
+                [0, 0, 1]
+            ];
+            console.log(_pivotMatrix.cells);
+
+            _currentMatrix = Matrix.MatrixMatrixMultiply(_pivotMatrix, _currentMatrix);
+        }
+
+        _matrix = _currentMatrix;
         _model.setVertices(_matrix);
         _model.setEdges(model.getEdges());
 
@@ -56,7 +80,6 @@ export class DisplayComponent implements OnInit {
     }
 
     public onKeyPressed(code: number | any): void {
-        console.log(code);
         let _transformMatrix: Matrix;
         switch (code) {
             case 37: _transformMatrix = AffineTransform.translation(-0.1, 0); break;
@@ -83,8 +106,8 @@ export class DisplayComponent implements OnInit {
         this.plotter.drawAxis();
         this.plotter.drawModel(_transformedModel);
         if (this.pivotSet) {
-            let _xS = this.plotter.translateXCoord(this.pivotMatrix.cells[0][0]);
-            let _yS = this.plotter.translateYCoord(this.pivotMatrix.cells[1][1]);
+            let _xS = this.plotter.translateXCoord(this.pivot[0]);
+            let _yS = this.plotter.translateYCoord(this.pivot[1]);
             this.plotter.drawPivot(_xS, _yS);
         }
         this.currentModel = _transformedModel;
@@ -99,7 +122,7 @@ export class DisplayComponent implements OnInit {
         this.pivotSet = true;
         this.plotter.drawAxis();
         this.plotter.drawModel(this.currentModel);
-        this.pivotMatrix = this.plotter.setPivot(_xCoord, _yCoord);
+        this.pivot = this.plotter.setPivot(_xCoord, _yCoord);
     }
 
     public reset(): void {
@@ -108,6 +131,6 @@ export class DisplayComponent implements OnInit {
         this.plotter.drawAxis();
         this.plotter.drawModel(this.currentModel);
         this.pivotSet = false;
-        this.pivotMatrix = new Matrix(3, 3);
+        this.pivot = null;
     }
 }

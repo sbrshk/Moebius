@@ -70,17 +70,11 @@ export class Plotter {
         ctx.stroke();
     }
 
-    public setPivot(xCoord: number, yCoord: number): Matrix {
-        let pivotMatrix = new Matrix(3, 3);
+    public setPivot(xCoord: number, yCoord: number): number[] {
         let _xW = (xCoord - this.xCenter) / this.scale;
         let _yW = (this.yCenter - yCoord) / this.scale;
-        pivotMatrix.cells = [
-            [_xW, 0, 0],
-            [0, _yW, 0],
-            [0, 0, 1]
-        ];
-        console.log(pivotMatrix.cells);
+        console.log(_xW, _yW);
         this.drawPivot(xCoord, yCoord);
-        return pivotMatrix;
+        return [_xW, _yW];
     }
 }
