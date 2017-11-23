@@ -44,10 +44,11 @@ export class DisplayComponent implements OnInit {
     public applyTransform(transformMatrix: Matrix, model: Model): Model | any {
         let _model = new Model(model.getVerticesCount(), model.getEdgesCount());
         let _matrix = new Matrix(3, model.getVerticesCount());
+        let _currentMatrix: Matrix = model.getVertices();
         // if (this.pivotSet) {
-        //     transformMatrix = Matrix.MatrixMatrixMultiply(transformMatrix, this.pivotMatrix);
+        //     _currentMatrix = Matrix.MatrixMatrixMultiply(this.pivotMatrix, model.getVertices());
         // }
-        _matrix = Matrix.MatrixMatrixMultiply(transformMatrix, model.getVertices());
+        _matrix = Matrix.MatrixMatrixMultiply(transformMatrix, _currentMatrix);
         _model.setVertices(_matrix);
         _model.setEdges(model.getEdges());
 
@@ -79,18 +80,14 @@ export class DisplayComponent implements OnInit {
         let _transformedModel = new Model(_currentModel.getVerticesCount(), _currentModel.getEdgesCount());
         _transformedModel.setEdges(_currentModel.getEdges());
         _transformedModel.setVertices(this.applyTransform(_transformMatrix, _currentModel).getVertices());
-        // console.log(_transformedModel.getVertices().cells);
         this.plotter.drawAxis();
         this.plotter.drawModel(_transformedModel);
-        // if (this.pivotSet) {
-        //     let _xW = (this.pivotMatrix.cells[0][0] - this.plotter.xCenter) / this.plotter.scale;
-        //     let _yW = (this.plotter.yCenter - this.pivotMatrix.cells[1][1]) / this.plotter.scale;
-        //     this.plotter.drawPivot(_xW, _yW);
-        // }
+        if (this.pivotSet) {
+            let _xS = this.plotter.translateXCoord(this.pivotMatrix.cells[0][0]);
+            let _yS = this.plotter.translateYCoord(this.pivotMatrix.cells[1][1]);
+            this.plotter.drawPivot(_xS, _yS);
+        }
         this.currentModel = _transformedModel;
-    }
-    public onMouseWheel(delta: number | any): void {
-        console.log(delta);
     }
 
     public onClick(event: Event | any): void {

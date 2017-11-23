@@ -37,11 +37,11 @@ export class Plotter {
         ctx.stroke();
     }
 
-    private translateXCoord(coord): number {
+    public translateXCoord(coord): number {
         return this.xCenter + coord * this.scale;
     }
 
-    private translateYCoord(coord): number {
+    public translateYCoord(coord): number {
         return this.yCenter - coord * this.scale;
     }
 
