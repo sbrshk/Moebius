@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AffineTransform } from '../../AffineTransform/AffineTransform';
 import {  Matrix } from '../../Matrix/Matrix';
 import { Model2d } from '../../Model/Model2d';
-import { Shapes } from '../../Shapes/Shapes';
+import { Shapes2d } from '../../Shapes/Shapes2d';
 
 @Component({
     selector: 'sidebar-component',
@@ -16,10 +16,10 @@ export class SidebarComponent implements OnInit {
     public selectedItem = -1;
     public selectedModel = 'Necker Cube';
 
-    private shapes: Shapes;
+    private shapes: Shapes2d;
 
     constructor () {
-        this.shapes = new Shapes();
+        this.shapes = new Shapes2d();
         this.twoD = true;
     }
 
@@ -30,8 +30,8 @@ export class SidebarComponent implements OnInit {
         }
     }
 
-    public switch2d3d() {
-        this.twoD = !this.twoD;
+    public switch2d3d(state: boolean): void {
+        this.twoD = state;
     }
 
     public initModel(_model: Model2d): void {

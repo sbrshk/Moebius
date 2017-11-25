@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Matrix } from '../../Matrix/Matrix';
 import { Model2d } from '../../Model/Model2d';
-import { Shapes } from '../../Shapes/Shapes';
+import { Shapes2d } from '../../Shapes/Shapes2d';
 import { Plotter } from '../../Plotter/Plotter';
 import { AffineTransform } from '../../AffineTransform/AffineTransform';
 
@@ -13,7 +13,7 @@ import { AffineTransform } from '../../AffineTransform/AffineTransform';
 
 export class DisplayComponent implements OnInit {
     private plotter: Plotter;
-    private shapes: Shapes;
+    private shapes: Shapes2d;
     private canvas: HTMLCanvasElement;
     private currentModel: Model2d;
     private modelSelected: boolean;
@@ -21,7 +21,7 @@ export class DisplayComponent implements OnInit {
     private pivot: number[];
 
     constructor() {
-        this.shapes = new Shapes();
+        this.shapes = new Shapes2d();
         this.modelSelected = false;
         this.pivotSet = false;
     }

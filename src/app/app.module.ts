@@ -4,8 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { SidebarComponent } from './components/SidebarComponent/sidebar.component';
-
-// import { ConsoleComponent } from './components/ConsoleComponent/console.component';
 // import { DisplayComponent } from './components/DisplayComponent/display.component';
 
 import { TwoDComponent } from './components/2d/2d.component';

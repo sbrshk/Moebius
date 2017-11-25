@@ -1,7 +1,7 @@
 import { Matrix } from '../Matrix/Matrix';
 import { Model2d } from '../Model/Model2d';
 
-export class Shapes {
+export class Shapes2d {
     private NeckerCube: Model2d;
     private PenroseTribar: Model2d;
     private TriangleSpidron: Model2d;
