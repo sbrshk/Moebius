@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { AffineTransform } from '../../AffineTransform/AffineTransform';
 import {  Matrix } from '../../Matrix/Matrix';
-import { Model } from '../../Model/Model';
+import { Model2d } from '../../Model/Model2d';
 import { Shapes } from '../../Shapes/Shapes';
 
 @Component({
-    selector: 'console-component',
-    templateUrl: 'console.component.html',
-    styleUrls: ['./console.component.css']
+    selector: 'sidebar-component',
+    templateUrl: 'sidebar.component.html',
+    styleUrls: ['./sidebar.component.css']
 })
 
-export class ConsoleComponent implements OnInit {
-    public model: Model;
+export class SidebarComponent implements OnInit {
+    public twoD: boolean;
+    public model: Model2d;
     public selectedItem = -1;
     public selectedModel = 'Necker Cube';
 
@@ -19,6 +20,7 @@ export class ConsoleComponent implements OnInit {
 
     constructor () {
         this.shapes = new Shapes();
+        this.twoD = true;
     }
 
     ngOnInit () {
@@ -28,12 +30,16 @@ export class ConsoleComponent implements OnInit {
         }
     }
 
-    public initModel(_model: Model): void {
-        this.model = new Model(_model.getVerticesCount(), _model.getEdgesCount());
+    public switch2d3d() {
+        this.twoD = !this.twoD;
+    }
+
+    public initModel(_model: Model2d): void {
+        this.model = new Model2d(_model.getVerticesCount(), _model.getEdgesCount());
         this.model = _model;
     }
 
-    selectItem(index: number): void {
+    public selectItem(index: number): void {
         this.initModel(this.shapes.getShape(index));
         document.cookie = 'item=' + index;
         let _btns = document.getElementsByClassName('sidebar-btn') as HTMLCollectionOf<HTMLElement>;

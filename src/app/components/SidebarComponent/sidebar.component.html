@@ -1,19 +1,32 @@
-<div class="console-wrapper">
+<!-- <div class="console-wrapper"> -->
     <div class="sidebar">
-        <div class="sidebar-btn" (click)="selectItem(0)">
-            <label>Necker cube</label>
+        <a class="router-tab" routerLink="/2d">
+            <div class="sidebar-subheader" (click)="switch2d3d()">
+                <i><label>2d</label></i>
+            </div>
+        </a>
+        <div *ngIf="twoD">
+            <div class="sidebar-btn" (click)="selectItem(0)">
+                <label>Necker cube</label>
+            </div>
+            <div class="sidebar-btn" (click)="selectItem(1)">
+                <label>Penrose Tribar</label>
+            </div>
+            <div class="sidebar-btn" (click)="selectItem(2)">
+                <label>Triangle Spidron</label>
+            </div>
+            <div class="sidebar-btn" (click)="selectItem(3)">
+                <label>Unicursal Hexagram</label>
+            </div>
         </div>
-        <div class="sidebar-btn" (click)="selectItem(1)">
-            <label>Penrose Tribar</label>
-        </div>
-        <div class="sidebar-btn" (click)="selectItem(2)">
-            <label>Triangle Spidron</label>
-        </div>
-        <div class="sidebar-btn" (click)="selectItem(3)">
-            <label>Unicursal Hexagram</label>
-        </div>
+        <a class="router-tab" routerLink="/3d">
+            <div class="sidebar-subheader" (click)="switch2d3d()">
+                <i><label>3d</label></i>
+            </div>
+        </a>
+        <div *ngIf="!twoD"></div>
     </div>
-    <div class="console">
+    <!-- <div class="console">
         <div class="placeholder" *ngIf="selectedItem === -1">
             <h1>Select shape</h1>
         </div>
@@ -38,8 +51,7 @@
                     <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>C, V</b> - compression (horizontal/vertical)<br>
                     <i class="fa fa-mouse-pointer" aria-hidden="true"></i> <b>Click</b> - set pivot                
                 </p>
-                <!-- <h2>Switch to the Display tab</h2> -->
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
+<!-- </div> -->

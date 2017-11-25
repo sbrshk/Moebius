@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Matrix } from '../../Matrix/Matrix';
-import { Model } from '../../Model/Model';
+import { Model2d } from '../../Model/Model2d';
 import { Shapes } from '../../Shapes/Shapes';
 import { Plotter } from '../../Plotter/Plotter';
 import { AffineTransform } from '../../AffineTransform/AffineTransform';
@@ -15,7 +15,7 @@ export class DisplayComponent implements OnInit {
     private plotter: Plotter;
     private shapes: Shapes;
     private canvas: HTMLCanvasElement;
-    private currentModel: Model;
+    private currentModel: Model2d;
     private modelSelected: boolean;
     private pivotSet: boolean;
     private pivot: number[];
@@ -41,8 +41,8 @@ export class DisplayComponent implements OnInit {
         }
     }
 
-    public applyTransform(transformMatrix: Matrix, model: Model): Model | any {
-        let _model = new Model(model.getVerticesCount(), model.getEdgesCount());
+    public applyTransform(transformMatrix: Matrix, model: Model2d): Model2d | any {
+        let _model = new Model2d(model.getVerticesCount(), model.getEdgesCount());
         let _matrix = new Matrix(3, model.getVerticesCount());
         let _currentMatrix: Matrix = model.getVertices();
         let _pivotMatrix: Matrix;
@@ -99,8 +99,8 @@ export class DisplayComponent implements OnInit {
             case 86: _transformMatrix = AffineTransform.scaling(1, 0.9); break;
             default: _transformMatrix = AffineTransform.identity(); break;
         }
-        let _currentModel: Model = this.currentModel;
-        let _transformedModel = new Model(_currentModel.getVerticesCount(), _currentModel.getEdgesCount());
+        let _currentModel: Model2d = this.currentModel;
+        let _transformedModel = new Model2d(_currentModel.getVerticesCount(), _currentModel.getEdgesCount());
         _transformedModel.setEdges(_currentModel.getEdges());
         _transformedModel.setVertices(this.applyTransform(_transformMatrix, _currentModel).getVertices());
         this.plotter.drawAxis();

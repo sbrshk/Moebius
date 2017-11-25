@@ -1,19 +1,19 @@
 @import '../../../assets/fonts/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css';
 
-.console-wrapper {
+/* .console-wrapper {
     position: fixed;
     width: 100vw;
     height: 93vh;
     top: 7vh;
     left: 0;
     padding: 20px;
-}
+} */
 
 .sidebar {
     position: fixed;
     width: calc(20vw - 30px);
-    height: 93vh;
-    top: 7vh;
+    height: 100vh;
+    top: 0;
     left: 0;
     background-color: #ddd;
     padding-top: 0;
@@ -22,7 +22,12 @@
     padding-right: 0;
 }
 
-.console {
+.router-tab {
+    text-decoration: none;
+    color: #666;
+}
+
+/* .console {
     position: fixed;
     width: calc(85vw - 30px);
     height: 93vh;
@@ -37,7 +42,7 @@
     text-align: center;
     padding-top: 30vh;
     color: #888;
-}
+} */
 
 .sidebar-btn {
     padding: 15px;
@@ -47,8 +52,19 @@
     background-color: #ccc;
 }
 
-.matrix-div {
+.sidebar-subheader {
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
+
+.sidebar-subheader:hover {
+    background-color: #bbb;
+    color: #444;
+}
+
+/* .matrix-div {
     min-width: 40px;
     float: left;
     text-align: center;
-}
+} */

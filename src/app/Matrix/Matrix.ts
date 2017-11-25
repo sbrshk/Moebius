@@ -52,11 +52,8 @@ export class Matrix {
 
     public static MatrixMatrixMultiply(A: Matrix, B: Matrix): Matrix | any {
         if (A.cols !== B.rows) return;
-        // console.log(A.rows + ' x ' + A.cols);
-        // console.log(B.rows + ' x ' + B.cols);
         let _rows = A.rows;
         let _cols = B.cols;
-        // console.log(_rows + ' ' + _cols);
         let C = new Matrix(_rows, _cols);
         for (let i = 0; i < _rows; i++) {
             C.cells[i] = [];
@@ -67,7 +64,6 @@ export class Matrix {
                 }
             }
         }
-        // console.log(C.cells);
         return C;
     }
 }

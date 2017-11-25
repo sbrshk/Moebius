@@ -1,4 +1,4 @@
-import { Vertex, Model } from '../Model/Model';
+import { Vertex, Model2d } from '../Model/Model2d';
 import { AffineTransform } from '../AffineTransform/AffineTransform';
 import { Matrix } from '../Matrix/Matrix';
 
@@ -45,7 +45,7 @@ export class Plotter {
         return this.yCenter - coord * this.scale;
     }
 
-    public drawModel(model: Model): void {
+    public drawModel(model: Model2d): void {
         let ctx = this.canvas.getContext('2d');
         ctx.beginPath();
         ctx.strokeStyle = 'black';

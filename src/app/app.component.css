@@ -8,14 +8,14 @@
 
 .workspace {
     position: fixed;
-    top: 7vh;
-    left: 0;
-    width: 100vw;
-    height: 93vh;
+    top: 0;
+    left: calc(20vw - 25px);
+    width: 80vw;
+    height: 100vh;
     padding: 1vw;
 }
 
-.router-tab {
+/* .router-tab {
     width: 50vw;
     height: 5vh;
     padding-top: 2vh;
@@ -30,4 +30,4 @@
 .router-tab:hover {
     background-color: #ddd;
     color: #555;
-}
+} */

@@ -11,7 +11,7 @@ export class Vertex {
     }
 }
 
-export class Model {
+export class Model2d {
     private verticesCount: number;
     private edgesCount: number;
     private vertices: Matrix;

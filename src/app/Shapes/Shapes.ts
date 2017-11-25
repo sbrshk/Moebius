@@ -1,15 +1,15 @@
 import { Matrix } from '../Matrix/Matrix';
-import { Model } from '../Model/Model';
+import { Model2d } from '../Model/Model2d';
 
 export class Shapes {
-    private NeckerCube: Model;
-    private PenroseTribar: Model;
-    private TriangleSpidron: Model;
-    private UnicursalHexagram: Model;
+    private NeckerCube: Model2d;
+    private PenroseTribar: Model2d;
+    private TriangleSpidron: Model2d;
+    private UnicursalHexagram: Model2d;
 
     constructor() {
         // Necker Cube
-        this.NeckerCube = new Model(10, 13);
+        this.NeckerCube = new Model2d(10, 13);
         let cubeVertices = new Matrix(3, 10);
         cubeVertices.cells = [
             [-1, 1, 1, -1, -3, 1, 3, 3, -1, -3],
@@ -36,7 +36,7 @@ export class Shapes {
         this.NeckerCube.setEdges(cubeEdges);
 
         // Penrose Tribar
-        this.PenroseTribar = new Model(12, 12);
+        this.PenroseTribar = new Model2d(12, 12);
         let tribarVertices = new Matrix(3, 12);
         let _delta = Math.round(1 / Math.sqrt(5));
         tribarVertices.cells = [
@@ -63,7 +63,7 @@ export class Shapes {
         this.PenroseTribar.setEdges(tribarEdges);
 
         // Triangle Spidron
-        this.TriangleSpidron = new Model(11, 11);
+        this.TriangleSpidron = new Model2d(11, 11);
         let spidronVertices = new Matrix(3, 11);
         spidronVertices.cells = [
             [-2, 0, 2, 0, 1, 0.5, 0, 0.25, -0.25, -0.125, 0],
@@ -87,8 +87,8 @@ export class Shapes {
         this.TriangleSpidron.setVertices(spidronVertices);
         this.TriangleSpidron.setEdges(spidronEdges);
 
-        //Unicursal hexagram
-        this.UnicursalHexagram = new Model(6, 6);
+        // Unicursal hexagram
+        this.UnicursalHexagram = new Model2d(6, 6);
         let hexVertices = new Matrix(3, 6);
         hexVertices.cells = [
             [0, 3, 3, 0, -3, -3],
@@ -108,7 +108,7 @@ export class Shapes {
         this.UnicursalHexagram.setEdges(hexEdges);
     }
 
-    public getShape(index: Number): Model | any {
+    public getShape(index: Number): Model2d | any {
         switch (index) {
             case 0: return this.NeckerCube;
             case 1: return this.PenroseTribar;
