@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AffineTransform } from '../../AffineTransform/AffineTransform';
 import {  Matrix } from '../../Matrix/Matrix';
 import { Model2d } from '../../Model/Model2d';
 import { Shapes2d } from '../../Shapes/Shapes2d';
+
+import { StateService } from '../state.service';
 
 @Component({
     selector: 'sidebar-component',
@@ -10,7 +12,7 @@ import { Shapes2d } from '../../Shapes/Shapes2d';
     styleUrls: ['./sidebar.component.css']
 })
 
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
     public twoD: boolean;
     public model: Model2d;
     public selectedItem = -1;
@@ -18,16 +20,9 @@ export class SidebarComponent implements OnInit {
 
     private shapes: Shapes2d;
 
-    constructor () {
+    constructor (private state: StateService) {
         this.shapes = new Shapes2d();
         this.twoD = true;
-    }
-
-    ngOnInit () {
-        let _index = parseInt(document.cookie[document.cookie.length - 1], 10);
-        if (!isNaN(_index)) {
-            this.selectItem(_index);
-        }
     }
 
     public switch2d3d(state: boolean): void {
@@ -41,7 +36,7 @@ export class SidebarComponent implements OnInit {
 
     public selectItem(index: number): void {
         this.initModel(this.shapes.getShape(index));
-        document.cookie = 'item=' + index;
+        this.state.setSleectedItem(index);
         let _btns = document.getElementsByClassName('sidebar-btn') as HTMLCollectionOf<HTMLElement>;
         for (let i = 0; i < _btns.length; i++) {
             _btns[i].style.backgroundColor = '';

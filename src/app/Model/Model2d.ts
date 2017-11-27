@@ -1,5 +1,4 @@
 import { Matrix } from '../Matrix/Matrix';
-import { AffineTransform } from '../AffineTransform/AffineTransform';
 
 export class Vertex {
     public xCoord: number;

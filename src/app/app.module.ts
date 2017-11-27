@@ -4,15 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { SidebarComponent } from './components/SidebarComponent/sidebar.component';
-// import { DisplayComponent } from './components/DisplayComponent/display.component';
+import { DisplayComponent } from './components/2d/DisplayComponent/display.component';
 
-import { TwoDComponent } from './components/2d/2d.component';
+// import { TwoDComponent } from './components/2d/2d.component';
 import { ThreeDComponent } from './components/3d/3d.component';
+
+import { StateService } from './components/state.service';
 
 const appRoutes: Routes = [
   {
     path: '2d',
-    component: TwoDComponent
+    component: DisplayComponent
   },
   {
     path: '3d',
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    TwoDComponent,
+    DisplayComponent,
+    // TwoDComponent,
     ThreeDComponent,
     SidebarComponent
   ],
@@ -36,7 +39,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [StateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

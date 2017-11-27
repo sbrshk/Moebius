@@ -1,9 +1,9 @@
 #canvas, .canvas-placeholder {
-    width: 100vw;
-    height: 93vh;
+    width: calc(80vw + 30px);
+    height: 100vh;
     position: fixed;
-    top: 7vh;
-    left: 0;
+    top: 0;
+    left: calc(20vw - 30px);
 }
 
 .canvas-placeholder {
@@ -16,7 +16,7 @@
 .reset-btn {
     position: fixed;
     z-index: 2;
-    left: 10px;
+    right: 10px;
     bottom: 10px;
     padding: 10px;
     background-color: #ddd;

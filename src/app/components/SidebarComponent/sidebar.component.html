@@ -24,7 +24,14 @@
                 <i><label>3d</label></i>
             </div>
         </a>
-        <div *ngIf="!twoD"></div>
+        <div *ngIf="!twoD">
+            <div class="sidebar-btn">
+                <label>Cube</label>
+            </div>
+            <div class="sidebar-btn">
+                <label>Octahedron</label>
+            </div>
+        </div>
     </div>
     <!-- <div class="console">
         <div class="placeholder" *ngIf="selectedItem === -1">
