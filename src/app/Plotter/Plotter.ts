@@ -21,7 +21,7 @@ export class Plotter {
     }
 
     public setResolution(): void {
-        this.W = document.documentElement.clientWidth;
+        this.W = document.documentElement.clientWidth * 0.8;
         this.H = document.documentElement.clientHeight;
       }
 
