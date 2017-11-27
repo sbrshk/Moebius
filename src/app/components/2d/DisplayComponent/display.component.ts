@@ -55,7 +55,6 @@ export class DisplayComponent implements OnInit {
                 [0, 1, -this.pivot[1]],
                 [0, 0, 1]
             ];
-            console.log(_pivotMatrix.cells);
 
             _currentMatrix = Matrix.MatrixMatrixMultiply(_pivotMatrix, _currentMatrix);
         }
@@ -68,7 +67,6 @@ export class DisplayComponent implements OnInit {
                 [0, 1, this.pivot[1]],
                 [0, 0, 1]
             ];
-            console.log(_pivotMatrix.cells);
 
             _currentMatrix = Matrix.MatrixMatrixMultiply(_pivotMatrix, _currentMatrix);
         }

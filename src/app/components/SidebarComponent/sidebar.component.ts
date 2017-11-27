@@ -17,12 +17,18 @@ export class SidebarComponent {
     public model: Model2d;
     public selectedItem = -1;
     public selectedModel = 'Necker Cube';
+    public help: boolean;
 
     private shapes: Shapes2d;
 
     constructor (private state: StateService) {
         this.shapes = new Shapes2d();
         this.twoD = true;
+        this.help = false;
+    }
+
+    public showHelp(): void {
+        this.help = !this.help;
     }
 
     public switch2d3d(state: boolean): void {

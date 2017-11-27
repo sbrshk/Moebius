@@ -63,6 +63,41 @@
     color: #444;
 }
 
+.info-wrapper {
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.help {
+    position: fixed;
+    width: calc(60vw - 60px);
+    top: 30vh;
+    left: 20vw;
+    background-color: white;
+    padding: 30px;
+}
+
+.help h1 {
+    color: #888;
+}
+
+.btn {
+    padding: 15px;
+    width: 70px;
+    text-align: center;
+    margin-left: 40vw;
+    background-color: #ccc;
+}
+
+.btn:hover {
+    background-color: #bbb;
+}
+
 /* .matrix-div {
     min-width: 40px;
     float: left;

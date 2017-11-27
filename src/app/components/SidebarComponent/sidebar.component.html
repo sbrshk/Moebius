@@ -32,6 +32,23 @@
                 <label>Octahedron</label>
             </div>
         </div>
+        <div class="sidebar-btn" style="position: fixed; width: calc(15vw - 15px); text-align: center; bottom: 0;" (click)="showHelp()">Help</div>
+    </div>
+    <div *ngIf="help" class="info-wrapper">
+        <div class="help">
+            <h1>Help</h1>
+            <p>
+                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <i class="fa fa-arrows" aria-hidden="true"></i> - translation<br>
+                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>A (<i class="fa fa-arrow-left" aria-hidden="true"></i>), D (<i class="fa fa-arrow-right" aria-hidden="true"></i>)</b> - rotation<br>
+                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>W, S</b> - reflection X/Y<br>
+                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Space</b> - reflection O<br>
+                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Q (-), E (+)</b> - scaling<br>
+                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Z, X</b> - stratching (horizontal/vertical)<br>
+                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>C, V</b> - compression (horizontal/vertical)<br>
+                <i class="fa fa-mouse-pointer" aria-hidden="true"></i> <b>Click</b> - set pivot                
+            </p>
+            <div class="btn" (click)="showHelp()">Close</div>
+        </div>
     </div>
     <!-- <div class="console">
         <div class="placeholder" *ngIf="selectedItem === -1">
