@@ -52,7 +52,12 @@
     </div>
     <div class="info-wrapper" *ngIf="info">
         <div class="info">
-            <h2>{{ selectedModel }} <label *ngIf="selectedItem === 2">(Depth: 5)</label></h2>
+            <h2>{{ selectedModel }} <label *ngIf="selectedItem === 2">(Depth: 5)</label>
+                <a class="wiki-link" *ngIf="selectedItem === 0" href="https://en.wikipedia.org/wiki/Necker_cube" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                <a class="wiki-link" *ngIf="selectedItem === 1" href="https://en.wikipedia.org/wiki/Penrose_triangle" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                <a class="wiki-link" *ngIf="selectedItem === 2" href="https://en.wikipedia.org/wiki/Spidron" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                <a class="wiki-link" *ngIf="selectedItem === 3" href="https://en.wikipedia.org/wiki/Unicursal_hexagram" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> <i class="fa fa-external-link" aria-hidden="true"></i></a>
+            </h2>
             <h3>Vertices ({{ model.getVerticesCount() }})</h3>
             <div *ngFor="let row of model.vertices.cells">
                 <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>

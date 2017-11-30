@@ -133,3 +133,18 @@
     float: left;
     text-align: center;
 }
+
+.wiki-link {
+    font-size: 16pt;
+    text-decoration: none;
+    color: #999;
+}
+
+.wiki-link:hover {
+    color: #888;
+}
+
+.fa-external-link {
+    font-size: 10pt;
+    /* color: #aaa; */
+}
