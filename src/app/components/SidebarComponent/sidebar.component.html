@@ -32,7 +32,7 @@
                 <label>Octahedron</label>
             </div>
         </div>
-        <div class="sidebar-btn" style="position: fixed; width: calc(15vw - 15px); text-align: center; bottom: 0;" (click)="showHelp()">Help</div>
+        <div class="sidebar-btn" style="position: fixed; width: 15vw; text-align: center; bottom: 0;" (click)="showHelp()">Help</div>
     </div>
     <div *ngIf="help" class="info-wrapper">
         <div class="help">
@@ -50,6 +50,21 @@
             <div class="btn" (click)="showHelp()">Close</div>
         </div>
     </div>
+    <div class="info-wrapper" *ngIf="info">
+        <div class="info">
+            <h2>{{ selectedModel }} <label *ngIf="selectedItem === 2">(Depth: 5)</label></h2>
+            <h3>Vertices ({{ model.getVerticesCount() }})</h3>
+            <div *ngFor="let row of model.vertices.cells">
+                <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>
+            </div>
+            <h3>Edges ({{ model.getEdgesCount() }})</h3>
+            <div *ngFor="let row of model.edges.cells">
+                <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>
+            </div>
+            <div class="btn" (click)="showInfo()">Close</div>
+        </div>
+    </div>
+    <div class="info-btn" *ngIf="selectedItem !== -1" (click)="showInfo()">Info</div>
     <!-- <div class="console">
         <div class="placeholder" *ngIf="selectedItem === -1">
             <h1>Select shape</h1>
@@ -63,18 +78,6 @@
             <h3>Edges ({{ model.getEdgesCount() }})</h3>
             <div *ngFor="let row of model.edges.cells">
                 <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>
-            </div>
-            <div style="color: grey; text-align: center">
-                <p>
-                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <i class="fa fa-arrows" aria-hidden="true"></i> - translation<br>
-                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>A (<i class="fa fa-arrow-left" aria-hidden="true"></i>), D (<i class="fa fa-arrow-right" aria-hidden="true"></i>)</b> - rotation<br>
-                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>W, S</b> - reflection X/Y<br>
-                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Space</b> - reflection O<br>
-                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Q (-), E (+)</b> - scaling<br>
-                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Z, X</b> - stratching (horizontal/vertical)<br>
-                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>C, V</b> - compression (horizontal/vertical)<br>
-                    <i class="fa fa-mouse-pointer" aria-hidden="true"></i> <b>Click</b> - set pivot                
-                </p>
             </div>
         </div>
     </div> -->

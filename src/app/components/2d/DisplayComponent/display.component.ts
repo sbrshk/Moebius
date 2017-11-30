@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Matrix } from '../../../Matrix/Matrix';
 import { Model2d } from '../../../Model/Model2d';
 import { Shapes2d } from '../../../Shapes/Shapes2d';
-import { Plotter } from '../../../Plotter/Plotter';
+import { Plotter2d } from '../../../Plotter/Plotter2d';
 import { AffineTransform } from '../../../AffineTransform/AffineTransform';
 
 import { StateService } from '../../state.service';
@@ -14,7 +14,7 @@ import { StateService } from '../../state.service';
 })
 
 export class DisplayComponent implements OnInit {
-    private plotter: Plotter;
+    private plotter: Plotter2d;
     private shapes: Shapes2d;
     private canvas: HTMLCanvasElement;
     private currentModel: Model2d;
@@ -34,7 +34,7 @@ export class DisplayComponent implements OnInit {
                 this.modelSelected = true;
                 let _index = this.state.getSelectedItem();
                 this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
-                this.plotter = new Plotter(this.canvas);
+                this.plotter = new Plotter2d(this.canvas);
                 this.currentModel = this.shapes.getShape(_index);
                 this.plotter.drawAxis();
                 this.plotter.drawModel(this.currentModel);

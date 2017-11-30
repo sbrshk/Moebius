@@ -2,7 +2,7 @@ import { Vertex, Model2d } from '../Model/Model2d';
 import { AffineTransform } from '../AffineTransform/AffineTransform';
 import { Matrix } from '../Matrix/Matrix';
 
-export class Plotter {
+export class Plotter2d {
     private canvas: HTMLCanvasElement;
     public xCenter: number;
     public yCenter: number;
@@ -59,7 +59,6 @@ export class Plotter {
     }
 
     public drawPivot(xCoord: number, yCoord: number): void {
-        console.log(xCoord + ' ' + yCoord);
         let ctx = this.canvas.getContext('2d');
         ctx.beginPath();
         ctx.strokeStyle = 'red';
@@ -73,7 +72,6 @@ export class Plotter {
     public setPivot(xCoord: number, yCoord: number): number[] {
         let _xW = (xCoord - this.xCenter) / this.scale;
         let _yW = (this.yCenter - yCoord) / this.scale;
-        console.log(_xW, _yW);
         this.drawPivot(xCoord, yCoord);
         return [_xW, _yW];
     }

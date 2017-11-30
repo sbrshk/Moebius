@@ -18,6 +18,7 @@ export class SidebarComponent {
     public selectedItem = -1;
     public selectedModel = 'Necker Cube';
     public help: boolean;
+    public info: boolean;
 
     private shapes: Shapes2d;
 
@@ -25,10 +26,15 @@ export class SidebarComponent {
         this.shapes = new Shapes2d();
         this.twoD = true;
         this.help = false;
+        this.info = false;
     }
 
     public showHelp(): void {
         this.help = !this.help;
+    }
+
+    public showInfo(): void {
+        this.info = !this.info;
     }
 
     public switch2d3d(state: boolean): void {

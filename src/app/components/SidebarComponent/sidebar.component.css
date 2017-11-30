@@ -65,12 +65,39 @@
 
 .info-wrapper {
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.info {
+    position: fixed;
+    top: 10vh;
+    left: 10vw;
+    right: 10vw;
+    bottom: 10vh;
+    background: white;
+    padding: 30px;
+}
+
+.info-btn {
+    position: fixed;
+    z-index: 1;
+    /* right: 10px; */
+    width: 50px;
+    text-align: center;
+    bottom: 10px;
+    padding: 10px;
+    background-color: #ddd;
+    cursor: pointer;
+    right: 90px;
+}
+
+.info-btn:hover {
+    background-color: #ccc;
 }
 
 .help {
@@ -87,19 +114,22 @@
 }
 
 .btn {
-    padding: 15px;
-    width: 70px;
     text-align: center;
-    margin-left: 40vw;
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    padding: 10px;
+    width: 80px;
     background-color: #ccc;
 }
 
 .btn:hover {
     background-color: #bbb;
+    cursor: pointer;
 }
 
-/* .matrix-div {
+.matrix-div {
     min-width: 40px;
     float: left;
     text-align: center;
-} */
+}
