@@ -1,6 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
+/* @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz'); */
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+/* @import 'font-awesome/css/font-awesome.min'; */
+
+@font-face {
+    src: url('./assets/fonts/Yanone_Kaffeesatz/YanoneKaffeesatz-Light.ttf');
+    font-family: 'Yanone';
+}
 
 body {
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Yanone', sans-serif;
 }
