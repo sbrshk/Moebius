@@ -39,6 +39,7 @@ export class SidebarComponent {
 
     public switch2d3d(state: boolean): void {
         this.twoD = state;
+        this.selectedItem = -1;
     }
 
     public initModel(_model: Model2d): void {
