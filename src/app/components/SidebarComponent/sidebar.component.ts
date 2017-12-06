@@ -61,6 +61,8 @@ export class SidebarComponent {
             case 1: this.selectedModel = 'Penrose Tribar'; break;
             case 2: this.selectedModel = 'Triangle Spidron'; break;
             case 3: this.selectedModel = 'Unicursal Hexagram'; break;
+            case 4: this.selectedModel = 'Cube'; break;
+            case 5: this.selectedModel = 'Octahedron'; break;
         }
     }
 }
