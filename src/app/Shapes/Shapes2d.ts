@@ -114,7 +114,7 @@ export class Shapes2d {
             case 1: return this.PenroseTribar;
             case 2: return this.TriangleSpidron;
             case 3: return this.UnicursalHexagram;
-            default: return 0;
+            default: return -1;
         }
     }
 }
