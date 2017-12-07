@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { SidebarComponent } from './components/SidebarComponent/sidebar.component';
 import { DisplayComponent } from './components/2d/DisplayComponent/display.component';
+import { ReferenceComponent } from './components/Reference/reference.component';
 
 // import { TwoDComponent } from './components/2d/2d.component';
 import { ThreeDComponent } from './components/3d/3d.component';
@@ -21,6 +22,10 @@ const appRoutes: Routes = [
     component: ThreeDComponent
   },
   {
+    path: 'ref',
+    component: ReferenceComponent
+  },
+  {
     path: '',
     redirectTo: '2d',
     pathMatch: 'full'
@@ -33,7 +38,8 @@ const appRoutes: Routes = [
     DisplayComponent,
     // TwoDComponent,
     ThreeDComponent,
-    SidebarComponent
+    SidebarComponent,
+    ReferenceComponent
   ],
   imports: [
     BrowserModule,
