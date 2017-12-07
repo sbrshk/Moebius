@@ -101,7 +101,7 @@
 .help {
     position: fixed;
     width: calc(60vw - 60px);
-    top: 30vh;
+    top: 20vh;
     left: 20vw;
     background-color: white;
     padding: 30px;
