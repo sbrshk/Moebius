@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AffineTransform } from '../../AffineTransform/AffineTransform';
 import {  Matrix } from '../../Matrix/Matrix';
 import { Model2d } from '../../Model/Model2d';
@@ -19,14 +20,19 @@ export class SidebarComponent {
     public selectedModel = 'Necker Cube';
     public help: boolean;
     public info: boolean;
+    public ref: boolean;
 
     private shapes: Shapes2d;
 
-    constructor (private state: StateService) {
+    constructor (private state: StateService, private router: Router) {
         this.shapes = new Shapes2d();
         this.twoD = true;
         this.help = false;
         this.info = false;
+        this.ref = false;
+
+        let _link: any[] = ['2d'];
+        this.router.navigate(_link);
     }
 
     public showHelp(): void {
@@ -40,6 +46,13 @@ export class SidebarComponent {
     public switch2d3d(state: boolean): void {
         this.twoD = state;
         this.selectedItem = -1;
+        this.ref = false;
+    }
+
+    public switchRef(): void {
+        this.twoD = false;
+        this.selectedItem = -1;
+        this.ref = true;
     }
 
     public initModel(_model: Model2d): void {

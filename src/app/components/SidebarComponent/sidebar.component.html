@@ -2,10 +2,10 @@
     <div class="sidebar">
         <a class="router-tab" routerLink="/2d">
             <div class="sidebar-subheader" (click)="switch2d3d(1)">
-                <i><label>2d</label></i>
+                <b><label>2d</label></b>
             </div>
         </a>
-        <div *ngIf="twoD">
+        <div *ngIf="twoD && !ref">
             <div class="sidebar-btn" (click)="selectItem(0)">
                 <label>Necker cube</label>
             </div>
@@ -21,10 +21,10 @@
         </div>
         <a class="router-tab" routerLink="/3d">
             <div class="sidebar-subheader" (click)="switch2d3d(0)">
-                <i><label>3d</label></i>
+                <b><label>3d</label></b>
             </div>
         </a>
-        <div *ngIf="!twoD">
+        <div *ngIf="!twoD && !ref">
             <div class="sidebar-btn">
                 <label>Cube</label>
             </div>
@@ -32,11 +32,19 @@
                 <label>Octahedron</label>
             </div>
         </div>
-        <a class="router-tab" routerLink="/ref">
+        <a class="router-tab" routerLink="/ref" (click)="switchRef()">
             <div class="sidebar-subheader">
-                <i><label>Theoretical Reference</label></i>
+                <b><label>Theoretical Reference</label></b>
             </div>
         </a>
+        <div *ngIf="ref">
+            <div class="sidebar-btn">
+                <label>en</label>
+            </div>
+            <div class="sidebar-btn">
+                <label>ru</label>
+            </div>
+        </div>
         <div class="sidebar-btn" style="position: fixed; width: 15vw; text-align: center; bottom: 0;" (click)="showHelp()">Help</div>
     </div>
     <div *ngIf="help" class="info-wrapper">
