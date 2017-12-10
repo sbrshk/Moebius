@@ -49,11 +49,6 @@ export class DisplayComponent implements OnInit {
             this.plotter.drawAxis();
             this.plotter.drawModel(this.currentModel);
             this.drawPivot();
-            // if (this.pivotSet) {
-            //     let _xS = this.plotter.translateXCoord(this.pivot[0]);
-            //     let _yS = this.plotter.translateYCoord(this.pivot[1]);
-            //     this.plotter.drawPivot(_xS, _yS);
-            // }
         }
     }
 
@@ -127,11 +122,6 @@ export class DisplayComponent implements OnInit {
         _transformedModel.setVertices(this.applyTransform(_transformMatrix, _currentModel).getVertices());
         this.plotter.drawAxis();
         this.plotter.drawModel(_transformedModel);
-        // if (this.pivotSet) {
-        //     let _xS = this.plotter.translateXCoord(this.pivot[0]);
-        //     let _yS = this.plotter.translateYCoord(this.pivot[1]);
-        //     this.plotter.drawPivot(_xS, _yS);
-        // }
         this.drawPivot();
         this.currentModel = _transformedModel;
     }
