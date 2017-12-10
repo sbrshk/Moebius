@@ -23,6 +23,8 @@
     padding: 10px;
     background-color: #ddd;
     cursor: pointer;
+    border-radius: 1.5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .reset-btn:hover {

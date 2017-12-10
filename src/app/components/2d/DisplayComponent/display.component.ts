@@ -31,6 +31,7 @@ export class DisplayComponent implements OnInit {
     ngOnInit() {
         this.state.stateUpdated.subscribe(value => {
             if (value !== -1) {
+                this.pivotSet = false;
                 this.modelSelected = true;
                 let _index = this.state.getSelectedItem();
                 this.canvas = document.getElementById('canvas') as HTMLCanvasElement;

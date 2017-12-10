@@ -18,6 +18,7 @@
     padding-bottom: 15px;
     padding-left: 0;
     padding-right: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .router-tab {
@@ -79,6 +80,8 @@
     bottom: 10vh;
     background: white;
     padding: 30px;
+    border-radius: 1.5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 .info-btn {
@@ -105,6 +108,8 @@
     left: 20vw;
     background-color: white;
     padding: 30px;
+    border-radius: 1.5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 .help h1 {
@@ -124,6 +129,11 @@
 .btn:hover {
     background-color: #bbb;
     cursor: pointer;
+}
+
+.btn, .info-btn {
+    border-radius: 1.5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .matrix-div {

@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz'); */
 /* @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); */
-/* @import 'font-awesome/css/font-awesome.min'; */
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
+/* @import '../node_modules/@material/animation/dist/mdc.animation.min.css'; */
 
 @font-face {
     src: url('./assets/fonts/Yanone_Kaffeesatz/YanoneKaffeesatz-Light.ttf');
