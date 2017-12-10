@@ -50,19 +50,24 @@
     <div *ngIf="help" class="info-wrapper">
         <div class="help">
             <h1>Help</h1>
-            <h3>Actions</h3>
-            <p *ngIf="twoD && !ref">
-                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <i class="fa fa-arrows" aria-hidden="true"></i> - translation<br>
-                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>A (<i class="fa fa-arrow-left" aria-hidden="true"></i>), D (<i class="fa fa-arrow-right" aria-hidden="true"></i>)</b> - rotation<br>
-                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>W, S</b> - reflection X/Y<br>
-                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Space</b> - reflection O<br>
-                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Q (-), E (+)</b> - scaling<br>
-                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Z, X</b> - stratching (horizontal/vertical)<br>
-                <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>C, V</b> - compression (horizontal/vertical)<br>
-                <i class="fa fa-mouse-pointer" aria-hidden="true"></i> <b>Click</b> - set pivot<br><br>
-                <i class="fa fa-info-circle" aria-hidden="true"></i> <b>Info button</b> - information about the current shape<br>
-                <i class="fa fa-refresh" aria-hidden="true"></i> <b>Reset button</b> - reset transformations and pivot         
-            </p>
+            <div  *ngIf="twoD && !ref">
+                <h3>Actions with 2d model</h3>
+                <p>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <i class="fa fa-arrows" aria-hidden="true"></i> - translation<br>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>A (<i class="fa fa-arrow-left" aria-hidden="true"></i>), D (<i class="fa fa-arrow-right" aria-hidden="true"></i>)</b> - rotation<br>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>W, S</b> - reflection X/Y<br>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Space</b> - reflection O<br>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Q (-), E (+)</b> - scaling<br>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>Z, X</b> - stratching (horizontal/vertical)<br>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>C, V</b> - compression (horizontal/vertical)<br>
+                    <i class="fa fa-mouse-pointer" aria-hidden="true"></i> <b>Click</b> - set pivot<br><br>
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> <b>Info button</b> - information about the current shape<br>
+                    <i class="fa fa-refresh" aria-hidden="true"></i> <b>Reset button</b> - reset transformations and pivot         
+                </p>
+            </div>
+            <div *ngIf="!twoD && !ref">
+                <h3>Actions with 3d model</h3>
+            </div>
             <div class="btn" (click)="showHelp()">Close</div>
         </div>
     </div>

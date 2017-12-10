@@ -17,7 +17,11 @@ export class Plotter2d {
         this.canvas.setAttribute('height', this.H.toString() + 'px');
         this.xCenter = this.canvas.width * 0.5;
         this.yCenter = this.canvas.height * 0.5;
-        this.scale = 40;
+        if (this.canvas.height < this.canvas.width) {
+            this.scale = this.canvas.height / 20;
+        } else {
+            this.scale = this.canvas.width / 20;
+        }
     }
 
     public setResolution(): void {

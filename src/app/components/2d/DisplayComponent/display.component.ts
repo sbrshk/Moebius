@@ -42,6 +42,16 @@ export class DisplayComponent implements OnInit {
         });
     }
 
+    public onResize() {
+        if (this.modelSelected) {
+            this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
+            this.plotter = new Plotter2d(this.canvas);
+            console.log('resize');
+            this.plotter.drawAxis();
+            this.plotter.drawModel(this.currentModel);
+        }
+    }
+
     public applyTransform(transformMatrix: Matrix, model: Model2d): Model2d | any {
         let _model = new Model2d(model.getVerticesCount(), model.getEdgesCount());
         let _matrix = new Matrix(3, model.getVerticesCount());
