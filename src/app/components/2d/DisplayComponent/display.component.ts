@@ -46,9 +46,14 @@ export class DisplayComponent implements OnInit {
         if (this.modelSelected) {
             this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
             this.plotter = new Plotter2d(this.canvas);
-            console.log('resize');
             this.plotter.drawAxis();
             this.plotter.drawModel(this.currentModel);
+            if (this.pivotSet) {
+                console.log('PIVOT ' + this.pivot[0] + ' ' + this.pivot[1]);
+                let _xS = this.plotter.translateXCoord(this.pivot[0]);
+                let _yS = this.plotter.translateYCoord(this.pivot[1]);
+                this.plotter.drawPivot(_xS, _yS);
+            }
         }
     }
 
