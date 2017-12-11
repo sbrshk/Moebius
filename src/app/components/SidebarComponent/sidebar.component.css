@@ -13,7 +13,7 @@
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: #ddd;
+    background-color: #efefef;
     padding-top: 0;
     padding-bottom: 15px;
     padding-left: 0;
@@ -26,29 +26,28 @@
     color: #666;
 }
 
-/* .console {
-    position: fixed;
-    width: calc(85vw - 30px);
-    height: 93vh;
-    top: 7vh;
-    left: 16vw;
-    padding-left: 30px;
-    padding-right: 30px;
+.sidebar-subheader:hover {
+    background-color: #00838f;
+    color: white;
 }
 
-.placeholder {
-    width: calc(80vw - 30px);
-    text-align: center;
-    padding-top: 30vh;
-    color: #888;
-} */
+.sidebar-subheader:active {
+    background-color: #005662;
+    color: white;
+}
 
 .sidebar-btn {
     padding: 15px;
 }
 
 .sidebar-btn:hover {
-    background-color: #ccc;
+    background-color: #4fb3bf;
+    /* color: white; */
+}
+
+.sidebar-btn:active {
+    background-color: #005662;
+    color: white;
 }
 
 .sidebar-subheader {
@@ -57,10 +56,10 @@
     border-top: 1px solid #ccc;
 }
 
-.sidebar-subheader:hover {
+/* .sidebar-subheader:hover {
     background-color: #bbb;
     color: #444;
-}
+} */
 
 .info-wrapper {
     position: fixed;
@@ -92,13 +91,20 @@
     text-align: center;
     bottom: 10px;
     padding: 10px;
-    background-color: #ddd;
+    background-color: #00838f;
+    color: white;
     cursor: pointer;
     right: 90px;
 }
 
 .info-btn:hover {
-    background-color: #ccc;
+    background-color: #4fb3bf;
+    color: black;
+}
+
+.info-btn:active {
+    background-color: #005662;
+    color: white;
 }
 
 .help {
@@ -123,12 +129,19 @@
     right: 30px;
     padding: 10px;
     width: 80px;
-    background-color: #ccc;
+    background-color: #00838f;
+    color: white;
 }
 
 .btn:hover {
-    background-color: #bbb;
+    background-color: #4fb3bf;
+    color: black;
     cursor: pointer;
+}
+
+.btn:active {
+    background-color: #005662;
+    color: white;
 }
 
 .btn, .info-btn {

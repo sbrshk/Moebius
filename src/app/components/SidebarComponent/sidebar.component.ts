@@ -66,9 +66,11 @@ export class SidebarComponent {
         let _btns = document.getElementsByClassName('sidebar-btn') as HTMLCollectionOf<HTMLElement>;
         for (let i = 0; i < _btns.length; i++) {
             _btns[i].style.backgroundColor = '';
+            _btns[i].style.color = '';
         }
         this.selectedItem = index;
-        _btns[index].style.backgroundColor = '#bbb';
+        _btns[index].style.backgroundColor = '#00838f';
+        _btns[index].style.color = 'white';
         switch (index) {
             case 0: this.selectedModel = 'Necker Cube'; break;
             case 1: this.selectedModel = 'Penrose Tribar'; break;
