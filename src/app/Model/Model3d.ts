@@ -14,15 +14,15 @@ export class Vertex3d {
 
 export class PolygonalModel {
     private verticesCount: number;
-    private facetsCount: number;
+    private facesCount: number;
     private vertices: Matrix;
-    private facets: Matrix;
+    private faces: Matrix;
 
     constructor (N: number, M: number) {
         this.verticesCount = N;
-        this.facetsCount = M;
+        this.facesCount = M;
         this.vertices = new Matrix(4, N);
-        this.facets = new Matrix(M, 3);
+        this.faces = new Matrix(M, 3);
     }
 
     public getVerticesCount(): number {
@@ -33,12 +33,12 @@ export class PolygonalModel {
         this.verticesCount = _size;
     }
 
-    public getFacetsCount(): number {
-        return this.facetsCount;
+    public geFacesCount(): number {
+        return this.facesCount;
     }
 
-    public setFacetsCount(_size: number): void {
-        this.facetsCount = _size;
+    public setFacesCount(_size: number): void {
+        this.facesCount = _size;
     }
 
     public getVertices(): Matrix {
@@ -49,12 +49,12 @@ export class PolygonalModel {
         this.vertices = vertices;
     }
 
-    public getFacets(): Matrix {
-        return this.facets;
+    public getFaces(): Matrix {
+        return this.faces;
     }
 
-    public setFacets(facets: Matrix): void {
-        this.facets = facets;
+    public setFaces(faces: Matrix): void {
+        this.faces = faces;
     }
 
     public getVertex(index: number): Vertex3d {
@@ -143,12 +143,12 @@ export class Model3d {
     private computeEdges(pModel: PolygonalModel): object | any {
         let _edges = new Set<Set<number>>();
         let _edgesCount = 0;
-        for (let i = 0; i < pModel.getFacetsCount(); i++) {
+        for (let i = 0; i < pModel.getFacesCount(); i++) {
             for (let j = 0; j < 3; j++) {
                 for (let k = j; k < 3; k++) {
                     let _pair = new Set<number>();
-                    _pair.add(pModel.getFacets().cells[i][j]);
-                    _pair.add(pModel.getFacets().cells[i][k]);
+                    _pair.add(pModel.getFaces().cells[i][j]);
+                    _pair.add(pModel.getFaces().cells[i][k]);
                     _edges.add(_pair);
                     _edgesCount++;
                 }

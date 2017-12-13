@@ -17,7 +17,7 @@ export class SidebarComponent {
     public twoD: boolean;
     public model: Model2d;
     public selectedItem = -1;
-    public selectedModel = 'Necker Cube';
+    public selectedModel = '';
     public help: boolean;
     public info: boolean;
     public ref: boolean;

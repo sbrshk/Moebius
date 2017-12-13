@@ -24,7 +24,7 @@
 
 .router-tab {
     text-decoration: none;
-    color: #666;
+    color: #888;
 }
 
 /* .sidebar-subheader {
@@ -63,6 +63,7 @@
 
 .sidebar-subheader-disabled {
     background-color: #d6d6d6;
+    color: #666;
 }
 
 /* .sidebar-subheader:hover {
