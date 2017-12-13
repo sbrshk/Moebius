@@ -27,8 +27,12 @@
     color: #666;
 }
 
+/* .sidebar-subheader {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+} */
+
 .sidebar-subheader:hover {
-    background-color: #00838f;
+    background-color: #4fb3bf;
     color: white;
 }
 
@@ -51,10 +55,14 @@
     color: white;
 }
 
-.sidebar-subheader {
+.sidebar-subheader, .sidebar-subheader-disabled {
     padding: 10px;
     text-align: center;
     border-top: 1px solid #ccc;
+}
+
+.sidebar-subheader-disabled {
+    background-color: #d6d6d6;
 }
 
 /* .sidebar-subheader:hover {

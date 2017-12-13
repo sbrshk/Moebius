@@ -1,11 +1,15 @@
 <!-- <div class="console-wrapper"> -->
     <div class="sidebar">
         <a class="router-tab" routerLink="/2d">
-            <div class="sidebar-subheader" (click)="switch2d3d(1)">
+            <div class="sidebar-subheader" (click)="switch2d3d(1)" *ngIf="!(twoD && !ref)">
                 <b><label>2d</label></b>
             </div>
         </a>
         <div *ngIf="twoD && !ref">
+            <div class="sidebar-subheader-disabled">
+                <b><label>2d</label></b>
+            </div>
+
             <div class="sidebar-btn" (click)="selectItem(0)">
                 <label>Necker cube</label>
             </div>
@@ -20,11 +24,15 @@
             </div>
         </div>
         <a class="router-tab" routerLink="/3d">
-            <div class="sidebar-subheader" (click)="switch2d3d(0)">
+            <div class="sidebar-subheader" (click)="switch2d3d(0)" *ngIf="!(!twoD && !ref)">
                 <b><label>3d</label></b>
             </div>
         </a>
         <div *ngIf="!twoD && !ref">
+            <div class="sidebar-subheader-disabled">
+                <b><label>3d</label></b>
+            </div>
+
             <div class="sidebar-btn">
                 <label>Tetrahedron</label>
             </div>
@@ -33,11 +41,15 @@
             </div>
         </div>
         <a class="router-tab" routerLink="/ref" (click)="switchRef()">
-            <div class="sidebar-subheader">
+            <div class="sidebar-subheader" *ngIf="!ref">
                 <b><label>Theoretical Reference</label></b>
             </div>
         </a>
         <div *ngIf="ref">
+            <div class="sidebar-subheader-disabled">
+                <b><label>Theoretical Reference</label></b>
+            </div>
+
             <div class="sidebar-btn">
                 <label>en</label>
             </div>
