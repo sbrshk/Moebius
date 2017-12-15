@@ -10,7 +10,8 @@ import { StateService } from '../../state.service';
 @Component({
     selector: 'display-component',
     templateUrl: 'display.component.html',
-    styleUrls: ['display.component.css']
+    // styleUrls: ['display.component.css']
+    styleUrls: ['../../../../assets/sass/display.sass']
 })
 
 export class DisplayComponent implements OnInit {
