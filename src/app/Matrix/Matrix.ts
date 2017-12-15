@@ -9,7 +9,7 @@ export class Matrix {
         this.cells = [];
     }
 
-    public static sum(A: Matrix, B: Matrix): Matrix | any {
+    public static sumMatrix(A: Matrix, B: Matrix): Matrix | any {
         if (A.rows !== B.rows || A.cols !== B.cols) return;
         let _rows = A.rows;
         let _cols = A.cols;
@@ -23,7 +23,7 @@ export class Matrix {
         return C;
     }
 
-    public static diff(A: Matrix, B: Matrix): Matrix | any {
+    public static diffMatrix(A: Matrix, B: Matrix): Matrix | any {
         if (A.rows !== B.rows || A.cols !== B.cols) return;
         let _rows = A.rows;
         let _cols = A.cols;
@@ -37,7 +37,7 @@ export class Matrix {
         return C;
     }
 
-    public static scale(A: Matrix, k: number): Matrix {
+    public static scaleMatrix(A: Matrix, k: number): Matrix {
         let _rows = A.rows;
         let _cols = A.cols;
         let C = new Matrix(_rows, _cols);

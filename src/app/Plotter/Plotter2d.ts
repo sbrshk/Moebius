@@ -1,5 +1,5 @@
 import { Vertex, Model2d } from '../Model/Model2d';
-import { AffineTransform } from '../AffineTransform/AffineTransform';
+// import { AffineTransform } from '../AffineTransform/AffineTransform';
 import { Matrix } from '../Matrix/Matrix';
 
 export class Plotter2d {
