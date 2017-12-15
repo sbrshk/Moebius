@@ -33,7 +33,7 @@ export class PolygonalModel {
         this.verticesCount = _size;
     }
 
-    public geFacesCount(): number {
+    public getFacesCount(): number {
         return this.facesCount;
     }
 

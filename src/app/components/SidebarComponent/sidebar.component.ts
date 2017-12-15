@@ -10,7 +10,8 @@ import { StateService } from '../state.service';
 @Component({
     selector: 'sidebar-component',
     templateUrl: 'sidebar.component.html',
-    styleUrls: ['./sidebar.component.css']
+    // styleUrls: ['./sidebar.component.css']
+    styleUrls: ['../../../assets/sass/sidebar.sass']
 })
 
 export class SidebarComponent {
