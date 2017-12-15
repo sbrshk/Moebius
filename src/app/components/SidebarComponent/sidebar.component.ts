@@ -11,7 +11,7 @@ import { StateService } from '../state.service';
     selector: 'sidebar-component',
     templateUrl: 'sidebar.component.html',
     // styleUrls: ['./sidebar.component.css']
-    styleUrls: ['../../../assets/sass/sidebar.sass']
+    styleUrls: ['../../../assets/sass/components/sidebar.sass']
 })
 
 export class SidebarComponent {

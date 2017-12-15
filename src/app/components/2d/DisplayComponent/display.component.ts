@@ -11,7 +11,7 @@ import { StateService } from '../../state.service';
     selector: 'display-component',
     templateUrl: 'display.component.html',
     // styleUrls: ['display.component.css']
-    styleUrls: ['../../../../assets/sass/display.sass']
+    styleUrls: ['../../../../assets/sass/components/display.sass']
 })
 
 export class DisplayComponent implements OnInit {
