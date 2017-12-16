@@ -10,27 +10,21 @@ export class Vector {
     }
 
     public static sumVectors(a: Vector, b: Vector): Vector | any {
-        if (a.dim !== b.dim) {
-            return;
-        } else {
-            let c = new Vector(a.dim);
-            for (let i = 0; i < a.dim; i++) {
-                c.elements[i] = a.elements[i] + b.elements[i];
-            }
-            return c;
+        if (a.dim !== b.dim) return;
+        let c = new Vector(a.dim);
+        for (let i = 0; i < a.dim; i++) {
+            c.elements[i] = a.elements[i] + b.elements[i];
         }
+        return c;
     }
 
     public static diffVectors(a: Vector, b: Vector): Vector | any {
-        if (a.dim !== b.dim) {
-            return;
-        } else {
-            let c = new Vector(a.dim);
-            for (let i = 0; i < a.dim; i++) {
-                c.elements[i] = a.elements[i] - b.elements[i];
-            }
-            return c;
+        if (a.dim !== b.dim) return;
+        let c = new Vector(a.dim);
+        for (let i = 0; i < a.dim; i++) {
+            c.elements[i] = a.elements[i] - b.elements[i];
         }
+        return c;
     }
 
     public static scaleVector(a: Vector, k: number): Vector {
@@ -42,15 +36,12 @@ export class Vector {
     }
 
     public static multiplyVectors(a: Vector, b: Vector): Vector | any {
-        if (a.dim !== b.dim) {
-            return;
-        } else {
-            let c = new Vector(a.dim);
-            for (let i = 0; i < a.dim; i++) {
-                c.elements[i] = a.elements[i] * b.elements[i];
-            }
-            return c;
+        if (a.dim !== b.dim) return;
+        let c = new Vector(a.dim);
+        for (let i = 0; i < a.dim; i++) {
+            c.elements[i] = a.elements[i] * b.elements[i];
         }
+        return c;
     }
 
     private static abs(a: Vector): number {

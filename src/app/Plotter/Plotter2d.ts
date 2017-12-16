@@ -27,7 +27,7 @@ export class Plotter2d {
     public setResolution(): void {
         this.W = document.documentElement.clientWidth * 0.8;
         this.H = document.documentElement.clientHeight;
-      }
+    }
 
     public drawAxis(): void {
         let ctx = this.canvas.getContext('2d');

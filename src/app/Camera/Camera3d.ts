@@ -1,13 +1,109 @@
 import { Matrix } from '../Matrix/Matrix';
 import { Vector } from '../Matrix/Vector';
+import { Vertex, Model2d } from '../Model/Model2d';
 import { Vertex3d, Model3d } from '../Model/Model3d';
+import { version } from 'punycode';
 
 export class Camera3d {
+    // camera characteristics
     private D: number; // distacne between the camera and the screen
-    private canvas: HTMLCanvasElement;
     private N: Vector; // screen normal vector
     private T: Vector; // vector to heaven
 
+    private canvas: HTMLCanvasElement;
+
+    // canvas resolution
+    private H: number;
+    private W: number;
+
+    // view coordinate system center
+    private viewXCenter: number;
+    private viewYCenter: number;
+    private viewZCenter: number;
+
+    // view coordinate system basis
+    private viewI: Vector;
+    private viewJ: Vector;
+    private viewK: Vector;
+
     constructor() {}
 
+    public setResolution(): void {
+        this.W = document.documentElement.clientWidth * 0.8;
+        this.H = document.documentElement.clientHeight;
+    }
+
+    private calcViewBasis() {
+        this.viewK = Vector.normalizeVector(this.N);
+        this.viewI = Vector.normalizeVector(Vector.multiplyVectors(this.T, this.N));
+        this.viewJ = Vector.multiplyVectors(this.viewK, this.viewI);
+    }
+
+    private vertexCoordsToVector(vertex: Vertex3d): Vector {
+        let vertexCoords = new Vector(3);
+        vertexCoords.elements[0] = vertex.xCoord;
+        vertexCoords.elements[1] = vertex.yCoord;
+        vertexCoords.elements[2] = vertex.zCoord;
+
+        return vertexCoords;
+    }
+
+    private vectorToVertexCoords(vector: Vector): Vertex3d | any {
+        if (vector.dim !== 3) return;
+
+        let vertex = new Vertex3d();
+        vertex.xCoord = vector.elements[0];
+        vertex.yCoord = vector.elements[1];
+        vertex.zCoord = vector.elements[2];
+
+        return vertex;
+    }
+
+    private translateView(vertex: Vertex3d): Vertex3d {
+        let translateMatrix = new Matrix(3, 4);
+
+        let xi = this.viewI.elements[0];
+        let yi = this.viewI.elements[1];
+        let zi = this.viewI.elements[2];
+
+        let xj = this.viewJ.elements[0];
+        let yj = this.viewJ.elements[1];
+        let zj = this.viewJ.elements[2];
+
+        let xk = this.viewK.elements[0];
+        let yk = this.viewK.elements[1];
+        let zk = this.viewK.elements[2];
+
+        translateMatrix.cells = [
+            [xi, yi, zi, - (xi * this.viewXCenter + yi * this.viewYCenter + zi * this.viewZCenter)],
+            [xj, yj, zj, - (xj * this.viewXCenter + yj * this.viewYCenter + zj * this.viewZCenter)],
+            [xk, yk, zk, - (xk * this.viewXCenter + yk * this.viewYCenter + zk * this.viewZCenter)]
+        ];
+
+        let worldVertexCoords = this.vertexCoordsToVector(vertex);
+        let viewVertexCoords = Matrix.MatrixVectorMultiply(translateMatrix, worldVertexCoords);
+        let viewVertex = this.vectorToVertexCoords(viewVertexCoords);
+
+        return viewVertex;
+    }
+
+    private translateProject(vertex: Vertex3d): Vertex {
+        // let translateMatrix = new Matrix(3, 4);
+        // translateMatrix.cells = [
+        //     [1, 0, 0, 0],
+        //     [0, 1, 0, 0],
+        //     [0, 0, - 1 / this.D, 1]
+        // ];
+
+        // let viewVertexCoords = this.vertexCoordsToVector(vertex);
+        // let projectVertexCoords = Matrix.MatrixVectorMultiply(translateMatrix, viewVertexCoords);
+        // let projectVertex = this.vectorToVertexCoords(projectVertexCoords);
+        let projectVertex = new Vertex();
+        projectVertex.xCoord = vertex.xCoord / (1 - vertex.zCoord / this.D);
+        projectVertex.yCoord = vertex.yCoord / (1 - vertex.zCoord / this.D);
+
+        return projectVertex;
+    }
+
+    // private translateScreen(vertex: Vertex3d): 
 }

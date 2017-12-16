@@ -1,3 +1,5 @@
+import { Vector } from './Vector';
+
 export class Matrix {
     public rows: number;
     public cols: number;
@@ -45,6 +47,18 @@ export class Matrix {
             C.cells[i] = [];
             for (let j = 0; j < _cols; j++) {
                 C.cells[i][j] = A.cells[i][j] * k;
+            }
+        }
+        return C;
+    }
+
+    public static MatrixVectorMultiply(A: Matrix, B: Vector): Vector | any {
+        if (A.cols !== B.dim) return;
+        let C = new Vector(B.dim);
+        for (let i = 0; i < B.dim; i++) {
+            let c = 0;
+            for (let j = 0; j < A.cols; j++) {
+                c += A.cells[i][j] * B.elements[j];
             }
         }
         return C;
