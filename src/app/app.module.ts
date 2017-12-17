@@ -5,10 +5,8 @@ import { AppComponent } from './app.component';
 
 import { SidebarComponent } from './components/SidebarComponent/sidebar.component';
 import { DisplayComponent } from './components/2d/DisplayComponent/display.component';
+import { Display3dComponent } from './components/3d/Display3dComponent/display3d.component';
 import { ReferenceComponent } from './components/Reference/reference.component';
-
-// import { TwoDComponent } from './components/2d/2d.component';
-import { ThreeDComponent } from './components/3d/3d.component';
 
 import { StateService } from './components/state.service';
 
@@ -19,7 +17,7 @@ const appRoutes: Routes = [
   },
   {
     path: '3d',
-    component: ThreeDComponent
+    component: Display3dComponent
   },
   {
     path: 'ref',
@@ -36,8 +34,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     DisplayComponent,
-    // TwoDComponent,
-    ThreeDComponent,
+    Display3dComponent,
     SidebarComponent,
     ReferenceComponent
   ],

@@ -9,7 +9,8 @@ import { StateService } from '../../state.service';
 
 @Component({
     selector: 'display3d-component',
-    templateUrl: 'display3d.component.html'
+    templateUrl: 'display3d.component.html',
+    styleUrls: ['../../../../assets/sass/components/display.sass']
 })
 
 export class Display3dComponent implements OnInit {
