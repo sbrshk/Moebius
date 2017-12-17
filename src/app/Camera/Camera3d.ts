@@ -11,6 +11,7 @@ export class Camera3d {
     private T: Vector; // vector to heaven
 
     private canvas: HTMLCanvasElement;
+    private scale: number;
 
     // canvas resolution
     private H: number;
@@ -26,7 +27,31 @@ export class Camera3d {
     private viewJ: Vector;
     private viewK: Vector;
 
-    constructor() {}
+    // screen coordinate system center
+    private xCenter: number;
+    private yCenter: number;
+
+    constructor(cnvs: HTMLCanvasElement) {
+        this.canvas = cnvs;
+        this.setResolution();
+        this.canvas.setAttribute('width', this.W.toString() + 'px');
+        this.canvas.setAttribute('height', this.H.toString() + 'px');
+        this.xCenter = this.canvas.width * 0.5;
+        this.yCenter = this.canvas.height * 0.5;
+        if (this.canvas.height < this.canvas.width) {
+            this.scale = this.canvas.height / 20;
+        } else {
+            this.scale = this.canvas.width / 20;
+        }
+
+        this.D = 10;
+
+        this.N = new Vector(3);
+        this.N.elements = [0, 0, this.scale];
+
+        this.T = new Vector(3);
+        this.T.elements = [0, this.scale, 0];
+    }
 
     public setResolution(): void {
         this.W = document.documentElement.clientWidth * 0.8;
@@ -105,5 +130,11 @@ export class Camera3d {
         return projectVertex;
     }
 
-    // private translateScreen(vertex: Vertex3d): 
+    private translateScreen(vertex: Vertex): Vertex {
+        let screenVertex = new Vertex();
+        screenVertex.xCoord = this.xCenter + vertex.xCoord * this.scale;
+        screenVertex.yCoord = this.yCenter - vertex.yCoord * this.scale;
+
+        return screenVertex;
+    }
 }

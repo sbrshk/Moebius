@@ -90,9 +90,9 @@ export class Shapes3d {
 
     public getPolyhedron(index: number): Model3d | any {
         switch (index) {
-            case 0: return this.Tetrahedron;
-            case 1: return this.Octahedron;
-            case 2: return this.Bipyramid;
+            case 4: return this.Tetrahedron;
+            case 5: return this.Octahedron;
+            case 6: return this.Bipyramid;
             default: return -1;
         }
     }

@@ -79,6 +79,7 @@ export class SidebarComponent {
             case 3: this.selectedModel = 'Unicursal Hexagram'; break;
             case 4: this.selectedModel = 'Tetrahedron'; break;
             case 5: this.selectedModel = 'Octahedron'; break;
+            case 6: this.selectedModel = 'Gyroelongated Square Bipyramid'; break;
         }
     }
 }
