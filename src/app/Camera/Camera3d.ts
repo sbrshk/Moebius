@@ -31,7 +31,6 @@ export class Camera3d {
     private yCenter: number;
 
     constructor(cnvs: HTMLCanvasElement) {
-
         this.D = 10;
 
         this.N = new Vector(3);
