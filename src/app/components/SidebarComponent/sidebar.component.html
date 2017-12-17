@@ -33,13 +33,13 @@
                 <b><label>3d</label></b>
             </div>
 
-            <div class="sidebar-btn">
+            <div class="sidebar-btn" (click)="selectItem(4)">
                 <label>Tetrahedron</label>
             </div>
-            <div class="sidebar-btn">
+            <div class="sidebar-btn" (click)="selectItem(5)">
                 <label>Octahedron</label>
             </div>
-            <div class="sidebar-btn">
+            <div class="sidebar-btn" (click)="selectItem(6)">
                 <label>Gyroelongated Square Bipyramid</label>
             </div>
         </div>
@@ -87,7 +87,7 @@
             <div class="btn" (click)="showHelp()">Close</div>
         </div>
     </div>
-    <div class="info-wrapper" *ngIf="info">
+    <!-- <div class="info-wrapper" *ngIf="info">
         <div class="info">
             <h2>{{ selectedModel }} <label *ngIf="selectedItem === 2">(Depth: 5)</label>
                 <a class="wiki-link" *ngIf="selectedItem === 0" href="https://en.wikipedia.org/wiki/Necker_cube" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> <i class="fa fa-external-link" aria-hidden="true"></i></a>
@@ -95,32 +95,17 @@
                 <a class="wiki-link" *ngIf="selectedItem === 2" href="https://en.wikipedia.org/wiki/Spidron" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> <i class="fa fa-external-link" aria-hidden="true"></i></a>
                 <a class="wiki-link" *ngIf="selectedItem === 3" href="https://en.wikipedia.org/wiki/Unicursal_hexagram" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> <i class="fa fa-external-link" aria-hidden="true"></i></a>
             </h2>
-            <h3>Vertices ({{ model.getVerticesCount() }})</h3>
+            <h3>Vertices ({{ model2d.getVerticesCount() }})</h3>
             <div *ngFor="let row of model.vertices.cells">
                 <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>
             </div>
-            <h3>Edges ({{ model.getEdgesCount() }})</h3>
+            <h3>Edges ({{ model2d.getEdgesCount() }})</h3>
             <div *ngFor="let row of model.edges.cells">
                 <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>
             </div>
             <div class="btn" (click)="showInfo()">Close</div>
         </div>
     </div>
-    <div class="info-btn" *ngIf="selectedItem !== -1" (click)="showInfo()">Info</div>
-    <!-- <div class="console">
-        <div class="placeholder" *ngIf="selectedItem === -1">
-            <h1>Select shape</h1>
-        </div>
-        <div class="info" *ngIf="selectedItem !== -1">
-            <h2>{{ selectedModel }} <label *ngIf="selectedItem === 2">(Depth: 5)</label></h2>
-            <h3>Vertices ({{ model.getVerticesCount() }})</h3>
-            <div *ngFor="let row of model.vertices.cells">
-                <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>
-            </div>
-            <h3>Edges ({{ model.getEdgesCount() }})</h3>
-            <div *ngFor="let row of model.edges.cells">
-                <div class="matrix-div" *ngFor="let item of row"> {{ item }} </div><br>
-            </div>
-        </div>
-    </div> -->
+    <div class="info-btn" *ngIf="selectedItem !== -1" (click)="showInfo()">Info</div> -->
+    
 <!-- </div> -->

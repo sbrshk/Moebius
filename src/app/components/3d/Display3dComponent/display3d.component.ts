@@ -28,7 +28,7 @@ export class Display3dComponent implements OnInit {
 
     ngOnInit() {
         this.state.stateUpdated.subscribe(value => {
-            if (value !== -1) {
+            if ((value !== -1) && (value > 3)) {
                 this.modelSelected = true;
                 let _index = this.state.getSelectedItem();
                 this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
