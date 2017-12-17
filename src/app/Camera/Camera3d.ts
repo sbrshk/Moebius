@@ -1,8 +1,7 @@
-import { Matrix } from '../Matrix/Matrix';
 import { Vector } from '../Matrix/Vector';
-import { Vertex, Model2d } from '../Model/Model2d';
-import { Vertex3d, Model3d } from '../Model/Model3d';
-import { version } from 'punycode';
+import { Matrix } from '../Matrix/Matrix';
+import { Vertex } from '../Model/Model2d';
+import { Vertex3d } from '../Model/Model3d';
 
 export class Camera3d {
     // camera characteristics
@@ -10,12 +9,12 @@ export class Camera3d {
     private N: Vector; // screen normal vector
     private T: Vector; // vector to heaven
 
-    private canvas: HTMLCanvasElement;
-    private scale: number;
+    // private canvas: HTMLCanvasElement;
+    // private scale: number;
 
     // canvas resolution
-    private H: number;
-    private W: number;
+    // private H: number;
+    // private W: number;
 
     // view coordinate system center
     private viewXCenter: number;
@@ -32,31 +31,20 @@ export class Camera3d {
     private yCenter: number;
 
     constructor(cnvs: HTMLCanvasElement) {
-        this.canvas = cnvs;
-        this.setResolution();
-        this.canvas.setAttribute('width', this.W.toString() + 'px');
-        this.canvas.setAttribute('height', this.H.toString() + 'px');
-        this.xCenter = this.canvas.width * 0.5;
-        this.yCenter = this.canvas.height * 0.5;
-        if (this.canvas.height < this.canvas.width) {
-            this.scale = this.canvas.height / 20;
-        } else {
-            this.scale = this.canvas.width / 20;
-        }
 
         this.D = 10;
 
         this.N = new Vector(3);
-        this.N.elements = [0, 0, this.scale];
+        this.N.elements = [0, 0, 1];
 
         this.T = new Vector(3);
-        this.T.elements = [0, this.scale, 0];
+        this.T.elements = [0, 1, 0];
     }
 
-    public setResolution(): void {
-        this.W = document.documentElement.clientWidth * 0.8;
-        this.H = document.documentElement.clientHeight;
-    }
+    // public setResolution(): void {
+    //     this.W = document.documentElement.clientWidth * 0.8;
+    //     this.H = document.documentElement.clientHeight;
+    // }
 
     private calcViewBasis() {
         this.viewK = Vector.normalizeVector(this.N);
@@ -130,11 +118,11 @@ export class Camera3d {
         return projectVertex;
     }
 
-    private translateScreen(vertex: Vertex): Vertex {
-        let screenVertex = new Vertex();
-        screenVertex.xCoord = this.xCenter + vertex.xCoord * this.scale;
-        screenVertex.yCoord = this.yCenter - vertex.yCoord * this.scale;
+    // private translateScreen(vertex: Vertex): Vertex {
+    //     let screenVertex = new Vertex();
+    //     screenVertex.xCoord = this.xCenter + vertex.xCoord * this.scale;
+    //     screenVertex.yCoord = this.yCenter - vertex.yCoord * this.scale;
 
-        return screenVertex;
-    }
+    //     return screenVertex;
+    // }
 }
