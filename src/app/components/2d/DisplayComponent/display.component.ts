@@ -31,7 +31,7 @@ export class DisplayComponent implements OnInit {
 
     ngOnInit() {
         this.state.stateUpdated.subscribe(value => {
-            if ((value > 0) && (value <= 3)) {
+            if ((value >= 0) && (value <= 3)) {
                 this.pivotSet = false;
                 this.modelSelected = true;
                 let _index = this.state.getSelectedItem();

@@ -30,7 +30,7 @@ export class Camera3d {
     private xCenter: number;
     private yCenter: number;
 
-    constructor(cnvs: HTMLCanvasElement) {
+    constructor() {
         this.D = 10;
 
         this.N = new Vector(3);
@@ -71,8 +71,8 @@ export class Camera3d {
         return vertex;
     }
 
-    private translateView(vertex: Vertex3d): Vertex3d {
-        let translateMatrix = new Matrix(3, 4);
+    private translateView(): Matrix {
+        let translateMatrix = new Matrix(4, 4);
 
         let xi = this.viewI.elements[0];
         let yi = this.viewI.elements[1];
@@ -89,39 +89,34 @@ export class Camera3d {
         translateMatrix.cells = [
             [xi, yi, zi, - (xi * this.viewXCenter + yi * this.viewYCenter + zi * this.viewZCenter)],
             [xj, yj, zj, - (xj * this.viewXCenter + yj * this.viewYCenter + zj * this.viewZCenter)],
-            [xk, yk, zk, - (xk * this.viewXCenter + yk * this.viewYCenter + zk * this.viewZCenter)]
+            [xk, yk, zk, - (xk * this.viewXCenter + yk * this.viewYCenter + zk * this.viewZCenter)],
+            [0, 0, 0, 1]
         ];
 
-        let worldVertexCoords = this.vertexCoordsToVector(vertex);
-        let viewVertexCoords = Matrix.MatrixVectorMultiply(translateMatrix, worldVertexCoords);
-        let viewVertex = this.vectorToVertexCoords(viewVertexCoords);
+        // let worldVertexCoords = this.vertexCoordsToVector(vertex);
+        // let viewVertexCoords = Matrix.MatrixVectorMultiply(translateMatrix, worldVertexCoords);
+        // let viewVertex = this.vectorToVertexCoords(viewVertexCoords);
 
-        return viewVertex;
+        // return viewVertex;
+        return translateMatrix;
     }
 
-    private translateProject(vertex: Vertex3d): Vertex {
-        // let translateMatrix = new Matrix(3, 4);
-        // translateMatrix.cells = [
-        //     [1, 0, 0, 0],
-        //     [0, 1, 0, 0],
-        //     [0, 0, - 1 / this.D, 1]
-        // ];
+    private translateProject(): Matrix {
+        let translateMatrix = new Matrix(3, 4);
+        translateMatrix.cells = [
+            [1, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, - 1 / this.D, 1]
+        ];
 
         // let viewVertexCoords = this.vertexCoordsToVector(vertex);
         // let projectVertexCoords = Matrix.MatrixVectorMultiply(translateMatrix, viewVertexCoords);
         // let projectVertex = this.vectorToVertexCoords(projectVertexCoords);
-        let projectVertex = new Vertex();
-        projectVertex.xCoord = vertex.xCoord / (1 - vertex.zCoord / this.D);
-        projectVertex.yCoord = vertex.yCoord / (1 - vertex.zCoord / this.D);
+        // let projectVertex = new Vertex();
+        // projectVertex.xCoord = vertex.xCoord / (1 - vertex.zCoord / this.D);
+        // projectVertex.yCoord = vertex.yCoord / (1 - vertex.zCoord / this.D);
 
-        return projectVertex;
+        // return projectVertex;
+        return translateMatrix;
     }
-
-    // private translateScreen(vertex: Vertex): Vertex {
-    //     let screenVertex = new Vertex();
-    //     screenVertex.xCoord = this.xCenter + vertex.xCoord * this.scale;
-    //     screenVertex.yCoord = this.yCenter - vertex.yCoord * this.scale;
-
-    //     return screenVertex;
-    // }
 }
