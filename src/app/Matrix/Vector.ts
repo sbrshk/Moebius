@@ -4,6 +4,7 @@ export class Vector {
 
     constructor(d: number/*, el: number[]*/) {
         this.dim = d;
+        this.elements = [];
         // if (d === el.length) {
         //     this.elements = el;
         // }
@@ -37,10 +38,11 @@ export class Vector {
 
     public static multiplyVectors(a: Vector, b: Vector): Vector | any {
         if (a.dim !== b.dim) return;
-        let c = new Vector(a.dim);
-        for (let i = 0; i < a.dim; i++) {
-            c.elements[i] = a.elements[i] * b.elements[i];
-        }
+        if (a.dim !== 3 || b.dim !== 3) return;
+        let c = new Vector(3);
+        c.elements[0] = a.elements[1] * b.elements[2] - a.elements[2] * b.elements[1];
+        c.elements[1] = -  a.elements[0] * b.elements[2] + a.elements[2] * b.elements[0];
+        c.elements[2] = a.elements[0] * b.elements[1] - a.elements[1] * b.elements[0];
         return c;
     }
 

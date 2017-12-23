@@ -2,6 +2,7 @@ import { Vector } from '../Matrix/Vector';
 import { Matrix } from '../Matrix/Matrix';
 import { Vertex } from '../Model/Model2d';
 import { Vertex3d } from '../Model/Model3d';
+import { Map } from 'core-js/library/web/timers';
 
 export class Camera3d {
     // camera characteristics
@@ -33,11 +34,17 @@ export class Camera3d {
     constructor() {
         this.D = 10;
 
+        this.viewXCenter = 0;
+        this.viewYCenter = 0;
+        this.viewZCenter = 0;
+
         this.N = new Vector(3);
         this.N.elements = [0, 0, 1];
 
         this.T = new Vector(3);
         this.T.elements = [0, 1, 0];
+
+        this.calcViewBasis();
     }
 
     // public setResolution(): void {
@@ -48,7 +55,12 @@ export class Camera3d {
     private calcViewBasis() {
         this.viewK = Vector.normalizeVector(this.N);
         this.viewI = Vector.normalizeVector(Vector.multiplyVectors(this.T, this.N));
+        console.log('T * N = ' + Vector.multiplyVectors(this.T, this.N));
         this.viewJ = Vector.multiplyVectors(this.viewK, this.viewI);
+
+        console.log(this.viewI);
+        console.log(this.viewJ);
+        console.log(this.viewK);
     }
 
     private vertexCoordsToVector(vertex: Vertex3d): Vector {
@@ -117,6 +129,13 @@ export class Camera3d {
         // projectVertex.yCoord = vertex.yCoord / (1 - vertex.zCoord / this.D);
 
         // return projectVertex;
+        return translateMatrix;
+    }
+
+    public translateVP(): Matrix {
+        console.log(this.translateProject());
+        console.log(this.translateView());
+        let translateMatrix = Matrix.MatrixMatrixMultiply(this.translateProject(), this.translateView());
         return translateMatrix;
     }
 }

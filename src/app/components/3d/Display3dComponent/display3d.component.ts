@@ -47,5 +47,7 @@ export class Display3dComponent implements OnInit {
         // console.log(model.getWarframeModel());
         let model2d = new Model2d(model.getWarframeModel().getVerticesCount(), model.getWarframeModel().getEdgesCount());
         model2d.setEdges(model.getWarframeModel().getEdges());
+        let _translatedVertices = Matrix.MatrixMatrixMultiply(this.camera.translateVP(), model.getWarframeModel().getVertices());
+        // console.log(_translatedVertices);
     }
 }
