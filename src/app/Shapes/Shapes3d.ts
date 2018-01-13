@@ -57,31 +57,32 @@ export class Shapes3d {
         this.Bipyramid = new Model3d();
         let _pBipyramid = new PolygonalModel(10, 16);
         let bipyramidVertices = new Matrix(4, 10);
+        let b = Math.sqrt(2);
         let c = 1 / Math.sqrt(Math.sqrt(2));
         bipyramidVertices.cells = [
-            [1, 1, 2, 0, 2, 0, 1 + Math.sqrt(2), 1 - Math.sqrt(2), 1, 1],
-            [Math.sqrt(2) + c, - Math.sqrt(2) - c, c, c, c, c, -c, -c, -c, -c],
-            [1, 1, 2, 2, 0, 0, 1, 1, 1 + Math.sqrt(2), 1 - Math.sqrt(2)],
+            [0, 0, 1, -1, 1, -1, b, -b, 0, 0],
+            [b + c, - b - c, c, c, c, c, -c, -c, -c, -c],
+            [0, 0, 1, 1, -1, -1, 0, 0, b, -b],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         ];
         let bipyramidFaces = new Matrix(16, 3);
         bipyramidFaces.cells = [
             [1, 3, 4],
-            [1, 4, 5],
+            [1, 3, 5],
             [1, 5, 6],
-            [1, 3, 6],
-            [2, 7, 8],
-            [2, 8, 9],
-            [2, 9, 10],
-            [2, 10, 7],
-            [3, 7, 4],
-            [7, 4, 8],
-            [4, 8, 5],
-            [5, 8, 9],
-            [5, 6, 9],
-            [6, 9, 10],
-            [3, 10, 6],
-            [3, 10, 7]
+            [1, 4, 6],
+            [4, 9, 3],
+            [9, 3, 7],
+            [3, 7, 5],
+            [7, 5, 10],
+            [5, 10, 6],
+            [10, 6, 8],
+            [6, 8, 4],
+            [8, 4, 9],
+            [2, 7, 9],
+            [2, 7, 10],
+            [2, 8, 10],
+            [2, 8, 9]
         ];
         _pBipyramid.setVertices(bipyramidVertices);
         _pBipyramid.setFaces(bipyramidFaces);
