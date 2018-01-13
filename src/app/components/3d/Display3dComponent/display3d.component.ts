@@ -127,4 +127,13 @@ export class Display3dComponent implements OnInit {
 
         return _model;
     }
+
+    public reset(): void {
+        let _index = this.state.getSelectedItem();
+        this.currentModel = this.shapes.getPolyhedron(_index);
+        this.transformed = false;
+        this.projectedModel = this.translateModel(this.currentModel);
+        this.plotter.clearCanvas();
+        this.plotter.drawModel(this.projectedModel);
+    }
 }
