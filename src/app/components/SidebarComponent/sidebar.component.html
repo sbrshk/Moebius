@@ -66,7 +66,7 @@
     <div *ngIf="help" class="info-wrapper">
         <div class="help">
             <h1>Help</h1>
-            <div  *ngIf="twoD && !ref">
+            <div *ngIf="twoD && !ref">
                 <h3>Actions with 2d model</h3>
                 <p>
                     <i class="fa fa-keyboard-o" aria-hidden="true"></i> <i class="fa fa-arrows" aria-hidden="true"></i> - translation<br>
@@ -83,6 +83,12 @@
             </div>
             <div *ngIf="!twoD && !ref">
                 <h3>Actions with 3d model</h3>
+                <p>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <i class="fa fa-arrows" aria-hidden="true"></i> - translation<br>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>W, S (y), A, D (x), Z, X (z)</b> - rotation<br>
+                    <i class="fa fa-keyboard-o" aria-hidden="true"></i> <b>C, V</b> - scaling<br>
+                    <i class="fa fa-refresh" aria-hidden="true"></i> <b>Reset button</b> - reset transformations        
+                </p>
             </div>
             <div class="btn" (click)="showHelp()">Close</div>
         </div>
