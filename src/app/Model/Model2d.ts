@@ -57,8 +57,13 @@ export class Model2d {
 
     public getVertex(index: number): Vertex {
         let _vertex = new Vertex();
-        _vertex.xCoord = this.vertices.cells[0][index] / this.vertices.cells[2][index];
-        _vertex.yCoord = this.vertices.cells[1][index] / this.vertices.cells[2][index];
+        // if (this.vertices.cells[2][index] !== 0) {
+            // _vertex.xCoord = this.vertices.cells[0][index] / this.vertices.cells[2][index];
+            // _vertex.yCoord = this.vertices.cells[1][index] / this.vertices.cells[2][index];
+        // } else {
+            _vertex.xCoord = this.vertices.cells[0][index];
+            _vertex.yCoord = this.vertices.cells[1][index];
+        // }
         return _vertex;
     }
 }

@@ -29,6 +29,11 @@ export class Plotter2d {
         this.H = document.documentElement.clientHeight;
     }
 
+    public clearCanvas(): void {
+        let ctx = this.canvas.getContext('2d');
+        ctx.clearRect(0, 0, this.W, this.H);
+    }
+
     public drawAxis(): void {
         let ctx = this.canvas.getContext('2d');
         ctx.clearRect(0, 0, this.W, this.H);
@@ -50,6 +55,7 @@ export class Plotter2d {
     }
 
     public drawModel(model: Model2d): void {
+        // console.log(model);
         let ctx = this.canvas.getContext('2d');
         ctx.beginPath();
         ctx.strokeStyle = 'black';

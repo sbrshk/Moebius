@@ -2,7 +2,6 @@ import { Vector } from '../Matrix/Vector';
 import { Matrix } from '../Matrix/Matrix';
 import { Vertex } from '../Model/Model2d';
 import { Vertex3d } from '../Model/Model3d';
-import { Map } from 'core-js/library/web/timers';
 
 export class Camera3d {
     // camera characteristics
@@ -39,10 +38,10 @@ export class Camera3d {
         this.viewZCenter = 0;
 
         this.N = new Vector(3);
-        this.N.elements = [0, 0, 1];
+        this.N.elements = [0, 0, 2];
 
         this.T = new Vector(3);
-        this.T.elements = [0, 1, 0];
+        this.T.elements = [0, 2, 0];
 
         this.calcViewBasis();
     }
@@ -55,7 +54,6 @@ export class Camera3d {
     private calcViewBasis() {
         this.viewK = Vector.normalizeVector(this.N);
         this.viewI = Vector.normalizeVector(Vector.multiplyVectors(this.T, this.N));
-        console.log('T * N = ' + Vector.multiplyVectors(this.T, this.N));
         this.viewJ = Vector.multiplyVectors(this.viewK, this.viewI);
 
         console.log(this.viewI);
@@ -105,6 +103,9 @@ export class Camera3d {
             [0, 0, 0, 1]
         ];
 
+        // console.log('View matrix');
+        // console.log(translateMatrix.cells);
+
         // let worldVertexCoords = this.vertexCoordsToVector(vertex);
         // let viewVertexCoords = Matrix.MatrixVectorMultiply(translateMatrix, worldVertexCoords);
         // let viewVertex = this.vectorToVertexCoords(viewVertexCoords);
@@ -113,12 +114,13 @@ export class Camera3d {
         return translateMatrix;
     }
 
-    private translateProject(): Matrix {
+    public translateProject(): Matrix {
         let translateMatrix = new Matrix(3, 4);
         translateMatrix.cells = [
             [1, 0, 0, 0],
             [0, 1, 0, 0],
-            [0, 0, - 1 / this.D, 1]
+            // [0, 0, 1, 0],
+            [0, 0,  - 1 / this.D, 1]
         ];
 
         // let viewVertexCoords = this.vertexCoordsToVector(vertex);
@@ -129,13 +131,18 @@ export class Camera3d {
         // projectVertex.yCoord = vertex.yCoord / (1 - vertex.zCoord / this.D);
 
         // return projectVertex;
+
+        // console.log('Project matrix');
+        // console.log(translateMatrix.cells);
         return translateMatrix;
     }
 
     public translateVP(): Matrix {
-        console.log(this.translateProject());
-        console.log(this.translateView());
         let translateMatrix = Matrix.MatrixMatrixMultiply(this.translateProject(), this.translateView());
+        translateMatrix.cells[2][2] = 1;
+        translateMatrix.cells[2][3] = 1;
+        // console.log('TRANSLATE MATRIX');
+        // console.log(translateMatrix.cells);
         return translateMatrix;
     }
 }

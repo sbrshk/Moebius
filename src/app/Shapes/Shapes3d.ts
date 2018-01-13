@@ -13,8 +13,8 @@ export class Shapes3d {
         let tetrahedronVertices = new Matrix(4, 4);
         tetrahedronVertices.cells = [
             [0, 1, 2, 1],
-            [0, Math.sqrt(3), 0, Math.sqrt(3) / 3],
             [0, 0, 0, 4 * Math.sqrt(2) / 3],
+            [0, Math.sqrt(3), 0, Math.sqrt(3) / 3],
             [1, 1, 1, 1]
         ];
         let tetrahedronFaces = new Matrix(4, 3);
@@ -34,8 +34,8 @@ export class Shapes3d {
         let octahedronVertices = new Matrix(4, 6);
         octahedronVertices.cells = [
             [0, 0, 2, 2, 1, 1],
-            [0, 2, 2, 0, 1, 1],
             [0, 0, 0, 0, 2, -2],
+            [0, 2, 2, 0, 1, 1],
             [1, 1, 1, 1, 1, 1]
         ];
         let octahedronFaces = new Matrix(8, 3);
@@ -60,8 +60,8 @@ export class Shapes3d {
         let c = 1 / Math.sqrt(Math.sqrt(2));
         bipyramidVertices.cells = [
             [1, 1, 2, 0, 2, 0, 1 + Math.sqrt(2), 1 - Math.sqrt(2), 1, 1],
-            [1, 1, 2, 2, 0, 0, 1, 1, 1 + Math.sqrt(2), 1 - Math.sqrt(2)],
             [Math.sqrt(2) + c, - Math.sqrt(2) - c, c, c, c, c, -c, -c, -c, -c],
+            [1, 1, 2, 2, 0, 0, 1, 1, 1 + Math.sqrt(2), 1 - Math.sqrt(2)],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         ];
         let bipyramidFaces = new Matrix(16, 3);
