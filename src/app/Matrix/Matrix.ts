@@ -9,6 +9,9 @@ export class Matrix {
         this.rows = n;
         this.cols = m;
         this.cells = [];
+        for (let i = 0; i < m; i++) {
+            this.cells[i] = [];
+        }
     }
 
     public static sumMatrix(A: Matrix, B: Matrix): Matrix | any {
