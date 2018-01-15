@@ -33,7 +33,7 @@ export class Camera3d {
     private yCenter: number;
 
     constructor() {
-        this.D = 8;
+        this.D = 10;
 
         this.viewXCenter = 0;
         this.viewYCenter = 0;

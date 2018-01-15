@@ -5,6 +5,7 @@ export class Shapes3d {
     private Tetrahedron: Model3d;
     private Octahedron: Model3d;
     private Bipyramid: Model3d;
+    private Icosahedron: Model3d;
 
     constructor() {
         // Tetrahedron
@@ -87,6 +88,51 @@ export class Shapes3d {
         _pBipyramid.setVertices(bipyramidVertices);
         _pBipyramid.setFaces(bipyramidFaces);
         this.Bipyramid.setPolygonalModel(_pBipyramid);
+
+        // Icosahedron
+        this.Icosahedron = new Model3d();
+        let _pIcosahedron = new PolygonalModel(12, 20);
+        let icosahedronVertices = new Matrix(4, 12);
+        let d = Math.sqrt(3);
+        let R = 2; //radius
+        icosahedronVertices.cells = [
+            [0, NaN, NaN, NaN, NaN, 0, 0, NaN, NaN, NaN, NaN, 0],
+            [d / 2, d / 2, d / 2, d / 2, d / 2, d, -d / 2, -d / 2, -d / 2, -d / 2, -d / 2, -d],
+            [2, NaN, NaN, NaN, NaN, 0, -2, NaN, NaN, NaN, NaN, 0],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        ];
+        for (let i = 1; i < 5; i++) {
+            icosahedronVertices.cells[0][i] = icosahedronVertices.cells[0][0] + R * Math.cos(2 * Math.PI * i / 5);
+            icosahedronVertices.cells[2][i] = icosahedronVertices.cells[2][0] + R * Math.cos(2 * Math.PI * i / 5);
+            icosahedronVertices.cells[0][i + 6] = icosahedronVertices.cells[0][6] + R * Math.cos(2 * Math.PI * i / 5);
+            icosahedronVertices.cells[2][i + 6] = icosahedronVertices.cells[2][6] + R * Math.sin(2 * Math.PI * i / 5);
+        }
+        let icosahedronFaces = new Matrix(20, 3);
+        icosahedronFaces.cells = [
+            [1, 2, 6],
+            [2, 3, 6],
+            [3, 4, 6],
+            [4, 5, 6],
+            [1, 5, 6],
+            [4, 3, 7],
+            [7, 3, 11],
+            [3, 11, 2],
+            [11, 2, 10],
+            [2, 10, 1],
+            [10, 1, 9],
+            [1, 9, 5],
+            [9, 5, 8],
+            [5, 8, 4],
+            [8, 4, 7],
+            [7, 8, 12],
+            [8, 9, 12],
+            [9, 10, 12],
+            [10, 11, 12],
+            [7, 11, 12]
+        ];
+        _pIcosahedron.setVertices(icosahedronVertices);
+        _pIcosahedron.setFaces(icosahedronFaces);
+        this.Icosahedron.setPolygonalModel(_pIcosahedron);
     }
 
     public getPolyhedron(index: number): Model3d | any {
@@ -94,6 +140,7 @@ export class Shapes3d {
             case 4: return this.Tetrahedron;
             case 5: return this.Octahedron;
             case 6: return this.Bipyramid;
+            case 7: return this.Icosahedron;
             default: return -1;
         }
     }

@@ -8,7 +8,7 @@ import { Plotter2d } from '../../../Plotter/Plotter2d';
 import { AffineTransform3d } from '../../../AffineTransform/AffineTransfrom3d';
 
 import { StateService } from '../../state.service';
-import { _ } from 'core-js/library/web/timers';
+import { _, Map } from 'core-js/library/web/timers';
 
 @Component({
     selector: 'display3d-component',
@@ -53,15 +53,15 @@ export class Display3dComponent implements OnInit {
         if (!this.transformed && this.modelSelected) {
             model.setWarframeModel(model.convertModel(model.getPolygonalModel()));
         }
-        console.log('VERTICES 3d');
-        console.log(model.getWarframeModel().getVertices().cells);
-        console.log(' ');
+        // console.log('VERTICES 3d');
+        // console.log(model.getWarframeModel().getVertices().cells);
+        // console.log(' ');
         let model2d = new Model2d(model.getWarframeModel().getVerticesCount(), model.getWarframeModel().getEdgesCount());
         model2d.setEdges(model.getWarframeModel().getEdges());
         // let _translatedVertices = Matrix.MatrixMatrixMultiply(this.camera.translateVP(), model.getWarframeModel().getVertices());
         let _translatedVertices = this.camera.projectVertices(model.getWarframeModel().getVertices(), model.getWarframeModel().getVerticesCount());
-        console.log('VERTICES 2d (world CS)');
-        console.log(_translatedVertices.cells);
+        // console.log('VERTICES 2d (world CS)');
+        // console.log(_translatedVertices.cells);
         model2d.setVertices(_translatedVertices);
         // console.log(model2d);
         return model2d;
@@ -89,26 +89,115 @@ export class Display3dComponent implements OnInit {
             case 83: _transformMatrix = AffineTransform3d.rotationOx(0.1); break;
             case 90: _transformMatrix = AffineTransform3d.rotationOz(0.1); break;
             case 88: _transformMatrix = AffineTransform3d.rotationOz(-0.1); break;
-            // case 32: _transformMatrix = AffineTransform3d.reflectionCenter(); break;
-            // case 81: _transformMatrix = AffineTransform3d.scaling(0.9, 0.9); break;
-            // case 69: _transformMatrix = AffineTransform3d.scaling(1.1, 1.1); break;
             case 67: _transformMatrix = AffineTransform3d.scaling(1.1, 1.1, 1.1); break;
             case 86: _transformMatrix = AffineTransform3d.scaling(0.9, 0.9, 0.9); break;
+            // rotation around the symmetry axis
+            case 32: {
+                let x1, x2, y1, y2, z1, z2;
+                switch (this.state.getSelectedItem()) {
+                    // tetrahedron
+                    case 4: {
+                        x1 = this.currentModel.getWarframeModel().getVertices().cells[0][3];
+                        y1 = this.currentModel.getWarframeModel().getVertices().cells[1][3];
+                        z1 = this.currentModel.getWarframeModel().getVertices().cells[2][3];
+                        x2 = x1;
+                        y2 = 0;
+                        z2 = z1;
+                        break;
+                    }
+                    // octahedron
+                    case 5: {
+                        x1 = this.currentModel.getWarframeModel().getVertices().cells[0][4];
+                        x2 = this.currentModel.getWarframeModel().getVertices().cells[0][5];
+                        y1 = this.currentModel.getWarframeModel().getVertices().cells[1][4];
+                        y2 = this.currentModel.getWarframeModel().getVertices().cells[1][5];
+                        z1 = this.currentModel.getWarframeModel().getVertices().cells[2][4];
+                        z2 = this.currentModel.getWarframeModel().getVertices().cells[2][5];
+                        break;
+                    }
+                    // bipyramid
+                    case 6: {
+                        x1 = this.currentModel.getWarframeModel().getVertices().cells[0][0];
+                        x2 = this.currentModel.getWarframeModel().getVertices().cells[0][1];
+                        y1 = this.currentModel.getWarframeModel().getVertices().cells[1][0];
+                        y2 = this.currentModel.getWarframeModel().getVertices().cells[1][1];
+                        z1 = this.currentModel.getWarframeModel().getVertices().cells[2][0];
+                        z2 = this.currentModel.getWarframeModel().getVertices().cells[2][1];
+                        break;
+                    }
+                }
+                _transformMatrix = AffineTransform3d.identity();
+                let T1 = new Matrix(4, 4);
+                T1.cells = [
+                    [1, 0, 0, -x2],
+                    [0, 1, 0, -y2],
+                    [0, 0, 1, -z2],
+                    [0, 0, 0, 1]
+                ];
+
+                let A = x1 - x2;
+                let B = y1 - y2;
+                let C = z1 - z2;
+                let cosAlpha = A / Math.sqrt(A * A + B * B + C * C);
+                let sinAlpha = Math.sqrt(B * B + C * C) / Math.sqrt(A * A + B * B + C * C);
+                let RzAlpha = new Matrix(4, 4);
+                RzAlpha.cells = [
+                    [cosAlpha,  - sinAlpha, 0, 0],
+                    [sinAlpha, cosAlpha, 0, 0],
+                    [0, 0, 1, 0],
+                    [0, 0, 0, 1]
+                ];
+                let RzMinusAlpha = new Matrix(4, 4);
+                RzMinusAlpha.cells = [
+                    [cosAlpha, sinAlpha, 0, 0],
+                    [ - sinAlpha, cosAlpha, 0, 0],
+                    [0, 0, 1, 0],
+                    [0, 0, 0, 1]
+                ];
+                let cosBeta = B / Math.sqrt(B * B + C * C);
+                let sinBeta = C / Math.sqrt(B * B + C * C);
+                let RxBeta = new Matrix(4, 4);
+                RxBeta.cells = [
+                    [1, 0, 0, 0],
+                    [0, cosBeta, - sinBeta, 0],
+                    [0, sinBeta, cosBeta, 0],
+                    [0, 0, 0, 1]
+                ];
+                let RxMinusBeta = new Matrix(4, 4);
+                RxMinusBeta.cells = [
+                    [1, 0, 0, 0],
+                    [0, cosBeta, sinBeta, 0],
+                    [0, - sinBeta, cosBeta, 0],
+                    [0, 0, 0, 1]
+                ];
+
+                let T2 = new Matrix(4, 4);
+                T2.cells = [
+                    [1, 0, 0, x2],
+                    [0, 1, 0, y2],
+                    [0, 0, 1, z2],
+                    [0, 0, 0, 1]
+                ];
+
+                _transformMatrix = Matrix.MatrixMatrixMultiply(T1, _transformMatrix);
+                _transformMatrix = Matrix.MatrixMatrixMultiply(RxMinusBeta, _transformMatrix);
+                _transformMatrix = Matrix.MatrixMatrixMultiply(RzMinusAlpha, _transformMatrix);
+                _transformMatrix = Matrix.MatrixMatrixMultiply(AffineTransform3d.rotationOx(0.1), _transformMatrix);
+                _transformMatrix = Matrix.MatrixMatrixMultiply(RzAlpha, _transformMatrix);
+                _transformMatrix = Matrix.MatrixMatrixMultiply(RxBeta, _transformMatrix);
+                _transformMatrix = Matrix.MatrixMatrixMultiply(T2, _transformMatrix);
+                break;
+            }
             default: _transformMatrix = AffineTransform3d.identity(); break;
         }
-        console.log(_transformMatrix);
         let _currentVertices = this.currentModel.getWarframeModel().getVertices();
         let _newVertices = Matrix.MatrixMatrixMultiply(_transformMatrix, _currentVertices);
-        console.log('NEW VERTICES');
-        console.log(_newVertices);
         let _verticesCount = this.currentModel.getWarframeModel().getVerticesCount();
         let _edgesCount = this.currentModel.getWarframeModel().getEdgesCount();
         let _newWFModel = new WarframeModel(_verticesCount, _edgesCount);
         _newWFModel.setEdges(this.currentModel.getWarframeModel().getEdges());
         _newWFModel.setVertices(_newVertices);
         this.currentModel.setWarframeModel(_newWFModel);
-        console.log("NEW WF VERTICES");
-        console.log(this.currentModel.getWarframeModel().getVertices());
         this.transformed = true;
         this.projectedModel = this.translateModel(this.currentModel);
         this.plotter.clearCanvas();
