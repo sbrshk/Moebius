@@ -11,13 +11,6 @@ export class Camera3d {
     private N: Vector; // screen normal vector
     private T: Vector; // vector to heaven
 
-    // private canvas: HTMLCanvasElement;
-    // private scale: number;
-
-    // canvas resolution
-    // private H: number;
-    // private W: number;
-
     // view coordinate system center
     private viewXCenter: number;
     private viewYCenter: number;
@@ -28,10 +21,6 @@ export class Camera3d {
     private viewJ: Vector;
     private viewK: Vector;
 
-    // screen coordinate system center
-    private xCenter: number;
-    private yCenter: number;
-
     constructor() {
         this.D = 10;
 
@@ -40,18 +29,13 @@ export class Camera3d {
         this.viewZCenter = 0;
 
         this.N = new Vector(3);
-        this.N.elements = [0, 0, 2];
+        this.N.elements = [0, 0, 1];
 
         this.T = new Vector(3);
-        this.T.elements = [0, 2, 0];
+        this.T.elements = [0, 1, 0];
 
         this.calcViewBasis();
     }
-
-    // public setResolution(): void {
-    //     this.W = document.documentElement.clientWidth * 0.8;
-    //     this.H = document.documentElement.clientHeight;
-    // }
 
     private calcViewBasis() {
         this.viewK = Vector.normalizeVector(this.N);
@@ -63,25 +47,25 @@ export class Camera3d {
         console.log(this.viewK);
     }
 
-    private vertexCoordsToVector(vertex: Vertex3d): Vector {
-        let vertexCoords = new Vector(3);
-        vertexCoords.elements[0] = vertex.xCoord;
-        vertexCoords.elements[1] = vertex.yCoord;
-        vertexCoords.elements[2] = vertex.zCoord;
+    // private vertexCoordsToVector(vertex: Vertex3d): Vector {
+    //     let vertexCoords = new Vector(3);
+    //     vertexCoords.elements[0] = vertex.xCoord;
+    //     vertexCoords.elements[1] = vertex.yCoord;
+    //     vertexCoords.elements[2] = vertex.zCoord;
 
-        return vertexCoords;
-    }
+    //     return vertexCoords;
+    // }
 
-    private vectorToVertexCoords(vector: Vector): Vertex3d | any {
-        if (vector.dim !== 3) return;
+    // private vectorToVertexCoords(vector: Vector): Vertex3d | any {
+    //     if (vector.dim !== 3) return;
 
-        let vertex = new Vertex3d();
-        vertex.xCoord = vector.elements[0];
-        vertex.yCoord = vector.elements[1];
-        vertex.zCoord = vector.elements[2];
+    //     let vertex = new Vertex3d();
+    //     vertex.xCoord = vector.elements[0];
+    //     vertex.yCoord = vector.elements[1];
+    //     vertex.zCoord = vector.elements[2];
 
-        return vertex;
-    }
+    //     return vertex;
+    // }
 
     private translateView(): Matrix {
         let translateMatrix = new Matrix(4, 4);
@@ -107,23 +91,6 @@ export class Camera3d {
 
         return translateMatrix;
     }
-
-    public translateProject(): Matrix {
-        let translateMatrix = new Matrix(3, 4);
-        translateMatrix.cells = [
-            [1, 0, 0, 0],
-            [0, 1, 0, 0],
-            // [0, 0, 1, 0],
-            [0, 0, - 1 / this.D, 1]
-        ];
-
-        return translateMatrix;
-    }
-
-    // public translateVP(): Matrix {
-    //     let translateMatrix = Matrix.MatrixMatrixMultiply(this.translateProject(), this.translateView());
-    //     return translateMatrix;
-    // }
 
     public projectVertices(vertices: Matrix, verticesCount: number): Matrix {
         let projectedVertices = new Matrix(3, verticesCount);

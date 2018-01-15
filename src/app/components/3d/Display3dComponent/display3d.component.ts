@@ -53,17 +53,10 @@ export class Display3dComponent implements OnInit {
         if (!this.transformed && this.modelSelected) {
             model.setWarframeModel(model.convertModel(model.getPolygonalModel()));
         }
-        // console.log('VERTICES 3d');
-        // console.log(model.getWarframeModel().getVertices().cells);
-        // console.log(' ');
         let model2d = new Model2d(model.getWarframeModel().getVerticesCount(), model.getWarframeModel().getEdgesCount());
         model2d.setEdges(model.getWarframeModel().getEdges());
-        // let _translatedVertices = Matrix.MatrixMatrixMultiply(this.camera.translateVP(), model.getWarframeModel().getVertices());
         let _translatedVertices = this.camera.projectVertices(model.getWarframeModel().getVertices(), model.getWarframeModel().getVerticesCount());
-        // console.log('VERTICES 2d (world CS)');
-        // console.log(_translatedVertices.cells);
         model2d.setVertices(_translatedVertices);
-        // console.log(model2d);
         return model2d;
     }
 

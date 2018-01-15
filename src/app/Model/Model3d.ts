@@ -160,30 +160,9 @@ export class Model3d {
         let i = 0;
         _edges.forEach(item => {
             let _itemArr = [Number.parseInt(item.split(' ')[0]), Number.parseInt(item.split(' ')[1])];
-            // console.log(_itemArr);
             edges.cells[i] = _itemArr;
             i++;
         });
-
-        // let _edges = new Set<Set<number>>();
-        // let _edgesCount = 0;
-        // for (let i = 0; i < pModel.getFacesCount(); i++) {
-        //     for (let j = 0; j < 3; j++) {
-        //         for (let k = j + 1; k < 3; k++) {
-        //             let _pair = new Set<number>();
-        //             _pair.add(pModel.getFaces().cells[i][j]);
-        //             _pair.add(pModel.getFaces().cells[i][k]);
-        //             _edges.add(_pair);
-        //             _edgesCount++;
-        //         }
-        //     }
-        // }
-        // let edges = new Matrix(_edgesCount, 2);
-        // let i = 0;
-        // _edges.forEach(item => {
-        //     edges.cells[i] = Array.from(item);
-        //     i++;
-        // });
 
         return {
             edges: edges,

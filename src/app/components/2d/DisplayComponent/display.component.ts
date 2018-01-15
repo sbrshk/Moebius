@@ -10,7 +10,6 @@ import { StateService } from '../../state.service';
 @Component({
     selector: 'display-component',
     templateUrl: 'display.component.html',
-    // styleUrls: ['display.component.css']
     styleUrls: ['../../../../assets/sass/components/display.sass']
 })
 
