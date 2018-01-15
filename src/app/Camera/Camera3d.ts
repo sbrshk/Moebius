@@ -41,10 +41,6 @@ export class Camera3d {
         this.viewK = Vector.normalizeVector(this.N);
         this.viewI = Vector.normalizeVector(Vector.multiplyVectors(this.T, this.N));
         this.viewJ = Vector.multiplyVectors(this.viewK, this.viewI);
-
-        console.log(this.viewI);
-        console.log(this.viewJ);
-        console.log(this.viewK);
     }
 
     // private vertexCoordsToVector(vertex: Vertex3d): Vector {
