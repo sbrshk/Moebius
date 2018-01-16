@@ -95,9 +95,22 @@ export class Display3dComponent implements OnInit {
                         x1 = this.currentModel.getWarframeModel().getVertices().cells[0][3];
                         y1 = this.currentModel.getWarframeModel().getVertices().cells[1][3];
                         z1 = this.currentModel.getWarframeModel().getVertices().cells[2][3];
-                        x2 = x1;
-                        y2 = 0;
-                        z2 = z1;
+
+                        let xA = this.currentModel.getWarframeModel().getVertices().cells[0][0];
+                        let yA = this.currentModel.getWarframeModel().getVertices().cells[1][0];
+                        let zA = this.currentModel.getWarframeModel().getVertices().cells[2][0];
+
+                        let xB = this.currentModel.getWarframeModel().getVertices().cells[0][1];
+                        let yB = this.currentModel.getWarframeModel().getVertices().cells[1][1];
+                        let zB = this.currentModel.getWarframeModel().getVertices().cells[2][1];
+
+                        let xC = this.currentModel.getWarframeModel().getVertices().cells[0][2];
+                        let yC = this.currentModel.getWarframeModel().getVertices().cells[1][2];
+                        let zC = this.currentModel.getWarframeModel().getVertices().cells[2][2];
+
+                        x2 = (xA + xB + xC) / 3;
+                        y2 = (yA + yB + yC) / 3;
+                        z2 = (zA + zB + zC) / 3;
                         break;
                     }
                     // octahedron
