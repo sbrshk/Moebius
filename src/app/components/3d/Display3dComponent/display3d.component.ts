@@ -44,6 +44,7 @@ export class Display3dComponent implements OnInit {
                 this.currentModel = this.shapes.getPolyhedron(_index);
                 this.projectedModel = this.translateModel(this.currentModel);
                 this.plotter.clearCanvas();
+                this.plotter.draw3dAxis(this.camera.viewI, this.camera.viewJ, this.camera.viewK, this.camera.D);
                 this.plotter.drawModel(this.projectedModel);
             }
         });
@@ -64,6 +65,7 @@ export class Display3dComponent implements OnInit {
         if (this.modelSelected) {
             this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
             this.plotter = new Plotter2d(this.canvas);
+            this.plotter.draw3dAxis(this.camera.viewI, this.camera.viewJ, this.camera.viewK, this.camera.D);
             this.plotter.drawModel(this.projectedModel);
         }
     }
@@ -194,6 +196,7 @@ export class Display3dComponent implements OnInit {
         this.transformed = true;
         this.projectedModel = this.translateModel(this.currentModel);
         this.plotter.clearCanvas();
+        this.plotter.draw3dAxis(this.camera.viewI, this.camera.viewJ, this.camera.viewK, this.camera.D);
         this.plotter.drawModel(this.projectedModel);
     }
 
@@ -217,6 +220,7 @@ export class Display3dComponent implements OnInit {
         this.transformed = false;
         this.projectedModel = this.translateModel(this.currentModel);
         this.plotter.clearCanvas();
+        this.plotter.draw3dAxis(this.camera.viewI, this.camera.viewJ, this.camera.viewK, this.camera.D);
         this.plotter.drawModel(this.projectedModel);
     }
 }

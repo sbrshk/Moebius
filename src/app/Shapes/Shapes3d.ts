@@ -1,4 +1,5 @@
 import { Matrix } from '../Matrix/Matrix';
+// import { AffineTransform3d } from '../AffineTransform/AffineTransfrom3d';
 import { WarframeModel, PolygonalModel, Model3d } from '../Model/Model3d';
 
 export class Shapes3d {
@@ -18,6 +19,7 @@ export class Shapes3d {
             [0, Math.sqrt(3), 0, Math.sqrt(3) / 3],
             [1, 1, 1, 1]
         ];
+        // tetrahedronVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.scaling(2, 2, 2), tetrahedronVertices);
         let tetrahedronFaces = new Matrix(4, 3);
         tetrahedronFaces.cells = [
             [1, 2, 3],
@@ -39,6 +41,8 @@ export class Shapes3d {
             [0, 2, 2, 0, 1, 1],
             [1, 1, 1, 1, 1, 1]
         ];
+        // octahedronVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.scaling(2, 2, 2), octahedronVertices);
+        // octahedronVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.translation(-Math.sqrt(2), 0, 0), octahedronVertices);
         let octahedronFaces = new Matrix(8, 3);
         octahedronFaces.cells = [
             [1, 2, 5],
@@ -66,6 +70,7 @@ export class Shapes3d {
             [0, 0, 1, 1, -1, -1, 0, 0, b, -b],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         ];
+        // bipyramidVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.scaling(2, 2, 2), bipyramidVertices);
         let bipyramidFaces = new Matrix(16, 3);
         bipyramidFaces.cells = [
             [1, 3, 4],

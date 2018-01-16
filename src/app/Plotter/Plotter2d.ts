@@ -1,4 +1,5 @@
 import { Vertex, Model2d } from '../Model/Model2d';
+import { Vector } from '../Matrix/Vector';
 import { Matrix } from '../Matrix/Matrix';
 
 export class Plotter2d {
@@ -42,6 +43,43 @@ export class Plotter2d {
         ctx.lineTo(this.xCenter, this.canvas.height);
         ctx.moveTo(0, this.yCenter);
         ctx.lineTo(this.canvas.width, this.yCenter);
+        ctx.stroke();
+    }
+
+    public draw3dAxis(x: Vector, y: Vector, z: Vector, D: number): void {
+        let xX = x.elements[0] / (1 - x.elements[2] / D) * this.scale;
+        let xY = x.elements[1] / (1 - x.elements[2] / D) * this.scale;
+        let yX = y.elements[0] / (1 - y.elements[2] / D) * this.scale;
+        let yY = - y.elements[1] / (1 - y.elements[2] / D) * this.scale;
+        let zX = z.elements[0] / (1 - z.elements[2] / D) * this.scale;
+        let zY = z.elements[1] / (1 - z.elements[2] / D) * this.scale;
+
+        let ctx = this.canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.strokeStyle = 'grey';
+        let centerX = this.scale * 1.5;
+        let centerY = this.scale * 1.5;
+        // x axis
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(centerX + xX, centerY + xY);
+        ctx.arc(centerX + xX, centerY + xY, 1, 0, Math.PI * 2);
+
+        // y axis
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(centerX + yX, centerY + yY);
+        ctx.arc(centerX + yX, centerY + yY, 1, 0, Math.PI * 2);
+
+        // z axis
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(centerX + zX, centerY + zY);
+        ctx.arc(centerX + zX, centerY + zY, 1, 0, Math.PI * 2);
+
+        ctx.moveTo(centerX, centerY);
+        if (xX === 0 && xY === 0 || yX === 0 && yY === 0 || zX === 0 && zY === 0) {
+            ctx.arc(centerX, centerY, 2, 0, 2 * Math.PI);
+            ctx.fillStyle = 'grey';
+            ctx.fill();
+        }
         ctx.stroke();
     }
 
