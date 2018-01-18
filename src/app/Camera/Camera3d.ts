@@ -11,6 +11,11 @@ export class Camera3d {
     private N: Vector; // screen normal vector
     private T: Vector; // vector to heaven
 
+    // camera position
+    public p: number;
+    public q: number;
+    public r: number;
+
     // view coordinate system center
     private viewXCenter: number;
     private viewYCenter: number;
@@ -24,12 +29,14 @@ export class Camera3d {
     constructor() {
         this.D = 10;
 
+        this.p = this.q = this.r = 10;
+
         this.viewXCenter = 0;
         this.viewYCenter = 0;
         this.viewZCenter = 0;
 
         this.N = new Vector(3);
-        this.N.elements = [0, 0, 1];
+        this.N.elements = [-0.5, 0.7, 3];
 
         this.T = new Vector(3);
         this.T.elements = [0, 1, 0];
@@ -92,6 +99,11 @@ export class Camera3d {
         let projectedVertices = new Matrix(3, verticesCount);
         vertices = Matrix.MatrixMatrixMultiply(this.translateView(), vertices);
         for (let i = 0; i < verticesCount; i++) {
+            // let x = vertices.cells[0][i];
+            // let y = vertices.cells[1][i];
+            // let z = vertices.cells[2][i];
+            // projectedVertices.cells[0][i] = x / (1 - x / this.p - y / this.q);
+            // projectedVertices.cells[1][i] = y / (1 - x / this.p - y / this.q);
             projectedVertices.cells[0][i] = vertices.cells[0][i] / (1 - vertices.cells[2][i] / this.D);
             projectedVertices.cells[1][i] = vertices.cells[1][i] / (1 - vertices.cells[2][i] / this.D);
             projectedVertices.cells[2][i] = 1;
