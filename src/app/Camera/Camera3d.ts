@@ -8,13 +8,13 @@ import { transition } from '@angular/core';
 export class Camera3d {
     // camera characteristics
     public D: number; // distacne between the camera and the screen
-    private N: Vector; // screen normal vector
+    public N: Vector; // screen normal vector
     private T: Vector; // vector to heaven
 
     // camera position
-    public p: number;
-    public q: number;
-    public r: number;
+    // public p: number;
+    // public q: number;
+    // public r: number;
 
     // view coordinate system center
     private viewXCenter: number;
@@ -29,7 +29,7 @@ export class Camera3d {
     constructor() {
         this.D = 10;
 
-        this.p = this.q = this.r = 10;
+        // this.p = this.q = this.r = 10;
 
         this.viewXCenter = 0;
         this.viewYCenter = 0;

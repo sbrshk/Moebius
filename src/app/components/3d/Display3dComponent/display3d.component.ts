@@ -8,7 +8,6 @@ import { Plotter2d } from '../../../Plotter/Plotter2d';
 import { AffineTransform3d } from '../../../AffineTransform/AffineTransfrom3d';
 
 import { StateService } from '../../state.service';
-import { _, Map } from 'core-js/library/web/timers';
 
 @Component({
     selector: 'display3d-component',
@@ -213,19 +212,19 @@ export class Display3dComponent implements OnInit {
         this.plotter.drawModel(this.projectedModel);
     }
 
-    public applyTransform(transformMatrix: Matrix, model: Model3d): Model3d | any {
-        let _model = new WarframeModel(model.getWarframeModel().getVerticesCount(), model.getWarframeModel().getEdgesCount());
-        let _matrix = new Matrix(3, model.getWarframeModel().getVerticesCount());
-        let _currentMatrix: Matrix = model.getWarframeModel().getVertices();
+    // public applyTransform(transformMatrix: Matrix, model: Model3d): Model3d | any {
+    //     let _model = new WarframeModel(model.getWarframeModel().getVerticesCount(), model.getWarframeModel().getEdgesCount());
+    //     let _matrix = new Matrix(3, model.getWarframeModel().getVerticesCount());
+    //     let _currentMatrix: Matrix = model.getWarframeModel().getVertices();
 
-        _currentMatrix = Matrix.MatrixMatrixMultiply(transformMatrix, _currentMatrix);
+    //     _currentMatrix = Matrix.MatrixMatrixMultiply(transformMatrix, _currentMatrix);
 
-        _matrix = _currentMatrix;
-        _model.setVertices(_matrix);
-        _model.setEdges(model.getWarframeModel().getEdges());
+    //     _matrix = _currentMatrix;
+    //     _model.setVertices(_matrix);
+    //     _model.setEdges(model.getWarframeModel().getEdges());
 
-        return _model;
-    }
+    //     return _model;
+    // }
 
     public reset(): void {
         let _index = this.state.getSelectedItem();

@@ -9,7 +9,7 @@ export class Matrix {
         this.rows = n;
         this.cols = m;
         this.cells = [];
-        for (let i = 0; i < m; i++) {
+        for (let i = 0; i < n; i++) {
             this.cells[i] = [];
         }
     }

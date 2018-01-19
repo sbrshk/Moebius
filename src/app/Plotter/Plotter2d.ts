@@ -9,6 +9,7 @@ export class Plotter2d {
     public scale: number;
     private W: number;
     private H: number;
+    private strokeStyle: string;
 
     constructor(cnvs: HTMLCanvasElement) {
         this.canvas = cnvs;
@@ -22,11 +23,30 @@ export class Plotter2d {
         } else {
             this.scale = this.canvas.width / 20;
         }
+        this.strokeStyle = 'black';
     }
 
     public setResolution(): void {
         this.W = document.documentElement.clientWidth * 0.8;
         this.H = document.documentElement.clientHeight;
+    }
+
+    public setFullResolution(): void {
+        this.W = document.documentElement.clientWidth;
+        this.H = document.documentElement.clientHeight;
+        this.canvas.setAttribute('width', this.W.toString() + 'px');
+        this.canvas.setAttribute('height', this.H.toString() + 'px');
+        this.xCenter = this.canvas.width * 0.5;
+        this.yCenter = this.canvas.height * 0.5;
+        if (this.canvas.height < this.canvas.width) {
+            this.scale = this.canvas.height / 20;
+        } else {
+            this.scale = this.canvas.width / 20;
+        }
+    }
+
+    public setStrokeStyle(strStyle: string): void {
+        this.strokeStyle = strStyle;
     }
 
     public clearCanvas(): void {
@@ -94,7 +114,7 @@ export class Plotter2d {
     public drawModel(model: Model2d): void {
         let ctx = this.canvas.getContext('2d');
         ctx.beginPath();
-        ctx.strokeStyle = 'black';
+        ctx.strokeStyle = this.strokeStyle;
         for (let i = 0; i < model.getEdgesCount(); i++) {
             let _vertexBegin: Vertex = model.getVertex(model.getEdges().cells[i][0] - 1);
             let _vertexEnd: Vertex = model.getVertex(model.getEdges().cells[i][1] - 1);
