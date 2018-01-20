@@ -14,13 +14,9 @@ export class Shapes3d {
         let _pTetrahedron = new PolygonalModel(4, 4);
         let tetrahedronVertices = new Matrix(4, 4);
         tetrahedronVertices.cells = [
-            // [0, 1, 2, 1],
-            // [0, 0, 0, 4 * Math.sqrt(2) / 3],
-            // [0, Math.sqrt(3), 0, Math.sqrt(3) / 3],
             [-2, 2, 0, 0],
             [0, 0, 0, 2 * Math.sqrt(3)],
             [-2 / Math.sqrt(3), -2 / Math.sqrt(3), 4 / Math.sqrt(3), 0],
-            // [0, 0, 0, 2 * Math.sqrt(3)],
             [1, 1, 1, 1]
         ];
         tetrahedronVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.scaling(1.5, 1.5, 1.5), tetrahedronVertices);
@@ -40,16 +36,11 @@ export class Shapes3d {
         let _pOctahedron = new PolygonalModel(6, 8);
         let octahedronVertices = new Matrix(4, 6);
         octahedronVertices.cells = [
-            // [0, 0, 2, 2, 1, 1],
-            // [0, 0, 0, 0, 2, -2],
-            // [0, 2, 2, 0, 1, 1],
             [-2, -2, 2, 2, 0, 0],
             [0, 0, 0, 0, 2 * Math.sqrt(2), -2 * Math.sqrt(2)],
             [-2, 2, 2, -2, 0, 0],
             [1, 1, 1, 1, 1, 1]
         ];
-        // octahedronVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.scaling(1.5, 1.5, 1.5), octahedronVertices);
-        // octahedronVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.translation(-Math.sqrt(2), 0, 0), octahedronVertices);
         let octahedronFaces = new Matrix(8, 3);
         octahedronFaces.cells = [
             [1, 2, 5],
@@ -105,42 +96,43 @@ export class Shapes3d {
         this.Icosahedron = new Model3d();
         let _pIcosahedron = new PolygonalModel(12, 20);
         let icosahedronVertices = new Matrix(4, 12);
-        let d = Math.sqrt(3);
-        let R = 2; //radius
-        icosahedronVertices.cells = [
-            [0, NaN, NaN, NaN, NaN, 0, 0, NaN, NaN, NaN, NaN, 0],
-            [d / 2, d / 2, d / 2, d / 2, d / 2, d, -d / 2, -d / 2, -d / 2, -d / 2, -d / 2, -d],
-            [2, NaN, NaN, NaN, NaN, 0, -2, NaN, NaN, NaN, NaN, 0],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-        ];
-        for (let i = 1; i < 5; i++) {
-            icosahedronVertices.cells[0][i] = icosahedronVertices.cells[0][0] + R * Math.cos(2 * Math.PI * i / 5);
-            icosahedronVertices.cells[2][i] = icosahedronVertices.cells[2][0] + R * Math.cos(2 * Math.PI * i / 5);
-            icosahedronVertices.cells[0][i + 6] = icosahedronVertices.cells[0][6] + R * Math.cos(2 * Math.PI * i / 5);
-            icosahedronVertices.cells[2][i + 6] = icosahedronVertices.cells[2][6] + R * Math.sin(2 * Math.PI * i / 5);
+        for (let i = 0; i < 10; i++) {
+            icosahedronVertices.cells[0][i] = Math.cos(Math.PI * i / 5);
+            icosahedronVertices.cells[1][i] = Math.sin(Math.PI * i / 5);
+            icosahedronVertices.cells[2][i] = Math.pow(- 1, i + 1) * 0.5;
+            icosahedronVertices.cells[3][i] = 1;
         }
+        icosahedronVertices.cells[0][10] = 0;
+        icosahedronVertices.cells[0][11] = 0;
+        icosahedronVertices.cells[2][10] = - 1.2;
+        icosahedronVertices.cells[2][11] = 1.2;
+        icosahedronVertices.cells[1][10] = 0;
+        icosahedronVertices.cells[1][11] = 0;
+        icosahedronVertices.cells[3][10] = 1;
+        icosahedronVertices.cells[3][11] = 1;
+        icosahedronVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.scaling(3, 3, 3), icosahedronVertices);
         let icosahedronFaces = new Matrix(20, 3);
         icosahedronFaces.cells = [
-            [1, 2, 6],
-            [2, 3, 6],
-            [3, 4, 6],
+            [1, 11, 3],
+            [3, 11, 5],
+            [5, 11, 7],
+            [7, 11, 9],
+            [9, 11, 1],
+            [1, 2, 3],
+            [2, 3, 4],
+            [3, 4, 5],
             [4, 5, 6],
-            [1, 5, 6],
-            [4, 3, 7],
-            [7, 3, 11],
-            [3, 11, 2],
-            [11, 2, 10],
-            [2, 10, 1],
-            [10, 1, 9],
-            [1, 9, 5],
-            [9, 5, 8],
-            [5, 8, 4],
-            [8, 4, 7],
-            [7, 8, 12],
-            [8, 9, 12],
-            [9, 10, 12],
-            [10, 11, 12],
-            [7, 11, 12]
+            [5, 6, 7],
+            [6, 7, 8],
+            [7, 8, 9],
+            [8, 9, 10],
+            [9, 1, 10],
+            [10, 1, 2],
+            [2, 12, 10],
+            [4, 12, 2],
+            [6, 12, 4],
+            [8, 12, 6],
+            [10, 12, 8]
         ];
         _pIcosahedron.setVertices(icosahedronVertices);
         _pIcosahedron.setFaces(icosahedronFaces);
