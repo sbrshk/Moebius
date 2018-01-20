@@ -20,7 +20,7 @@ export class Shapes3d {
             [-2, 2, 0, 0],
             [0, 0, 0, 2 * Math.sqrt(3)],
             [-2 / Math.sqrt(3), -2 / Math.sqrt(3), 4 / Math.sqrt(3), 0],
-            [0, 0, 0, 2 * Math.sqrt(3)],
+            // [0, 0, 0, 2 * Math.sqrt(3)],
             [1, 1, 1, 1]
         ];
         tetrahedronVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.scaling(1.5, 1.5, 1.5), tetrahedronVertices);
@@ -77,7 +77,7 @@ export class Shapes3d {
             [0, 0, 1, 1, -1, -1, 0, 0, b, -b],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         ];
-        bipyramidVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.scaling(2, 2, 2), bipyramidVertices);
+        bipyramidVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.scaling(1.5, 1.5, 1.5), bipyramidVertices);
         let bipyramidFaces = new Matrix(16, 3);
         bipyramidFaces.cells = [
             [1, 3, 4],
