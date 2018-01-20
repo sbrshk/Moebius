@@ -98,18 +98,15 @@ export class Shapes3d {
         let icosahedronVertices = new Matrix(4, 12);
         for (let i = 0; i < 10; i++) {
             icosahedronVertices.cells[0][i] = Math.cos(Math.PI * i / 5);
-            icosahedronVertices.cells[2][i] = Math.sin(Math.PI * i / 5);
             icosahedronVertices.cells[1][i] = Math.pow(- 1, i + 1) * 0.5;
+            icosahedronVertices.cells[2][i] = Math.sin(Math.PI * i / 5);
             icosahedronVertices.cells[3][i] = 1;
         }
-        icosahedronVertices.cells[0][10] = 0;
-        icosahedronVertices.cells[0][11] = 0;
+        icosahedronVertices.cells[0][10] = icosahedronVertices.cells[0][11] = 0;
         icosahedronVertices.cells[1][10] = - 1.2;
         icosahedronVertices.cells[1][11] = 1.2;
-        icosahedronVertices.cells[2][10] = 0;
-        icosahedronVertices.cells[2][11] = 0;
-        icosahedronVertices.cells[3][10] = 1;
-        icosahedronVertices.cells[3][11] = 1;
+        icosahedronVertices.cells[2][10] = icosahedronVertices.cells[2][11] = 0;
+        icosahedronVertices.cells[3][10] = icosahedronVertices.cells[3][11] = 1;
         icosahedronVertices = Matrix.MatrixMatrixMultiply(AffineTransform3d.scaling(3, 3, 3), icosahedronVertices);
         let icosahedronFaces = new Matrix(20, 3);
         icosahedronFaces.cells = [
