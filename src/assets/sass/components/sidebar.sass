@@ -15,6 +15,7 @@
 .router-tab 
     text-decoration: none
     color: #888
+    transition: 0.1s ease
 
 .sidebar-subheader:hover 
     background-color: $secondary-color-light
@@ -28,15 +29,12 @@
 
 .sidebar-btn 
     padding: 15px
-
-
-.sidebar-btn:hover 
-    background-color: $secondary-color-light
-
-
-.sidebar-btn:active 
-    background-color: $secondary-color-dark
-    color: white
+    transition: 0.1s ease
+    &:hover 
+        background-color: $secondary-color-light
+    &:active 
+        background-color: $secondary-color-dark
+        color: white
 
 
 .sidebar-subheader, .sidebar-subheader-disabled 
@@ -118,17 +116,14 @@
     width: 80px
     background-color: $secondary-color
     color: white
-
-
-.btn:hover 
-    background-color: $secondary-color-light
-    color: black
-    cursor: pointer
-
-
-.btn:active 
-    background-color: $secondary-color-dark
-    color: white
+    transition: 0.1s ease
+    &:hover 
+        background-color: $secondary-color-light
+        color: black
+        cursor: pointer
+    &:active 
+        background-color: $secondary-color-dark
+        color: white
 
 
 .btn, .info-btn 
