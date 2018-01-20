@@ -32,7 +32,7 @@ export class StartpageComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.canvas = document.getElementById('startCanvas') as HTMLCanvasElement;
         this.plotter = new Plotter2d(this.canvas);
-        this.model3d = this.shapes.getPolyhedron(7);
+        this.model3d = this.shapes.getPolyhedron(6);
         this.model3d.setWarframeModel(this.model3d.convertModel(this.model3d.getPolygonalModel()));
         this.model = this.translateModel(this.model3d);
         this.plotter.setFullResolution();
@@ -89,7 +89,7 @@ export class StartpageComponent implements OnInit, OnDestroy {
             document.getElementById('startPage').className = 'animated fadeOut';
             setTimeout(() => {
                 this.state.leaveStartPage();
-            }, 700);
+            }, 500);
         }, 500);
     }
 }

@@ -143,8 +143,8 @@ export class Shapes3d {
         switch (index) {
             case 4: return this.Tetrahedron;
             case 5: return this.Octahedron;
-            case 6: return this.Bipyramid;
-            case 7: return this.Icosahedron;
+            case 6: return this.Icosahedron;
+            case 7: return this.Bipyramid;
             default: return -1;
         }
     }

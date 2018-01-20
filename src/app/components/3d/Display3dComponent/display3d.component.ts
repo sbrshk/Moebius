@@ -123,7 +123,7 @@ export class Display3dComponent implements OnInit {
                         break;
                     }
                     // bipyramid
-                    case 6: {
+                    case 7: {
                         x1 = this.currentModel.getWarframeModel().getVertices().cells[0][0];
                         x2 = this.currentModel.getWarframeModel().getVertices().cells[0][1];
                         y1 = this.currentModel.getWarframeModel().getVertices().cells[1][0];
@@ -133,7 +133,7 @@ export class Display3dComponent implements OnInit {
                         break;
                     }
                     // icosahedron
-                    case 7: {
+                    case 6: {
                         x1 = this.currentModel.getWarframeModel().getVertices().cells[0][10];
                         x2 = this.currentModel.getWarframeModel().getVertices().cells[0][11];
                         y1 = this.currentModel.getWarframeModel().getVertices().cells[1][10];
