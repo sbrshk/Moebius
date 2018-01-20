@@ -2,8 +2,8 @@
   <a routerLink="/2d"><div class="router-tab" style="border-right: 1px solid #999; width: calc(50vw - 0.5px);">2d</div></a>
   <a routerLink="/3d"><div class="router-tab" style="width: calc(50vw - 0.5px);">3d</div></a>
 </div> -->
-<sidebar-component *ngIf="!startPage"></sidebar-component>
-<div class="workspace" *ngIf="!startPage">
+<sidebar-component *ngIf="!startPage" class="animated fadeIn"></sidebar-component>
+<div class="workspace" *ngIf="!startPage" class="animated fadeIn">
   <router-outlet></router-outlet>
 </div>
-<startpage-component *ngIf="startPage"></startpage-component>
+<startpage-component *ngIf="startPage" id="startPage"></startpage-component>

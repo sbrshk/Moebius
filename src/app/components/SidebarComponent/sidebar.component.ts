@@ -50,7 +50,7 @@ export class SidebarComponent {
     }
 
     public selectItem(index: number): void {
-        this.state.setSleectedItem(index);
+        this.state.setSelectedItem(index);
         let _btns = document.getElementsByClassName('sidebar-btn') as HTMLCollectionOf<HTMLElement>;
         for (let i = 0; i < _btns.length; i++) {
             _btns[i].style.backgroundColor = '';

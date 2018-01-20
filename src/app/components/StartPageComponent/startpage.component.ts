@@ -8,6 +8,8 @@ import { Plotter2d } from '../../Plotter/Plotter2d';
 import { Matrix } from '../../Matrix/Matrix';
 import { setInterval, setTimeout } from 'core-js/library/web/timers';
 
+import { StateService } from '../state.service';
+
 @Component({
     selector: 'startpage-component',
     templateUrl: 'startpage.component.html',
@@ -22,7 +24,7 @@ export class StartpageComponent implements OnInit, OnDestroy {
     private plotter: Plotter2d;
     private canvas: HTMLCanvasElement;
 
-    constructor() {
+    constructor(private state: StateService) {
         this.shapes = new Shapes3d();
         this.camera = new Camera3d();
     }
@@ -53,7 +55,6 @@ export class StartpageComponent implements OnInit, OnDestroy {
     }
 
     private translateModel(model: Model3d): Model2d | any {
-        // model.setWarframeModel(model.convertModel(model.getPolygonalModel()));
         let model2d = new Model2d(model.getWarframeModel().getVerticesCount(), model.getWarframeModel().getEdgesCount());
         model2d.setEdges(model.getWarframeModel().getEdges());
         let _translatedVertices = this.camera.projectVertices(model.getWarframeModel().getVertices(), model.getWarframeModel().getVerticesCount());
@@ -67,21 +68,28 @@ export class StartpageComponent implements OnInit, OnDestroy {
         _transformMatrix = Matrix.MatrixMatrixMultiply(AffineTransform3d.rotationOz(0.01), _transformMatrix);
         let _currentVertices = this.model3d.getWarframeModel().getVertices();
         let _newVertices = Matrix.MatrixMatrixMultiply(_transformMatrix, _currentVertices);
-        // console.log(_currentVertices);
-        // console.log(_newVertices);
         let _verticesCount = this.model3d.getWarframeModel().getVerticesCount();
         let _edgesCount = this.model3d.getWarframeModel().getEdgesCount();
         let _newWFModel = new WarframeModel(_verticesCount, _edgesCount);
         _newWFModel.setEdges(this.model3d.getWarframeModel().getEdges());
         _newWFModel.setVertices(_newVertices);
-        // console.log(_newWFModel.getVertices());
-        // console.log(this.model3d.getPolygonalModel().getVertices());
         this.model3d.setWarframeModel(_newWFModel);
-        // console.log(this.model3d.getPolygonalModel().getVertices());
         this.model = this.translateModel(this.model3d);
         this.plotter.clearCanvas();
-        // this.plotter.draw3dAxis(this.camera.viewI, this.camera.viewJ, this.camera.viewK, this.camera.D);
         this.plotter.drawModel(this.model);
-        // console.log(this.model.getVertices());
+    }
+
+    public goTo(): void {
+        let _elements = document.getElementsByClassName('animated');
+        for (let i = 0; i < _elements.length; i++) {
+            _elements[i].classList.remove('fadeIn');
+            _elements[i].classList.add('fadeOut');
+        }
+        setTimeout(() => {
+            document.getElementById('startPage').className = 'animated fadeOut';
+            setTimeout(() => {
+                this.state.leaveStartPage();
+            }, 1000);
+        }, 500);
     }
 }
