@@ -116,7 +116,17 @@ export class Plotter2d {
     }
 
     public translateYCoordBack(coord): number {
-        return (coord + this.yCenter) / this.scale;
+        return ( - coord + this.yCenter) / this.scale;
+    }
+
+    public drawLine(x1: number, y1: number, x2: number, y2: number): void {
+        let ctx = this.canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.strokeStyle = this.strokeStyle;
+        ctx.moveTo(this.translateXCoord(x1), this.translateYCoord(y1));
+        ctx.lineTo(this.translateXCoord(x2), this.translateYCoord(y2));
+        ctx.stroke();
+        console.log('DRAW LINE: ' + x1 + ' ' + y1 + ' to ' + x2 + ' ' + y2);
     }
 
     public drawModel(model: Model2d): void {

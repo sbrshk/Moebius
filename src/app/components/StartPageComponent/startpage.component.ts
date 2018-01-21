@@ -7,6 +7,7 @@ import { Camera3d } from '../../Camera/Camera3d';
 import { Plotter2d } from '../../Plotter/Plotter2d';
 import { Matrix } from '../../Matrix/Matrix';
 import { setInterval, setTimeout } from 'core-js/library/web/timers';
+import { InteractiveCanvas } from './interactiveCanvas';
 
 import { StateService } from '../state.service';
 
@@ -23,6 +24,8 @@ export class StartpageComponent implements OnInit, OnDestroy {
     private shapes: Shapes3d;
     private plotter: Plotter2d;
     private canvas: HTMLCanvasElement;
+    private intCanvas: HTMLCanvasElement;
+    private interactiveCanvas: InteractiveCanvas;
 
     constructor(private state: StateService) {
         this.shapes = new Shapes3d();
@@ -31,6 +34,8 @@ export class StartpageComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.canvas = document.getElementById('startCanvas') as HTMLCanvasElement;
+        this.intCanvas = document.getElementById('intStartCanvas') as HTMLCanvasElement;
+        this.interactiveCanvas = new InteractiveCanvas(this.intCanvas);
         this.plotter = new Plotter2d(this.canvas);
         this.model3d = this.shapes.getPolyhedron(6);
         this.model3d.setWarframeModel(this.model3d.convertModel(this.model3d.getPolygonalModel()));
@@ -46,6 +51,7 @@ export class StartpageComponent implements OnInit, OnDestroy {
 
         setInterval(() => {
             this.rotateModel();
+            // this.plotter.drawLine(-12, -12, 12, 12)
         }, 15);
     }
 
@@ -91,5 +97,16 @@ export class StartpageComponent implements OnInit, OnDestroy {
                 this.state.leaveStartPage();
             }, 500);
         }, 500);
+    }
+
+    public onMouseMove(event: Event | any): void {
+        let _rect = this.canvas.getBoundingClientRect();
+        let _scaleX = this.canvas.width / _rect.width;
+        let _scaleY = this.canvas.height / _rect.height;
+        let _xCoord = this.plotter.translateXCoordBack((event.clientX - _rect.left) * _scaleX);
+        let _yCoord = this.plotter.translateYCoordBack((event.clientY - _rect.top) * _scaleY);
+        // console.log(_xCoord + ' ' + _yCoord);
+        this.interactiveCanvas.generateCursorLines(_xCoord, _yCoord);
+        this.interactiveCanvas.drawCursorLines(_xCoord, _yCoord);
     }
 }

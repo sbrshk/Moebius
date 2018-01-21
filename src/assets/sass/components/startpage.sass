@@ -10,12 +10,15 @@
     background-color: $secondary-color-dark
     color: #ffffff
 
-#startCanvas 
+#startCanvas, #intStartCanvas
     position: absolute
     width: 100vw
     height: 100vh
     top: 0
     left: 0
+
+#intStartCanvas
+    z-index: 3
 
 .quote
     position: absolute
@@ -42,7 +45,7 @@
     top: 70vh
     right: 20vw
     font-size: 25pt
-    z-index: 2
+    z-index: 4
     transition: 0.1s ease
     &:hover
         color: $secondary-color-light
