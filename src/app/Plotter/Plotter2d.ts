@@ -123,10 +123,11 @@ export class Plotter2d {
         let ctx = this.canvas.getContext('2d');
         ctx.beginPath();
         ctx.strokeStyle = this.strokeStyle;
+        ctx.lineWidth = 0.15;
         ctx.moveTo(this.translateXCoord(x1), this.translateYCoord(y1));
         ctx.lineTo(this.translateXCoord(x2), this.translateYCoord(y2));
         ctx.stroke();
-        console.log('DRAW LINE: ' + x1 + ' ' + y1 + ' to ' + x2 + ' ' + y2);
+        // console.log('DRAW LINE: ' + x1 + ' ' + y1 + ' to ' + x2 + ' ' + y2);
     }
 
     public drawModel(model: Model2d): void {
