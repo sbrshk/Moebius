@@ -134,12 +134,12 @@ export class Display3dComponent implements OnInit {
                     }
                     // icosahedron
                     case 6: {
-                        x1 = this.currentModel.getWarframeModel().getVertices().cells[0][10];
-                        x2 = this.currentModel.getWarframeModel().getVertices().cells[0][11];
-                        y1 = this.currentModel.getWarframeModel().getVertices().cells[1][10];
-                        y2 = this.currentModel.getWarframeModel().getVertices().cells[1][11];
-                        z1 = this.currentModel.getWarframeModel().getVertices().cells[2][10];
-                        z2 = this.currentModel.getWarframeModel().getVertices().cells[2][11];
+                        x2 = this.currentModel.getWarframeModel().getVertices().cells[0][10];
+                        x1 = this.currentModel.getWarframeModel().getVertices().cells[0][11];
+                        y2 = this.currentModel.getWarframeModel().getVertices().cells[1][10];
+                        y1 = this.currentModel.getWarframeModel().getVertices().cells[1][11];
+                        z2 = this.currentModel.getWarframeModel().getVertices().cells[2][10];
+                        z1 = this.currentModel.getWarframeModel().getVertices().cells[2][11];
                         break;
                     }
                 }
