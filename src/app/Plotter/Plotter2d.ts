@@ -7,8 +7,8 @@ export class Plotter2d {
     public xCenter: number;
     public yCenter: number;
     public scale: number;
-    private W: number;
-    private H: number;
+    public W: number;
+    public H: number;
     private strokeStyle: string;
 
     constructor(cnvs: HTMLCanvasElement) {
@@ -109,6 +109,14 @@ export class Plotter2d {
 
     public translateYCoord(coord): number {
         return this.yCenter - coord * this.scale;
+    }
+
+    public translateXCoordBack(coord): number {
+        return (coord - this.xCenter) / this.scale;
+    }
+
+    public translateYCoordBack(coord): number {
+        return (coord + this.yCenter) / this.scale;
     }
 
     public drawModel(model: Model2d): void {
