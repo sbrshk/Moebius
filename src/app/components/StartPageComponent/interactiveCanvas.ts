@@ -27,7 +27,7 @@ export class InteractiveCanvas {
         this.cursorY = 0;
 
         // init points
-        this.pointsCount = 250;
+        this.pointsCount = 170;
         this.points = new Matrix(2, this.pointsCount);
         for (let i = 0; i < this.pointsCount; i++) {
             this.points.cells[0][i] = this.plotter.translateXCoordBack(Math.random() * this.plotter.W);
