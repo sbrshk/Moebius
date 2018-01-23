@@ -44,15 +44,9 @@ export class StartpageComponent implements OnInit, OnDestroy {
         this.plotter.setStrokeStyle('white');
         this.plotter.drawModel(this.model);
 
-        // setTimeout(() => {
-        //     this.rotateModel();
-        // }, 500);
-        // this.rotateModel();
-
         setInterval(() => {
             this.rotateModel();
-            // this.plotter.drawLine(-12, -12, 12, 12)
-        }, 15);
+        }, 20);
     }
 
 
@@ -82,6 +76,7 @@ export class StartpageComponent implements OnInit, OnDestroy {
         this.model3d.setWarframeModel(_newWFModel);
         this.model = this.translateModel(this.model3d);
         this.plotter.clearCanvas();
+        this.plotter.setLineWidth(2);
         this.plotter.drawModel(this.model);
     }
 
@@ -105,7 +100,7 @@ export class StartpageComponent implements OnInit, OnDestroy {
         let _scaleY = this.canvas.height / _rect.height;
         let _xCoord = this.plotter.translateXCoordBack((event.clientX - _rect.left) * _scaleX);
         let _yCoord = this.plotter.translateYCoordBack((event.clientY - _rect.top) * _scaleY);
-        // console.log(_xCoord + ' ' + _yCoord);
+        this.interactiveCanvas.setCursorPosition(_xCoord, _yCoord);
         this.interactiveCanvas.generateCursorLines(_xCoord, _yCoord);
         this.interactiveCanvas.drawCursorLines(_xCoord, _yCoord);
     }
