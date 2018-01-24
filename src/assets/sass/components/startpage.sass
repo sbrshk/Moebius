@@ -6,8 +6,12 @@
     height: 100vh
     top: 0
     left: 0
-    // +background-image(linear-gradient(to bottom, $secondary-color-dark, $secondary-color-light))
     background-color: $secondary-color-dark
+    background-image: url('../../images/bryan-goff-360297.jpg')
+    // background-blend-mode: darken
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
     color: #ffffff
 
 #startCanvas, #intStartCanvas
@@ -48,7 +52,7 @@
     z-index: 4
     transition: 0.2s ease
     &:hover
-        color: $secondary-color-light
+        color: $secondary-color
         cursor: pointer
     &:active
-        color: $secondary-color
+        color: $secondary-color-dark

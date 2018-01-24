@@ -46,7 +46,7 @@ export class StartpageComponent implements OnInit, OnDestroy {
 
         setInterval(() => {
             this.rotateModel();
-        }, 20);
+        }, 30);
     }
 
 
@@ -76,7 +76,7 @@ export class StartpageComponent implements OnInit, OnDestroy {
         this.model3d.setWarframeModel(_newWFModel);
         this.model = this.translateModel(this.model3d);
         this.plotter.clearCanvas();
-        this.plotter.setLineWidth(2);
+        this.plotter.setLineWidth(3);
         this.plotter.drawModel(this.model);
     }
 

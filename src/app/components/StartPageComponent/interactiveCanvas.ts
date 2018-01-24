@@ -21,13 +21,13 @@ export class InteractiveCanvas {
         this.plotter = new Plotter2d(this.canvas);
         this.plotter.setFullResolution();
         this.plotter.setStrokeStyle('white');
-        this.plotter.setLineWidth(0.15);
+        this.plotter.setLineWidth(0.5);
         this.maxDistance = 3;
         this.cursorX = 0;
         this.cursorY = 0;
 
         // init points
-        this.pointsCount = 170;
+        this.pointsCount = 125;
         this.points = new Matrix(2, this.pointsCount);
         for (let i = 0; i < this.pointsCount; i++) {
             this.points.cells[0][i] = this.plotter.translateXCoordBack(Math.random() * this.plotter.W);
