@@ -22,7 +22,7 @@ export class InteractiveCanvas {
         this.plotter.setFullResolution();
         this.plotter.setStrokeStyle('white');
         this.plotter.setLineWidth(0.35);
-        this.maxDistance = 2.5;
+        this.maxDistance = 2;
         this.cursorX = 0;
         this.cursorY = 0;
 
@@ -105,7 +105,7 @@ export class InteractiveCanvas {
                 let y1 = this.points.cells[1][i];
                 let x2 = this.points.cells[0][j];
                 let y2 = this.points.cells[1][j];
-                if (this.calculateDistance(x1, y1, x2, y2) < this.maxDistance * 0.75) {
+                if (this.calculateDistance(x1, y1, x2, y2) <= this.maxDistance) {
                     this.lines[this.linesCount] = [i, j];
                     this.linesCount++;
                 }
