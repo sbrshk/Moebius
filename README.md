@@ -1,26 +1,42 @@
-<p align="center">
-    <img width="300" src="https://github.com/cellardoor42/AffineTransform/blob/master/src/assets/images/icon500x500.png?raw=true" align="center">
-    <h1>AffineTransform</h1>
-<p>
+![](https://github.com/cellardoor42/AffineTransform/blob/master/src/assets/images/icon300x300.png?raw=true)
 
 # About the project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
+**AffineTransform** grew up from an academic project for computer graphics course. It was supplemented by intuitive UI based on material design principles and comprehensive theoretical reference (now in progress).
 
-## Development server
+### Why Angular?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Being an one-page web application, **AffineTransform** has a structure which is based at the component scheme. **Angular 2** is one of the best front-end frameworks implementing component based project structure and delivering app-like experiences.
 
-## Build
+The app loads quickly with the Component Router, which delivers automatic code-splitting so users only load code required to render the view they request.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+One of the most important features of Angular 2 is **TypeScript**. In modern web-development it is the best way of building applications with non-trivial structure and complex logic.  It is indispensable in implementing some math based things which mostly require object oriented paradigm.
 
 
+
+# Features
+
+- common 2d/3d projective and affine transformations visualization
+- intuitive interface and control
+- setting up custom camera position in 3d (wip)
+- wide theoretical reference with all required math basics (wip)
+- programming features and tips wiki (wip)
+
+
+
+# Setup and launch
+
+To launch the app clone **master** repository and run
+
+``` shell
+npm install
+npm start
+```
+
+(**node** should be installed)
+
+
+
+# License
+
+**AffineTransform** is delivered under the MIT license.
