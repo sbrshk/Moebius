@@ -1,4 +1,8 @@
-![](https://github.com/cellardoor42/AffineTransform/blob/master/src/assets/images/icon300x300.png?raw=true)
+<p align="center">
+
+<img src="https://github.com/cellardoor42/AffineTransform/blob/master/src/assets/images/icon300x300.png?raw=true">
+
+</p>
 
 # About the project
 
