@@ -1,6 +1,6 @@
 import { Plotter2d } from '../../Plotter/Plotter2d';
 import { Matrix } from '../../Matrix/Matrix';
-import { setInterval } from 'core-js/library/web/timers';
+import { setInterval, setTimeout } from 'core-js/library/web/timers';
 
 export class InteractiveCanvas {
     private canvas: HTMLCanvasElement;
@@ -21,18 +21,21 @@ export class InteractiveCanvas {
         this.plotter = new Plotter2d(this.canvas);
         this.plotter.setFullResolution();
         this.plotter.setStrokeStyle('white');
-        this.plotter.setLineWidth(0.5);
-        this.maxDistance = 3;
+        this.plotter.setLineWidth(0.35);
+        this.maxDistance = 2.5;
         this.cursorX = 0;
         this.cursorY = 0;
 
         // init points
-        this.pointsCount = 125;
+        this.pointsCount = 300;
         this.points = new Matrix(2, this.pointsCount);
         for (let i = 0; i < this.pointsCount; i++) {
             this.points.cells[0][i] = this.plotter.translateXCoordBack(Math.random() * this.plotter.W);
             this.points.cells[1][i] = this.plotter.translateYCoordBack(Math.random() * this.plotter.H);
         }
+
+        // setTimeout(() => {}, 100);
+
         this.generateLines();
         this.drawLines();
 
@@ -119,7 +122,7 @@ export class InteractiveCanvas {
         this.cursorLinesCount = 0;
         this.connectedPoints = new Set<number>();
         for (let i = 0; i < this.pointsCount; i++) {
-            if (this.calculateDistance(xPosition, yPosition, this.points.cells[0][i], this.points.cells[1][i]) < this.maxDistance) {
+            if (this.calculateDistance(xPosition, yPosition, this.points.cells[0][i], this.points.cells[1][i]) < this.maxDistance * 1.25) {
                 this.cursorLinesCount++;
                 this.connectedPoints.add(i);
             }
