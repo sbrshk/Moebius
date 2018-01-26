@@ -3,36 +3,18 @@
 **Модель** представляет собой объект следующей структуры:
 
 - *карта вершин (матрица вершин)* - вещественная матрица, столбцы которой содержат мировые однородные координаты соответствующих вершин:
-  $$
-  Vertices =   \begin{bmatrix}
-      x_1 & x_2 & x_3 & ... & x_m \\
-      y_1 & y_2 & y_3 & ... & y_m \\
-      1 & 1 & 1 & ... & 1
-    \end{bmatrix}
-  $$
+
+  <p align="center"><img src="https://github.com/cellardoor42/AffineTransform/blob/master/src/app/components/Reference/docs/ru/math/2d/1.gif?raw=true"></p>
 
 - *карта ребер (матрица ребер)* - может быть задана одним из двух способов:
 
   - целочисленная матрица, строки которй содержат пары номеров вершин, соединенных ребрами:
-    $$
-    Edges =   \begin{bmatrix}
-        v_i & v_j \\
-        v_k & v_l \\
-        \vdots & \vdots \\
-        v_p & v_q
-      \end{bmatrix}
-    $$
 
-  - матрица смежности:
-    $$
-    Edges =   \begin{bmatrix}
-        1 & 0 & 0 & ... & 1 & 0 & 1 \\
-        0 & 0 & 1 & ... & 0 & 1 & 1 \\
-        0 & 1 & 1 & ... & 1 & 0 & 0 \\
-        \vdots & & & \ddots  & & & \vdots \\
-        1 & 1 & 0 & ... & 1 & 0 & 1
-      \end{bmatrix}
-    $$
+    <p align="center"><img src="https://github.com/cellardoor42/AffineTransform/blob/master/src/app/components/Reference/docs/ru/math/2d/2.gif?raw=true"></p>
+
+  - матрица смежности
+
+    ​
 
 
 > В данной реализации используется способ задания модели с картой ребер в виде пар номеров вершин.
