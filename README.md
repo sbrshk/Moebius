@@ -12,7 +12,7 @@
 
 ### Why Angular?
 
-Being an one-page web application, **AffineTransform** has a structure which is based at the component scheme. **Angular 2** is one of the best front-end frameworks implementing component based project structure and delivering app-like experiences.
+Being an one-page web application, **AffineTransform** has a structure which is based at the component scheme. **Angular** is one of the best front-end frameworks implementing component based project structure and delivering app-like experiences.
 
 The app loads quickly with the Component Router, which delivers automatic code-splitting so users only load code required to render the view they request.
 
@@ -39,7 +39,9 @@ npm install
 npm start
 ```
 
-(**node** should be installed)
+(**node** should be installed).
+
+Navigate to `localhost:4200`
 
 
 
