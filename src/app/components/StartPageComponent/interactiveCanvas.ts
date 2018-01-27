@@ -132,13 +132,9 @@ export class InteractiveCanvas {
     public drawCursorLines(xPosition: number, yPosition: number): void {
         this.plotter.clearCanvas();
         this.drawLines();
-        // this.plotter.setStrokeStyle('white');
         this.connectedPoints.forEach(index => {
-            // console.log(index)
             let x = this.points.cells[0][index];
             let y = this.points.cells[1][index];
-            console.log(xPosition + ' ' + yPosition);
-            console.log(x + ' ' + y);
             this.plotter.drawLine(xPosition, yPosition, x, y);
         });
     }

@@ -2,19 +2,12 @@ import { Vector } from '../Matrix/Vector';
 import { Matrix } from '../Matrix/Matrix';
 import { Vertex } from '../Model/Model2d';
 import { Vertex3d } from '../Model/Model3d';
-import { Map } from 'core-js/library/web/timers';
-import { transition } from '@angular/core';
 
 export class Camera3d {
     // camera characteristics
     public D: number; // distacne between the camera and the screen
     public N: Vector; // screen normal vector
     private T: Vector; // vector to heaven
-
-    // camera position
-    // public p: number;
-    // public q: number;
-    // public r: number;
 
     // view coordinate system center
     private viewXCenter: number;
@@ -29,14 +22,13 @@ export class Camera3d {
     constructor() {
         this.D = 10;
 
-        // this.p = this.q = this.r = 10;
-
         this.viewXCenter = 0;
         this.viewYCenter = 0;
         this.viewZCenter = 0;
 
         this.N = new Vector(3);
         this.N.elements = [-0.5, 0.7, 3];
+        // this.N.elements = [0, 0, 1];
 
         this.T = new Vector(3);
         this.T.elements = [0, 1, 0];
