@@ -3,8 +3,9 @@
         <h1>Select language</h1>
     </div>
     <div *ngIf="selectedLang === 0">
-        <div class="ref-navigation"></div>
-        <div class="ref-display"></div>
+        <!-- <div class="ref-navigation"></div>
+        <div class="ref-display"></div> -->
+        <div class="ref-placeholder">Work in progress...</div>
     </div>
     <div *ngIf="selectedLang === 1">
         <div class="ref-navigation">
@@ -37,14 +38,15 @@
         <div class="ref-display">
             <div class="ref-display-placeholder" *ngIf="math && !twoD && !threeD">
                 <h1>Теоретическая справка</h1>
+                <p><b>На основе материалов курса "Математические основы компьютерной графики" Королькова О.Г.</b></p>
                 <p>
-                    На основе материалов курса "Математические основы компьютерной графики" Королькова О.Г.<br>
                     Воронежский Государственный университет<br>
                     Факультет прикладной математики, информатики и механики<br>
                     2017
                 </p>
             </div>
             <h1 class="ref-header" *ngIf="math && twoD && !threeD">Основы визуализации двухмерных сцен</h1>
+            <h1 class="ref-header" *ngIf="math && !twoD && threeD">Основы визуализации трехмерных сцен</h1>
             <markdown *ngIf="paragraphOpen" [path]="mdPath"></markdown>
         </div>
     </div>
