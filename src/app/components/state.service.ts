@@ -25,4 +25,9 @@ export class StateService {
         this.startPageOpen = false;
         this.startPageLeft.emit(this.startPageOpen);
     }
+
+    public goToStartPage(): void {
+        this.startPageOpen = true;
+        this.startPageLeft.emit(this.startPageOpen);
+    }
 }

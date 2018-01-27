@@ -65,4 +65,8 @@ export class SidebarComponent {
             _btns[index].style.color = 'white';
         }
     }
+
+    public goBack(): void {
+        this.state.goToStartPage();
+    }
 }

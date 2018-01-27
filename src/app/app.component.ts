@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.startPage = true;
     this.state.startPageLeft.subscribe((value) => {
-      this.startPage = false;
+      this.startPage = value;
     });
   }
 }
