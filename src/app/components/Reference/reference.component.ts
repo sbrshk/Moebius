@@ -65,6 +65,7 @@ export class ReferenceComponent implements OnInit {
         this.prog = false;
         this.twoD = this.threeD = false;
         this.mdSection = 'math/';
+        this.resetMdPath();
     }
 
     public selectProg(): void {
@@ -72,6 +73,7 @@ export class ReferenceComponent implements OnInit {
         this.prog = true;
         this.twoD = this.threeD = false;
         this.mdSection = 'prog/';
+        this.resetMdPath();
     }
 
     public switchTwoDThreeD(value: boolean): void {
@@ -82,6 +84,7 @@ export class ReferenceComponent implements OnInit {
         } else {
             this.mdSubsection = '3d/';
         }
+        this.resetMdPath();
     }
 
     public setParagraph(paragraph: string): void {

@@ -35,7 +35,16 @@
             </div>
         </div>
         <div class="ref-display">
-            <!-- <div Markdown path="https://raw.githubusercontent.com/cellardoor42/AffineTransform/master/src/app/components/Reference/docs/ru/math/2d/models.md"></div> -->
+            <div class="ref-display-placeholder" *ngIf="math && !twoD && !threeD">
+                <h1>Теоретическая справка</h1>
+                <p>
+                    На основе материалов курса "Математические основы компьютерной графики" Королькова О.Г.<br>
+                    Воронежский Государственный университет<br>
+                    Факультет прикладной математики, информатики и механики<br>
+                    2017
+                </p>
+            </div>
+            <h1 class="ref-header" *ngIf="math && twoD && !threeD">Основы визуализации двухмерных сцен</h1>
             <markdown [path]="mdPath"></markdown>
         </div>
     </div>
