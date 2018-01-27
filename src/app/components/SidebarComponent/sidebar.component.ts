@@ -8,6 +8,7 @@ import { Shapes2d } from '../../Shapes/Shapes2d';
 import { Shapes3d } from '../../Shapes/Shapes3d';
 
 import { StateService } from '../state.service';
+import { setTimeout } from 'core-js/library/web/timers';
 
 @Component({
     selector: 'sidebar-component',
@@ -67,6 +68,10 @@ export class SidebarComponent {
     }
 
     public goBack(): void {
-        this.state.goToStartPage();
+        document.getElementById('workspace-wrapper').classList.remove('fadeIn');
+        document.getElementById('workspace-wrapper').classList.add('fadeOut');
+        setTimeout(() => {
+            this.state.goToStartPage();
+        }, 1000);
     }
 }

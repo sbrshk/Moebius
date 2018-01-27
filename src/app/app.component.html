@@ -2,7 +2,7 @@
   <a routerLink="/2d"><div class="router-tab" style="border-right: 1px solid #999; width: calc(50vw - 0.5px);">2d</div></a>
   <a routerLink="/3d"><div class="router-tab" style="width: calc(50vw - 0.5px);">3d</div></a>
 </div> -->
-<div class="animated fadeIn" *ngIf="!startPage">
+<div id="workspace-wrapper" class="animated fadeIn" *ngIf="!startPage">
     <sidebar-component></sidebar-component>
     <div class="workspace">
         <router-outlet></router-outlet>
