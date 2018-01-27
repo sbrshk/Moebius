@@ -62,8 +62,10 @@
             <label>ru</label>
         </div>
     </div>
-    <div class="divider" style="height: inherit;"></div>
-    <div class="sidebar-btn" style="position: fixed; bottom: 0; width: calc(20vw - 60px); text-align: center" (click)="showHelp()">Help</div>
+    <div style="position: fixed; bottom: 0; text-align: center">
+        <div class="sidebar-btn" style="width: calc(20vw - 60px);" (click)="showHelp()">Help</div>
+        <div class="sidebar-btn" style="width: calc(20vw - 60px);">Back to the start page</div>
+    </div>
 </div>
 <div *ngIf="help" class="info-wrapper">
     <div class="help">
