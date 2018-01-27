@@ -11,11 +11,28 @@
             <div class="nav-btn" *ngIf="!math" (click)="selectMath()"><label>Математические основы</label></div>
             <div class="nav-btn-disabled" *ngIf="math"><label>Математические основы</label></div>
             <div *ngIf="math">
-                <div class="nav-sub-btn"><label>2d</label></div>
-                <div class="nav-sub-btn"><label>3d</label></div>
+                <div class="nav-sub-btn sub" *ngIf="!twoD" (click)="switchTwoDThreeD(true)"><label>2d</label></div>
+                <div class="nav-btn-disabled" *ngIf="twoD" style="font-size: 7pt !important"><label>2d</label></div>
+                <div *ngIf="twoD">
+                    <div class="nav-sub-btn"><label>Модели</label></div>
+                    <div class="nav-sub-btn"><label>Визуализация</label></div>
+                    <div class="nav-sub-btn"><label>Преобразования</label></div>
+                </div>
+                <div class="nav-sub-btn sub" *ngIf="!threeD" (click)="switchTwoDThreeD(false)"><label>3d</label></div>
+                <div class="nav-btn-disabled" *ngIf="threeD" style="font-size: 7pt !important"><label>3d</label></div>
+                <div *ngIf="threeD">
+                    <div class="nav-sub-btn"><label>Модели</label></div>
+                    <div class="nav-sub-btn"><label>Проецирование</label></div>
+                    <div class="nav-sub-btn"><label>Преобразования</label></div>
+                </div>
             </div>
             <div class="nav-btn" *ngIf="!prog" (click)="selectProg()"><label>Заметки о программировании</label></div>
             <div class="nav-btn-disabled" *ngIf="prog"><label>Заметки о программировании</label></div>
+            <div *ngIf="prog">
+                <div class="nav-sub-btn"><label>О проекте</label></div>
+                <div class="nav-sub-btn"><label>Почему Angular?</label></div>
+                <div class="nav-sub-btn"><label>Структура проекта</label></div>
+            </div>
         </div>
         <div class="ref-display"></div>
     </div>
