@@ -67,6 +67,17 @@ export class SidebarComponent {
         }
     }
 
+    public selectLang(index: number): void {
+        this.state.selectLang(index);
+        let _btns = document.getElementsByClassName('sidebar-btn') as HTMLCollectionOf<HTMLElement>;
+        for (let i = 0; i < _btns.length; i++) {
+            _btns[i].style.backgroundColor = '';
+            _btns[i].style.color = '';
+        }
+        _btns[index].style.backgroundColor = '#00838f';
+        _btns[index].style.color = 'white';
+    }
+
     public goBack(): void {
         document.getElementById('workspace-wrapper').classList.remove('fadeIn');
         document.getElementById('workspace-wrapper').classList.add('fadeOut');

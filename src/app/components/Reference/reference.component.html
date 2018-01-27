@@ -1,1 +1,22 @@
-<div class="ref-wrapper"><h1>Theoretical reference</h1></div>
+<div class="ref-wrapper">
+    <div class="ref-placeholder" *ngIf="!langSelected">
+        <h1>Select language</h1>
+    </div>
+    <div *ngIf="selectedLang === 0">
+        <div class="ref-navigation"></div>
+        <div class="ref-display"></div>
+    </div>
+    <div *ngIf="selectedLang === 1">
+        <div class="ref-navigation">
+            <div class="nav-btn" *ngIf="!math" (click)="selectMath()"><label>Математические основы</label></div>
+            <div class="nav-btn-disabled" *ngIf="math"><label>Математические основы</label></div>
+            <div *ngIf="math">
+                <div class="nav-sub-btn"><label>2d</label></div>
+                <div class="nav-sub-btn"><label>3d</label></div>
+            </div>
+            <div class="nav-btn" *ngIf="!prog" (click)="selectProg()"><label>Заметки о программировании</label></div>
+            <div class="nav-btn-disabled" *ngIf="prog"><label>Заметки о программировании</label></div>
+        </div>
+        <div class="ref-display"></div>
+    </div>
+</div>

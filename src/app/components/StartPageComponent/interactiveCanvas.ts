@@ -34,8 +34,6 @@ export class InteractiveCanvas {
             this.points.cells[1][i] = this.plotter.translateYCoordBack(Math.random() * this.plotter.H);
         }
 
-        // setTimeout(() => {}, 100);
-
         this.generateLines();
         this.drawLines();
 
@@ -45,7 +43,7 @@ export class InteractiveCanvas {
             this.drawLines();
             this.generateCursorLines(this.cursorX, this.cursorY);
             this.drawCursorLines(this.cursorX, this.cursorY);
-        }, 30);
+        }, 50);
     }
 
     private calculateDistance(x1: number, y1: number, x2: number, y2: number): number | any {
