@@ -45,7 +45,7 @@
                 </p>
             </div>
             <h1 class="ref-header" *ngIf="math && twoD && !threeD">Основы визуализации двухмерных сцен</h1>
-            <markdown [path]="mdPath"></markdown>
+            <markdown *ngIf="paragraphOpen" [path]="mdPath"></markdown>
         </div>
     </div>
 </div>

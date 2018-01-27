@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StateService } from '../state.service';
 import { MarkdownComponent } from '../../../../node_modules/ngx-md';
+import { fail } from 'assert';
 
 @Component({
     selector: 'reference',
@@ -21,6 +22,7 @@ export class ReferenceComponent implements OnInit {
     private mdSubsection: string;
     private mdParagraph: string;
     public mdPath: string;
+    private paragraphOpen: boolean;
 
     constructor(private state: StateService) {
         this.langSelected = false;
@@ -28,6 +30,7 @@ export class ReferenceComponent implements OnInit {
         this.prog = false;
         this.twoD = false;
         this.threeD = false;
+        this.paragraphOpen = false;
         this.baseMdPath = 'https://raw.githubusercontent.com/cellardoor42/AffineTransform/master/src/app/components/Reference/docs/';
     }
 
@@ -53,6 +56,7 @@ export class ReferenceComponent implements OnInit {
         this.math = this.prog = false;
         this.twoD = this.threeD = false;
         this.resetMdPath();
+        this.paragraphOpen = false;
         if (index === 0) {
             this.mdLang = 'en/';
         } else {
@@ -66,6 +70,7 @@ export class ReferenceComponent implements OnInit {
         this.twoD = this.threeD = false;
         this.mdSection = 'math/';
         this.resetMdPath();
+        this.paragraphOpen = false;
     }
 
     public selectProg(): void {
@@ -74,6 +79,7 @@ export class ReferenceComponent implements OnInit {
         this.twoD = this.threeD = false;
         this.mdSection = 'prog/';
         this.resetMdPath();
+        this.paragraphOpen = false;
     }
 
     public switchTwoDThreeD(value: boolean): void {
@@ -84,6 +90,7 @@ export class ReferenceComponent implements OnInit {
         } else {
             this.mdSubsection = '3d/';
         }
+        this.paragraphOpen = false;
         this.resetMdPath();
     }
 
@@ -102,7 +109,7 @@ export class ReferenceComponent implements OnInit {
         }
         _btns[_index].style.backgroundColor = '#00838f';
         _btns[_index].style.color = 'white';
-
+        this.paragraphOpen = true;
         this.formMdPath();
     }
 }
