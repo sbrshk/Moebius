@@ -7,14 +7,11 @@ import { SidebarComponent } from './components/SidebarComponent/sidebar.componen
 import { DisplayComponent } from './components/2d/DisplayComponent/display.component';
 import { Display3dComponent } from './components/3d/Display3dComponent/display3d.component';
 import { ReferenceComponent } from './components/Reference/reference.component';
+import { MarkdownModule } from 'ngx-md';
 
 import { StateService } from './components/state.service';
 
 const appRoutes: Routes = [
-  // {
-  //   path: 'start',
-  //   component: StartpageComponent
-  // },
   {
     path: '2d',
     component: DisplayComponent
@@ -45,7 +42,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MarkdownModule.forRoot()
   ],
   providers: [StateService],
   bootstrap: [AppComponent]

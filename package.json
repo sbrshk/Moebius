@@ -28,6 +28,7 @@
     "core-js": "^2.4.1",
     "css-loader": "^0.28.7",
     "font-awesome": "^4.7.0",
+    "ngx-md": "^3.1.0",
     "rxjs": "^5.4.2",
     "style-loader": "^0.19.0",
     "zone.js": "^0.8.14"
