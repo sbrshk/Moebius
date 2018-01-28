@@ -63,7 +63,7 @@
         </div>
     </div>
     <div style="position: fixed; bottom: 0; text-align: center">
-        <div class="sidebar-btn" style="width: calc(20vw - 60px);" (click)="showHelp()">Help</div>
+        <div class="sidebar-btn" style="width: calc(20vw - 60px);" (click)="showHelp()" *ngIf="!ref">Help</div>
         <div class="sidebar-btn" style="width: calc(20vw - 60px);" (click)="goBack()">Back to the start page</div>
     </div>
 </div>
