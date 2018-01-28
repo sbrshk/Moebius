@@ -31,7 +31,7 @@ export class ReferenceComponent implements OnInit {
         this.twoD = false;
         this.threeD = false;
         this.paragraphOpen = false;
-        this.baseMdPath = 'https://raw.githubusercontent.com/cellardoor42/AffineTransform/master/src/app/components/Reference/docs/';
+        this.baseMdPath = 'https://raw.githubusercontent.com/cellardoor42/Moebius/master/src/app/components/Reference/docs/';
     }
 
     ngOnInit() {

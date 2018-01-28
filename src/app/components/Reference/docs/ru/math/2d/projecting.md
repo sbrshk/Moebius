@@ -15,8 +15,8 @@
 
 В данной реализации применяется следующая схема. Пусть (x<sub>w</sub>, y<sub>w</sub>) - координаты некоторой точки в мировой системе координат, (x<sub>0</sub>, y<sub>0</sub>) - экранные координаты центра мировой системы координат, s - коэффициент масштаба (количество пикселей в единичном отрезке мировой системы). Тогда экранные координаты заданной точки вычисляются по формулам:
 
-<p align="center"><img src="https://github.com/cellardoor42/AffineTransform/blob/master/src/app/components/Reference/docs/ru/math/2d/3.gif?raw=true"></p>
+<p align="center"><img src="https://github.com/cellardoor42/Moebius/blob/master/src/app/components/Reference/docs/ru/math/2d/3.gif?raw=true"></p>
 
 Обратно, мировые координаты можно выразить через экранные следующим образом:
 
-<p align="center"><img src="https://github.com/cellardoor42/AffineTransform/blob/master/src/app/components/Reference/docs/ru/math/2d/4.gif?raw=true"></p>
+<p align="center"><img src="https://github.com/cellardoor42/Moebius/blob/master/src/app/components/Reference/docs/ru/math/2d/4.gif?raw=true"></p>

@@ -1,18 +1,18 @@
 <p align="center">
 
-<img src="https://github.com/cellardoor42/AffineTransform/blob/master/src/assets/images/icon300x300.png?raw=true">
+<img src="https://github.com/cellardoor42/Moebius/blob/master/src/assets/images/icon300x300.png?raw=true">
 
-
+<h1>Möbius</h1>
 
 </p>
 
 # About the project
 
-**AffineTransform** grew up from an academic project for computer graphics course. It was supplemented by intuitive UI based on material design principles and comprehensive theoretical reference (now in progress).
+**Möbius** grew up from an academic project for computer graphics course. It was supplemented by intuitive UI based on material design principles and comprehensive theoretical reference (now in progress).
 
 ### Why Angular?
 
-Being an one-page web application, **AffineTransform** has a structure which is based at the component scheme. **Angular** is one of the best front-end frameworks implementing component based project structure and delivering app-like experiences.
+Being an one-page web application, **Möbius** has a structure which is based at the component scheme. **Angular** is one of the best front-end frameworks implementing component based project structure and delivering app-like experiences.
 
 The app loads quickly with the Component Router, which delivers automatic code-splitting so users only load code required to render the view they request.
 
@@ -47,4 +47,4 @@ Navigate to `localhost:4200`
 
 # License
 
-**AffineTransform** is delivered under the MIT license.
+**Möbius** is delivered under the MIT license.
