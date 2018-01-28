@@ -46,8 +46,11 @@ export class ReferenceComponent implements OnInit {
     }
     private formMdPath(): void {
         this.resetMdPath();
-        this.mdPath = this.baseMdPath + this.mdLang + this.mdSection + this.mdSubsection + this.mdParagraph;
-        console.log(this.mdPath);
+        if (this.math) {
+            this.mdPath = this.baseMdPath + this.mdLang + this.mdSection + this.mdSubsection + this.mdParagraph;
+        } else {
+            this.mdPath = this.baseMdPath + this.mdLang + this.mdSection + this.mdParagraph;
+        }
     }
 
     public selectLanguage(index: number): void {
@@ -107,6 +110,7 @@ export class ReferenceComponent implements OnInit {
             _btns[i].style.backgroundColor = '';
             _btns[i].style.color = '';
         }
+        if (this.threeD) { _index++; }
         _btns[_index].style.backgroundColor = '#00838f';
         _btns[_index].style.color = 'white';
         this.paragraphOpen = true;

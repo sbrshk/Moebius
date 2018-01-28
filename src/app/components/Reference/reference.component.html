@@ -30,9 +30,9 @@
             <div class="nav-btn" *ngIf="!prog" (click)="selectProg()"><label>Заметки о программировании</label></div>
             <div class="nav-btn-disabled" *ngIf="prog"><label>Заметки о программировании</label></div>
             <div *ngIf="prog">
-                <div class="nav-sub-btn"><label>О проекте</label></div>
-                <div class="nav-sub-btn"><label>Почему Angular?</label></div>
-                <div class="nav-sub-btn"><label>Структура проекта</label></div>
+                <div class="nav-sub-btn" (click)="selectParagraph('about')"><label>О проекте</label></div>
+                <div class="nav-sub-btn" (click)="selectParagraph('angular')"><label>Почему Angular?</label></div>
+                <div class="nav-sub-btn" (click)="selectParagraph('projectstructure')"><label>Структура проекта</label></div>
             </div>
         </div>
         <div class="ref-display">
