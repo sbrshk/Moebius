@@ -2,9 +2,9 @@
 
 <img src="https://github.com/cellardoor42/Moebius/blob/master/src/assets/images/icon300x300.png?raw=true">
 
-<h1>Möbius</h1>
-
 </p>
+
+<p><h1>Möbius</h1></p>
 
 # About the project
 
@@ -16,7 +16,7 @@ Being an one-page web application, **Möbius** has a structure which is based at
 
 The app loads quickly with the Component Router, which delivers automatic code-splitting so users only load code required to render the view they request.
 
-One of the most important features of Angular 2 is **TypeScript**. In modern web-development it is the best way of building applications with non-trivial structure and complex logic.  It is indispensable in implementing some math based things which mostly require object oriented paradigm.
+One of the most important features of Angular is **TypeScript**. In modern web-development it is the best way of building applications with non-trivial structure and complex logic.  It is indispensable in implementing some math based things which mostly require object oriented paradigm.
 
 
 
