@@ -101,16 +101,16 @@ export class ReferenceComponent implements OnInit {
         this.mdParagraph = paragraph + '.md';
         let _index: number;
         switch (paragraph) {
-            case 'models': _index = 0; break;
-            case 'projecting': _index = 1; break;
-            case 'transformations': _index = 2; break;
+            case 'models': case 'about': _index = 0; break;
+            case 'projecting': case 'angular': _index = 1; break;
+            case 'transformations': case 'projectstructure': _index = 2; break;
         }
+        if (this.math && this.threeD) { _index++; }
         let _btns = document.getElementsByClassName('nav-sub-btn') as HTMLCollectionOf<HTMLElement>;
         for (let i = 0; i < _btns.length; i++) {
             _btns[i].style.backgroundColor = '';
             _btns[i].style.color = '';
         }
-        if (this.threeD) { _index++; }
         _btns[_index].style.backgroundColor = '#00838f';
         _btns[_index].style.color = 'white';
         this.paragraphOpen = true;
