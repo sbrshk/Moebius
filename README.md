@@ -4,8 +4,6 @@
 
 </p>
 
-<p><h1>Möbius</h1></p>
-
 # About the project
 
 **Möbius** grew up from an academic project for computer graphics course. It was supplemented by intuitive UI based on material design principles and comprehensive theoretical reference (now in progress).
