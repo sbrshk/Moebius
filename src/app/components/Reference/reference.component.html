@@ -36,19 +36,19 @@
             </div>
         </div>
         <div class="ref-display">
-            <div class="ref-display-placeholder" *ngIf="math && !twoD && !threeD">
+            <div class="ref-display-placeholder animated fadeIn" *ngIf="math && !paragraphOpen">
                 <h1>Теоретическая справка</h1>
                 <p><b>На основе материалов курса "Математические основы компьютерной графики" Королькова О.Г.</b></p>
-                <p>
+                <p style="margin-bottom: 30px">
                     Воронежский Государственный университет<br>
                     Факультет прикладной математики, информатики и механики<br>
                     2017
                 </p>
+                <h2 class="ref-header animated fadeIn" *ngIf="math && twoD && !threeD">Основы визуализации двухмерных сцен</h2>
+                <h2 class="ref-header animated fadeIn" *ngIf="math && !twoD && threeD">Основы визуализации трехмерных сцен</h2>
             </div>
-            <h1 class="ref-header" *ngIf="math && twoD && !threeD">Основы визуализации двухмерных сцен</h1>
-            <h1 class="ref-header" *ngIf="math && !twoD && threeD">Основы визуализации трехмерных сцен</h1>
 
-            <div class="ref-display-placeholder" *ngIf="prog && !paragraphOpen">
+            <div class="ref-display-placeholder animated fadeIn" *ngIf="prog && !paragraphOpen">
                 <h1>О структуре проекта и особенностях программной реализации</h1>
             </div>
 
