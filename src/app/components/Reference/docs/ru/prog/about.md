@@ -14,6 +14,6 @@
 
 # Благодарности
 
-Содержимое теоретического раздела составлено на основе материалов курса "математические основы компьютерной графики" преподавателя Королькова О.Г.
+Содержимое теоретического раздела составлено на основе материалов курса "математические основы компьютерной графики" преподавателя Королькова О.Г., Воронежский Государственный университет, факультет прикладной математики, информатики и механики, 2017 год.
 
 В оформлении использовано фото **'The Orion Nebula'** (Photo by [Bryan Goff](https://unsplash.com/photos/f7YQo-eYHdM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/search/photos/space?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)).
