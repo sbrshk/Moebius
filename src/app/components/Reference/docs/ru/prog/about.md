@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/cellardoor42/Moebius/master/src/assets/images/icon300x300.png"></p>
+<p align="center"><img width="250" src="https://raw.githubusercontent.com/cellardoor42/Moebius/master/src/assets/images/icon300x300.png"></p>
 
 # О проекте
 
