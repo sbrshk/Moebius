@@ -18,7 +18,7 @@ export class DisplayComponent implements OnInit {
     private shapes: Shapes2d;
     private canvas: HTMLCanvasElement;
     private currentModel: Model2d;
-    private modelSelected: boolean;
+    public modelSelected: boolean;
     private pivotSet: boolean;
     private pivot: number[];
 
