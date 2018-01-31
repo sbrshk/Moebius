@@ -10,13 +10,13 @@ cache:
   directories:
     - node_modules
 
-before_script:
-  - composer self-update -q
-  - if [ -n "$GITHUB_TOKEN" ]; then composer config github-oauth.github.com ${GITHUB_TOKEN}; fi;
-  - if [ -z "$dependencies" ]; then composer install; fi;
-  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n; fi;
-  - if [ "$dependencies" = "highest" ]; then composer update -n; fi;
-  - composer show -i
+# before_script:
+#   - composer self-update -q
+#   - if [ -n "$GITHUB_TOKEN" ]; then composer config github-oauth.github.com ${GITHUB_TOKEN}; fi;
+#   - if [ -z "$dependencies" ]; then composer install; fi;
+#   - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n; fi;
+#   - if [ "$dependencies" = "highest" ]; then composer update -n; fi;
+#   - composer show -i
  
 script:
   - npm run build.prod
