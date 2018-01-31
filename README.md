@@ -1,8 +1,8 @@
 <p align="center">
-
-<img src="https://github.com/cellardoor42/Moebius/blob/master/src/assets/images/icon300x300.png?raw=true"><br>
-<img src="https://travis-ci.org/cellardoor42/Moebius.svg?branch=master">
-
+    <img src="https://github.com/cellardoor42/Moebius/blob/master/src/assets/images/icon300x300.png?raw=true">
+</p>
+<p align="center">
+    <img src="https://travis-ci.org/cellardoor42/Moebius.svg?branch=master">
 </p>
 
 # About the project
