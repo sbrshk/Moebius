@@ -13,14 +13,14 @@
             <div class="nav-btn-disabled" *ngIf="math"><label>Математические основы</label></div>
             <div *ngIf="math">
                 <div class="nav-sub-btn sub" *ngIf="!twoD" (click)="switchTwoDThreeD(true)"><label>2d</label></div>
-                <div class="nav-btn-disabled" *ngIf="twoD" style="font-size: 8pt !important"><label>2d</label></div>
+                <div class="nav-btn-disabled" *ngIf="twoD" style="font-size: 10pt !important"><label>2d</label></div>
                 <div *ngIf="twoD">
                     <div class="nav-sub-btn" (click)="setParagraph('models')"><label>Модели</label></div>
                     <div class="nav-sub-btn" (click)="setParagraph('projecting')"><label>Визуализация</label></div>
                     <div class="nav-sub-btn" (click)="setParagraph('transformations')"><label>Преобразования</label></div>
                 </div>
                 <div class="nav-sub-btn sub" *ngIf="!threeD" (click)="switchTwoDThreeD(false)"><label>3d</label></div>
-                <div class="nav-btn-disabled" *ngIf="threeD" style="font-size: 8pt !important"><label>3d</label></div>
+                <div class="nav-btn-disabled" *ngIf="threeD" style="font-size: 10pt !important"><label>3d</label></div>
                 <div *ngIf="threeD">
                     <div class="nav-sub-btn" (click)="setParagraph('models')"><label>Модели</label></div>
                     <div class="nav-sub-btn" (click)="setParagraph('projecting')"><label>Визуализация</label></div>
