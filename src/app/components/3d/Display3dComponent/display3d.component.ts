@@ -22,7 +22,7 @@ export class Display3dComponent implements OnInit {
     private canvas: HTMLCanvasElement;
     private currentModel: Model3d;
     private projectedModel: Model2d;
-    private modelSelected: boolean;
+    public modelSelected: boolean;
     private transformed: boolean;
 
     constructor(private state: StateService) {
