@@ -29,3 +29,11 @@
 При применении очередного аффинного преобразования выполняются следующие операции:
 
 <p align="center"><img src="https://github.com/cellardoor42/AffineTransform/blob/master/src/app/components/Reference/docs/ru/math/2d/8.gif?raw=true"></p>
+
+
+
+### Второй случай: модель имеет постоянную точку опоры
+
+Пусть *(x<sub>p</sub>, y<sub>p</sub>)* - координаты точки опоры. После применения очередного аффинного преобразования текущая матрица вершин умножается на матрицу
+
+<p align="center"><img src="https://github.com/cellardoor42/AffineTransform/blob/master/src/app/components/Reference/docs/ru/math/2d/9.gif?raw=true"></p>
