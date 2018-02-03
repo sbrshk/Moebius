@@ -63,13 +63,13 @@
         </div>
     </div>
     <div style="position: fixed; bottom: 0; text-align: center">
-        <div class="sidebar-btn" style="width: calc(20vw - 60px);" (click)="showHelp()" *ngIf="!ref">Help</div>
+        <div class="sidebar-btn" style="width: calc(20vw - 60px);" (click)="showHelp()" *ngIf="!ref">Controls</div>
         <div class="sidebar-btn" style="width: calc(20vw - 60px);" (click)="goBack()">Back to the start page</div>
     </div>
 </div>
 <div *ngIf="help" class="info-wrapper">
     <div class="help">
-        <h1>Help</h1>
+        <h1>Controls</h1>
         <div *ngIf="twoD && !ref">
             <h3>Actions with 2d model</h3>
             <p>
