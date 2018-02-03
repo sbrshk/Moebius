@@ -23,12 +23,12 @@ const appRoutes: Routes = [
   {
     path: 'ref',
     component: ReferenceComponent
-  },
-  {
-    path: '',
-    redirectTo: '2d',
-    pathMatch: 'full'
   }
+  // {
+  //   path: '',
+  //   redirectTo: '2d',
+  //   pathMatch: 'full'
+  // }
 ];
 
 @NgModule({

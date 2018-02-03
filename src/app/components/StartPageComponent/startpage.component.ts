@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Model3d, WarframeModel } from '../../Model/Model3d';
 import { Model2d } from '../../Model/Model2d';
 import { Shapes3d } from '../../Shapes/Shapes3d';
@@ -27,7 +28,7 @@ export class StartpageComponent implements OnInit, OnDestroy {
     private intCanvas: HTMLCanvasElement;
     private interactiveCanvas: InteractiveCanvas;
 
-    constructor(private state: StateService) {
+    constructor(private state: StateService, private router: Router) {
         this.shapes = new Shapes3d();
         this.camera = new Camera3d();
     }
@@ -92,6 +93,9 @@ export class StartpageComponent implements OnInit, OnDestroy {
                 this.state.leaveStartPage();
             }, 500);
         }, 500);
+
+        let _link: any[] = ['2d'];
+        this.router.navigate(_link);
     }
 
     public onMouseMove(event: Event | any): void {
