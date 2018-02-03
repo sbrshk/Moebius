@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AffineTransform } from '../../AffineTransform/AffineTransform';
 import {  Matrix } from '../../Matrix/Matrix';
 import { Model2d } from '../../Model/Model2d';
@@ -24,14 +24,11 @@ export class SidebarComponent {
 
     private shapes: Shapes2d;
 
-    constructor (private state: StateService) {
+    constructor (private state: StateService, private router: Router) {
         this.shapes = new Shapes2d();
         this.twoD = true;
         this.help = false;
         this.ref = false;
-
-        // let _link: any[] = ['2d'];
-        // this.router.navigate(_link);
     }
 
     public showHelp(): void {
@@ -84,5 +81,8 @@ export class SidebarComponent {
         setTimeout(() => {
             this.state.goToStartPage();
         }, 1000);
+
+        let _link: any[] = [''];
+        this.router.navigate(_link);
     }
 }
