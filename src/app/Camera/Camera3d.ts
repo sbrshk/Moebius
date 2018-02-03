@@ -91,11 +91,6 @@ export class Camera3d {
         let projectedVertices = new Matrix(3, verticesCount);
         vertices = Matrix.MatrixMatrixMultiply(this.translateView(), vertices);
         for (let i = 0; i < verticesCount; i++) {
-            // let x = vertices.cells[0][i];
-            // let y = vertices.cells[1][i];
-            // let z = vertices.cells[2][i];
-            // projectedVertices.cells[0][i] = x / (1 - x / this.p - y / this.q);
-            // projectedVertices.cells[1][i] = y / (1 - x / this.p - y / this.q);
             projectedVertices.cells[0][i] = vertices.cells[0][i] / (1 - vertices.cells[2][i] / this.D);
             projectedVertices.cells[1][i] = vertices.cells[1][i] / (1 - vertices.cells[2][i] / this.D);
             projectedVertices.cells[2][i] = 1;
