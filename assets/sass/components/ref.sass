@@ -1,0 +1,74 @@
+@import '../variables/variables.sass';
+
+.ref-placeholder
+    width: calc(80vw + 30px)
+    height: 100vh
+    position: fixed
+    top: 0
+    left: calc(20vw - 30px)
+    text-align: center
+    padding-top: 30vh
+    color: #888
+
+.ref-wrapper
+    width: calc(80vw + 30px)
+    height: 100vh
+    position: fixed
+    top: 0
+    left: calc(20vw - 30px)
+    padding: 20px
+
+.ref-navigation 
+    width: 15vw
+    // height: 60vh
+    position: fixed
+    top: 10px
+    left: calc(20vw - 20px)
+    border-radius: 1px
+    background-color: $primary-color-light
+    box-shadow: 0 0 3px rgba(0,0,0,0.3)
+    font-size: 10pt
+
+.nav-btn, .nav-btn-disabled, .nav-sub-btn
+    width: calc(15vw - 20px)
+    padding: 10px
+    margin: 0
+
+.nav-btn, .nav-sub-btn
+    &:hover
+        background-color: $secondary-color-light
+    &:active
+        background-color: $secondary-color-dark
+        color: white
+
+.nav-btn
+    border-top: 0.5px solid #ccc
+
+.sub
+    border-top: 0.2px solid #ddd
+
+.nav-btn-disabled
+    background-color: #d6d6d6
+    color: #666
+
+.nav-sub-btn
+    font-size: 10pt
+
+.ref-display
+    width: calc(65vw - 30px)
+    height: calc(100vh - 30px)
+    margin: 15px
+    overflow-y: auto
+    position: fixed
+    top: 0
+    right: 10px
+    font-size: 10pt
+
+.ref-display-placeholder
+    text-align: center;
+    padding-top: 10vh
+    color: #888
+
+.ref-header
+    // font-size: 18pt 
+    color: $secondary-color

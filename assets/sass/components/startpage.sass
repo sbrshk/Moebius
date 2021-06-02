@@ -1,0 +1,57 @@
+@import '../variables/variables.sass'
+
+.wrapper
+    position: absolute
+    width: 100vw
+    height: 100vh
+    top: 0
+    left: 0
+    background-color: black
+    background-image: url('../../images/bryan-goff-360297.jpg')
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    color: #ffffff
+
+#startCanvas, #intStartCanvas
+    position: absolute
+    width: 100vw
+    height: 100vh
+    top: 0
+    left: 0
+
+#intStartCanvas
+    z-index: 2
+
+.quote
+    position: absolute
+    top: 20wh
+    left: 5vw
+    right: 5vw
+    font-family: 'Cinzel', serif
+    z-index: 2
+
+.starth1
+    font-size: 50pt
+    margin-bottom: 0
+    
+
+.starth2
+    font-size: 30pt
+    margin-top: 0
+
+.startbtn
+    // &:hover
+    //     color: $secondary-color-light
+    //     cursor: pointer
+    position: absolute
+    top: 70vh
+    right: 20vw
+    font-size: 30pt
+    z-index: 3
+    transition: 0.2s ease
+    &:hover
+        color: $secondary-color
+        cursor: pointer
+    &:active
+        color: $secondary-color-dark
